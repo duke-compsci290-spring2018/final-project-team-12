@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 CS 290.02 Final Project Plan
 ===
 
@@ -114,4 +115,3 @@ If the task is "denied," no points are awarded and the task continues.
     * Create Events - Game tasks that are assigned to a player will create a Google Calendar Event with the relevant information
 * Google OAuth 2.0 - Useful for authenticating user login. Also will use user location data and calendar events.
 * Google Sign-in - Another option for handling registration (https://developers.google.com/identity/choose-auth)
-
