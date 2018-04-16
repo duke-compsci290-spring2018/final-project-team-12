@@ -1,0 +1,350 @@
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.4/lodash.js"></script> 
+    <script src="vue-google-maps.js"></script> 
+    <style>
+        #map {
+            height: 60%;
+        }
+        html, body {
+            height: 80%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exploration Google</h1>
+
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize-button" style="display: none;">Authorize</button>
+    <button id="signout-button" style="display: none;">Sign Out</button>
+    <div id="app">
+
+        <button @click="getEvents">Get Events</button>
+
+        <br>
+
+        <div id="Events">
+            <div v-for="event in userEv">
+                <h5>{{event.description}}</h5>
+                <p>{{event.time}}</p>
+                <p>{{event.location}}</p>
+            </div>
+        </div>
+        <br>
+        <h3>Add a New Event:</h3>
+        <label>Event Name:</label>
+        <input type="text" v-model.trim="eSum" />
+        <br>
+        <br>
+        <label> Description:</label>
+        <textarea class="text"
+                  placeholder="Event Description"
+                  v-model.trim="eDesc"
+                  ></textarea>
+        <br>
+        <label> Location:</label>
+        <p>{{eLoc}}</p>
+        <br>
+        <label>Start Date:</label>
+        <input type="date" id="linkText" v-model="eStart" />
+        <br>
+
+        <gmap-autocomplete
+                           @place_changed="setPlace">
+        </gmap-autocomplete>
+
+        <button @click="usePlace">Add</button>
+        <br>
+        <button @click="addEvent">Add Event</button>
+        <gmap-map
+                  :center="center"
+                  :zoom="zoom"
+                  @click="addMarker"
+                  style="height: 480px;"
+                  >
+            <gmap-marker
+                         v-for="(m, index) in markers"
+                         :key="index"
+                         :position="m.position"
+                         :clickable="true"
+                         :draggable="true"
+                         @click="center = m.position"
+                         ></gmap-marker>
+            <gmap-marker
+                         v-if="this.place"
+                         label="Event Here"
+                         :draggable="false"
+                         :position="{
+                                    lat: this.place.geometry.location.lat(),
+                                    lng: this.place.geometry.location.lng(),
+                                    }"
+                         ></gmap-marker>
+            
+            <gmap-circle
+                         :center="pos"
+                         :radius="10"
+                         :options="{strokeColor: '#011AC7',
+                                   strokeOpacity: 0.8,
+                                   strokeWeight: 1,
+                                   fillColor: '#011AC7',
+                                   fillOpacity: 0.3}"
+                         ></gmap-circle>
+
+        </gmap-map>
+    </div>
+
+
+
+    <script>         
+        var pos = {
+            lat: 0,
+            lng: 0
+        };
+
+        function getLocation(pos1){
+
+            console.log("running getLoc");
+            // Try HTML5 geolocation for current user location
+            if (navigator.geolocation) {
+                console.log("got location");
+                navigator.geolocation.getCurrentPosition(function(position) {
+                        pos1.lat =position.coords.latitude;
+                        pos1.lng =position.coords.longitude;
+                    
+                     console.log("function got location");
+                });
+                 
+                    
+            }else {
+                // Browser doesn't support Geolocation
+                
+                console.log("failed to get location");
+            }
+        }
+
+
+
+
+        var SCOPES = "https://www.googleapis.com/auth/calendar";
+        var authorizeButton = document.getElementById('authorize-button');
+        var signoutButton = document.getElementById('signout-button');
+        /**
+       *  On load, call the auth2 library and API client library.
+       */
+        function handleClientLoad() {
+            gapi.load('client:auth2', initClient);
+             
+        }
+        /**
+       *  Initializes the API client library, sign-in state listener
+       *  listeners.
+       */
+        function initClient() {
+            console.log(pos);
+            getLocation(pos);
+            console.log(pos);
+            //initialize the client
+            gapi.client.init({
+                'apiKey': 'AIzaSyDZ3qbbsYsPvWV90w1SJd4z86zKAtsMAtE',
+                'clientId': '422071649995-4eorv459gegr16gf6dm0q1n0qorvlap8.apps.googleusercontent.com',
+                'scope': 'https://www.googleapis.com/auth/calendar'
+            }).then(function () {
+                // Listen for sign-in state changes.
+                gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+                // Handle the initial sign-in state.
+                updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+                //basic buttons for sign in and authorization
+                authorizeButton.onclick = handleAuthClick;
+                signoutButton.onclick = handleSignoutClick;
+
+            });
+        }
+        /**
+       *  Called when the signed in status changes, to update the UI
+       *  appropriately. After a sign-in, the API is called.
+       */
+        function updateSigninStatus(isSignedIn) {
+            //update which buttons show, load calendar if logged in
+            if (isSignedIn) {
+                authorizeButton.style.display = 'none';
+                signoutButton.style.display = 'block';
+                gapi.client.load('calendar','v3');
+
+               
+            } else {
+                authorizeButton.style.display = 'block';
+                signoutButton.style.display = 'none';
+            }
+        }
+        /**
+       *  Sign in the user upon button click.
+       */
+        function handleAuthClick(event) {
+            gapi.auth2.getAuthInstance().signIn();
+        }
+        /**
+       *  Sign out the user upon button click.
+       */
+        function handleSignoutClick(event) {
+            gapi.auth2.getAuthInstance().signOut();
+        }
+
+    </script>
+
+    <script src="https://apis.google.com/js/api.js"
+            onload="this.onload=function(){};handleClientLoad()"
+            onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+    <script>
+        //alows easier use of Google Maps with Vue
+        Vue.use(VueGoogleMaps, {
+            load: {
+                key: 'AIzaSyDZ3qbbsYsPvWV90w1SJd4z86zKAtsMAtE',
+                libraries: 'places'
+            }
+        })
+
+        new Vue({
+            el: '#app',
+            data:{
+                place:null,
+                gapi:gapi,
+                pos:pos,
+                userEv:[],
+                event:{},
+                eSum:'',
+                eLoc:'',
+                eStart:'',
+                eEnd:'',
+                eDesc:'',
+                center: pos,
+                zoom:18,
+                markers: [],
+                circles: [
+                    {
+                        center: { lat: 35.99, lng: -78.89},  // Durham, NC
+                        radius: 100000,
+                        options: {
+                            strokeColor: '#FF0000',
+                            strokeOpacity: 0.8,
+                            strokeWeight: 1,
+                            fillColor: '#FF0000',
+                            fillOpacity: 0.3
+                        }
+                    },
+                    {
+                        center: { lat: 40, lng: -35},   // Paris, France
+                        radius: 500000
+                    }
+                ]
+            },
+            methods: {
+                //set vue2google place object into variable
+                setPlace(place) {
+                    this.place = place;
+                    this.eLoc = place.name;
+                    this.center = {
+                        lat: this.place.geometry.location.lat(),
+                        lng: this.place.geometry.location.lng(),
+                    };
+
+                    console.log(place);
+                },
+                //keep the marker permanently on the map
+                usePlace(place) {
+                    if (this.place) {
+                        this.markers.push({
+                            position: {
+                                lat: this.place.geometry.location.lat(),
+                                lng: this.place.geometry.location.lng(),
+                            }
+                        })
+                        this.place = null;
+                    }
+                },
+
+                //add to array of displayed markers
+                addMarker (event) {
+                    this.markers.push({
+                        position: { lat: event.latLng.lat(), lng: event.latLng.lng() }
+                    })
+                },
+
+                //get google calendar events
+                getEvents() {
+                    this.userEv = [];
+                    var vm = this;
+                    gapi.client.calendar.events.list({
+                        'calendarId': 'primary',
+                        'timeMin': (new Date()).toISOString(),
+                        'showDeleted': false,
+                        'singleEvents': true,
+                        'maxResults': 7,
+                        'orderBy': 'startTime'
+                    }).then(function(response) {
+                        var events = response.result.items;
+                        //adjust data
+                        console.log("got to js3")
+                        if (events.length != 0) {
+                            for (i = 0; i < events.length; i++) {
+                                vm.userEv.push({
+                                    description:events[i].summary,
+                                    time:events[i].start,
+                                    location:events[i].location
+
+                                });
+                            }
+                        } else {
+                            this.userEv =[];
+                            this.userEv.push({
+                                description:"No Events Found"
+                            });
+                        }
+                    });
+                }, 
+//add an event to google calendar
+                addEvent(){
+                    if(!(this.eStart && this.eSum && this.eLoc && this.eDesc)){
+                        console.log("incomplete fields");
+                        return;
+                    }
+                    var vm = this;
+                    vm.event = {
+                        'summary': vm.eSum,
+                        'location': vm.eLoc,
+                        'description':vm.eDesc,
+                        'start': {
+                            'date': vm.eStart,
+                            
+                        },
+                        'end': {
+                            'date': vm.eStart,
+                           
+                        },
+
+                    };
+                    var request = gapi.client.calendar.events.insert({
+                        'calendarId': 'primary',
+                        'resource': vm.event
+                    });
+                    request.execute(function(event) {
+                        console.log("Event Added");
+                    });
+                    this.eSum='';
+                this.eLoc='';
+                this.eStart='';
+                this.eEnd='';
+                this.eDesc='';
+                    this.getEvents();
+                }
+            },
+
+        });
+
+    </script> 
+
+
+</body>
