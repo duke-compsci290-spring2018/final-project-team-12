@@ -1,12 +1,10 @@
 <template>
-    <v-navigation-drawer>
-
-    </v-navigation-drawer>
+    
 </template>
 
 <script>
     export default {
-        name: "left-drawer"
+        name: "point-proposal"
     }
 </script>
 

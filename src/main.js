@@ -4,6 +4,7 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
 
 Vue.use(Vuetify)
+Vue.use(VueFire);
 
 new Vue({
   el: '#app',
