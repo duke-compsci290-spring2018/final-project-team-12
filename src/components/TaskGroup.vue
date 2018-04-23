@@ -1,9 +1,9 @@
 <!--Component representing main dashboard/work board for -->
 <!-- should take userID, vuefire reference, and filter cards based off of id-->
 <template>
-    <v-app dark>
-        <v-card>
-            <v-toolbar flat transparent>
+    <v-app class="taskGroup" dark>
+        <v-card light>
+            <v-toolbar light flat transparent>
                 <v-toolbar-title>
                     Some User's Tasks
                 </v-toolbar-title>
@@ -37,6 +37,10 @@
 </script>
 
 <style scoped>
+    .taskGroup {
+        max-height: 45vh;
+    }
+
     .cardList {
         overflow-x: scroll;
     }

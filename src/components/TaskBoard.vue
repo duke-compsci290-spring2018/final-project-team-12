@@ -8,14 +8,10 @@
             </v-layout>
             <v-layout row wrap>
                 <v-flex lg6 md6 xs12>
-                    <v-card>
-                        PLACEHOLDER
-                    </v-card>
+                    <task-group></task-group>
                 </v-flex>
                 <v-flex lg6 md6 xs12>
-                    <v-card>
-                        PLACEHOLDER
-                    </v-card>
+                    <task-group></task-group>
                 </v-flex>
             </v-layout>
         </v-container>
@@ -33,7 +29,4 @@
 </script>
 
 <style scoped>
-    html {
-        overflow-y: scroll;
-    }
 </style>
