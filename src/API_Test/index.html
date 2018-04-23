@@ -1,4 +1,4 @@
-<!--TODO: Need to include new SCOPE EMAIL from google, possibly also userinfo.(UID?) (photos?) Additionally need to have some sort of auth state that only allows changes if logged in-->
+<!--Attempting to use other APIS. gapi object not working, children undefined. Issues Loading correct libraries beforehand, possibly scope issues as well. -->
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.4/lodash.js"></script> 
@@ -15,13 +15,15 @@
     </style>
 </head>
 <body>
-    <h1>Exploration Google</h1>
+    <h1>API Testing Grounds</h1>
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize-button" style="display: none;">Authorize</button>
     <button id="signout-button" style="display: none;">Sign Out</button>
     <div id="app">
-
+ <button @click="getUserInfo">Get Info</button>
+         <button @click="getUserInfo2">Get Info2</button>
+<!--         <button @click="getUserInfo3">Get Info3</button>-->
         <button @click="getEvents">Get Events</button>
 
         <br>
@@ -82,7 +84,7 @@
                                     lng: this.place.geometry.location.lng(),
                                     }"
                          ></gmap-marker>
-            
+
             <gmap-circle
                          :center="pos"
                          :radius="10"
@@ -111,16 +113,16 @@
             if (navigator.geolocation) {
                 console.log("got location");
                 navigator.geolocation.getCurrentPosition(function(position) {
-                        pos1.lat =position.coords.latitude;
-                        pos1.lng =position.coords.longitude;
-                    
-                     console.log("function got location");
+                    pos1.lat =position.coords.latitude;
+                    pos1.lng =position.coords.longitude;
+
+                    console.log("function got location");
                 });
-                 
-                    
+
+
             }else {
                 // Browser doesn't support Geolocation
-                
+
                 console.log("failed to get location");
             }
         }
@@ -136,7 +138,7 @@
        */
         function handleClientLoad() {
             gapi.load('client:auth2', initClient);
-             
+
         }
         /**
        *  Initializes the API client library, sign-in state listener
@@ -150,7 +152,7 @@
             gapi.client.init({
                 'apiKey': 'AIzaSyDZ3qbbsYsPvWV90w1SJd4z86zKAtsMAtE',
                 'clientId': '422071649995-4eorv459gegr16gf6dm0q1n0qorvlap8.apps.googleusercontent.com',
-                'scope': 'https://www.googleapis.com/auth/calendar'
+                'scope': 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/user.emails.read https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/plus.me '
             }).then(function () {
                 // Listen for sign-in state changes.
                 gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
@@ -172,8 +174,22 @@
                 authorizeButton.style.display = 'none';
                 signoutButton.style.display = 'block';
                 gapi.client.load('calendar','v3');
+                 gapi.client.load('https://people.googleapis.com/$discovery/rest?version=v1');
+                gapi.client.load('userinfo');
+                console.log("Executing Section");
+               gapi.client.load('plus','v1', function(){
+ var request = gapi.client.plus.people.get({
+   'userId': 'me'
+ });
+ request.execute(function(resp) {
+   console.log('Retrieved profile for:' + resp.displayName);
+ });
+});
+                
+                
+                //https://people.googleapis.com/$discovery/rest?version=v1
 
-               
+
             } else {
                 authorizeButton.style.display = 'block';
                 signoutButton.style.display = 'none';
@@ -305,7 +321,7 @@
                         }
                     });
                 }, 
-//add an event to google calendar
+                //add an event to google calendar
                 addEvent(){
                     if(!(this.eStart && this.eSum && this.eLoc && this.eDesc)){
                         console.log("incomplete fields");
@@ -318,11 +334,11 @@
                         'description':vm.eDesc,
                         'start': {
                             'date': vm.eStart,
-                            
+
                         },
                         'end': {
                             'date': vm.eStart,
-                           
+
                         },
 
                     };
@@ -334,11 +350,50 @@
                         console.log("Event Added");
                     });
                     this.eSum='';
-                this.eLoc='';
-                this.eStart='';
-                this.eEnd='';
-                this.eDesc='';
+                    this.eLoc='';
+                    this.eStart='';
+                    this.eEnd='';
+                    this.eDesc='';
                     this.getEvents();
+                },
+                getUserInfo(){
+                    //gapi.client.plus.people.get
+                    console.log("EXE");
+                    gapi.client.load('plus','v1', function(){
+ var request = gapi.client.plus.people.get({
+   'userId': 'me'
+ });
+ request.execute(function(resp) {
+   console.log('Retrieved profile for:' + resp.displayName);
+ });
+});
+                },
+                 getUserInfo2(){
+                    //full info
+                    var request2 = gapi.client.plus.people.get({
+                        'userId' : 'me'
+                    });
+
+                    request2.execute(function(resp) {
+                        console.log('ID: ' + resp.id);
+                        console.log('Display Name: ' + resp.displayName);
+                        console.log('Email: ');
+                        console.log(resp.emails);
+                    });
+                },
+                 getUserInfo3(){
+                    //not working
+                    var request2 = gapi.client.plus.userinfo.get({
+                        'userId' : 'me'
+                    });
+
+                    request2.execute(function(resp) {
+                        console.log('ID: ' + resp.id);
+                        console.log('Display Name: ' + resp.displayName);
+                        console.log('Image URL: ' + resp.image.url);
+                        console.log('Profile URL: ' + resp.url);
+                        console.log('Email: '+resp.emails);
+                    });
                 }
             },
 
