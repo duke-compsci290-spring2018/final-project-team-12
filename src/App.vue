@@ -7,9 +7,12 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
+    <login v-if="!loggedIn() && firstVisit()"></login>
+    <v-else>
     <task-board>
       <task-group></task-group>
     </task-board>
+    </v-else>
   </v-app>
 </template>
 
@@ -17,20 +20,25 @@
     import LeftDrawer from './components/LeftDrawer.vue';
     import RightDrawer from './components/RightDrawer.vue';
     import TaskBoard from './components/TaskBoard.vue';
+    import Login from './components/Login.vue';
 
     export default {
         data () {
 
         },
         methods: {
-          loggedIn: function(){
-
-          },
+            loggedIn: function(){
+              return false;
+            },
+            firstVisit: function(){
+              return true;
+            }
         },
         components:{
             LeftDrawer,
             RightDrawer,
-            TaskBoard
+            TaskBoard,
+            Login
         }
     }
 </script>
