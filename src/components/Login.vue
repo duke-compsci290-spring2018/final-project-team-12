@@ -57,8 +57,8 @@
         },
         methods:{
             onSuccess(googleUser){
-                //const profile = googleUser.getBasicProfile();
-                const profile = googleUser;
+                const profile = googleUser.getBasicProfile();
+                //const profile = googleUser;
                 /* Returns
                gapi.auth2.BasicProfile 	You can retrieve the properties of gapi.auth2.BasicProfile with the following methods:
 

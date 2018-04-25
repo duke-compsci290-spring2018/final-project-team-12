@@ -37,11 +37,12 @@
               return true;
             },
             recProfile(profile){
+                console.log('Start External');
                 this.googleUser=profile;
                 console.log(this.googleUser);
-                this.basicInfo = this.googleUser.getBasicProfile();
-                console.log('Basic');
-                console.log(this.basicInfo);
+                //this.basicInfo = this.googleUser.getBasicProfile();
+                //console.log('Basic');
+                //console.log(this.basicInfo);
             }
         },
         components:{
