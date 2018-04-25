@@ -1,8 +1,7 @@
 <!--Component representing main dashboard/work board for -->
 <!-- should take userID, vuefire reference, and filter cards based off of id-->
 <template>
-    <v-app class="taskGroup" dark>
-        <v-card light>
+        <v-card class="taskGroup" light>
             <v-toolbar light flat transparent>
                 <v-toolbar-title>
                     Some User's Tasks
@@ -22,7 +21,6 @@
                 </v-layout>
             </v-container>
         </v-card>
-    </v-app>
 </template>
 
 <script>
