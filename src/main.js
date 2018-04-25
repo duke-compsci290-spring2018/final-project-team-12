@@ -3,7 +3,7 @@ import App from './App.vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
 import GSignInButton from 'vue-google-signin-button'
-import * as VueGoogleMaps from 'vue2-google-maps';
+import * as VueGoogleMaps from 'vue2-google-maps'
 
 
 var config = {
@@ -26,9 +26,9 @@ Vue.use(VueFire);
                 key: 'AIzaSyDZ3qbbsYsPvWV90w1SJd4z86zKAtsMAtE',
                 libraries: 'places'
             }
-        })
+        });
 
 new Vue({
   el: '#app',
   render: h => h(App)
-})gi
+})

@@ -13,7 +13,6 @@
     <!--<login v-if="!loggedIn() && firstVisit()" v-on:user_profile="recProfile($event)"></login>-->
     <task-board>
       <task-group></task-group>
-        <Map1></Map1>
     </task-board>
   </v-app>
 </template>
