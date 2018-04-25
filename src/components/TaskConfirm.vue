@@ -19,11 +19,7 @@
                 <v-toolbar dense color="grey darken-5">
                     <v-toolbar-title>Confirm</v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <v-btn fab small color="grey lighten-1">
-                        <v-icon color="white">
-                            my_location
-                        </v-icon>
-                    </v-btn>
+                    <map-confirm></map-confirm>
                     <v-btn fab small color="grey lighten-1">
                         <v-icon color="white">
                             add_a_photo
@@ -50,9 +46,15 @@
 </template>
 
 <script>
+
       import Map1 from './Map1.vue';
+
+    import MapConfirm from "./MapConfirm.vue";
     export default {
-        name: "task-confirm"
+        name: "task-confirm",
+        components: {
+            MapConfirm
+        }
     }
 </script>
 
