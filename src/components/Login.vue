@@ -59,7 +59,7 @@
         },
         methods:{
             onSuccess(googleUser){
-                this.BasicProfile = googleUser.getBasicProfile();
+                const BasicProfile2 = googleUser.getBasicProfile();
                 const aa = BasicProfile.getEmail();
                 //const profile = googleUser;
                 /* Returns
@@ -74,7 +74,7 @@
 
                 console.log('Internal');
                 console.log(aa);
-                this.$emit('user_profile', BasicProfile);
+                this.$emit('user_profile', BasicProfile2);
             },
             onFail(err){
                 console.log('Failed to Login',err);
