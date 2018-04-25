@@ -1,5 +1,4 @@
 <template>
-    <v-app dark>
         <v-container fluid grid-list-lg>
             <v-layout row>
                 <v-flex xs12>
@@ -15,7 +14,6 @@
                 </v-flex>
             </v-layout>
         </v-container>
-    </v-app>
 </template>
 
 <script>

@@ -1,7 +1,5 @@
 <template>
 <div>
-    <v-app>
-
         <v-layout row justify-center>
             <v-dialog value="true" persistent max-width="50vh">
                 <v-card>
@@ -38,8 +36,6 @@
     </v-card>
     </v-dialog>
     </v-layout>
-
-    </v-app>
     </div>
 </template>
 

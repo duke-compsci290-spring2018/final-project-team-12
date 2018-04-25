@@ -1,9 +1,7 @@
 <template>
-    <v-app>
         <v-expansion-panel>
 
         </v-expansion-panel>
-    </v-app>
 </template>
 
 <script>

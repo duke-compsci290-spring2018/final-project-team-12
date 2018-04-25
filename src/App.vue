@@ -7,12 +7,11 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
-    <login v-if="!loggedIn() && firstVisit()" v-on:user_profile="recProfile($event)"></login>
-    <v-else>
+  <task-confirm></task-confirm>
+    <!--<login v-if="!loggedIn() && firstVisit()" v-on:user_profile="recProfile($event)"></login>-->
     <task-board>
       <task-group></task-group>
     </task-board>
-    </v-else>
   </v-app>
 </template>
 
@@ -21,6 +20,7 @@
     import RightDrawer from './components/RightDrawer.vue';
     import TaskBoard from './components/TaskBoard.vue';
     import Login from './components/Login.vue';
+    import TaskConfirm from './components/TaskConfirm.vue';
 
     export default {
         data () {
@@ -50,7 +50,8 @@
             LeftDrawer,
             RightDrawer,
             TaskBoard,
-            Login
+            Login,
+            TaskConfirm
         }
     }
 </script>
