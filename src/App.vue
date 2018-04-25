@@ -1,5 +1,6 @@
 <template>
   <v-app dark>
+      <Map1></Map1>
     <v-toolbar prominent>
       <v-spacer></v-spacer>
       <v-toolbar-title>
@@ -21,12 +22,13 @@
     import RightDrawer from './components/RightDrawer.vue';
     import TaskBoard from './components/TaskBoard.vue';
     import Login from './components/Login.vue';
+    import Map1 from './components/Map1.vue';
 
     export default {
         data () {
             return{
             googleUser:null,
-            basicInfo:null
+            basicInfo:null,
             }
         },
         methods: {
