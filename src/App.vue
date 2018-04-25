@@ -36,8 +36,9 @@
             firstVisit: function(){
               return true;
             },
-            recProfile(profile){
+            recProfile: function(profile){
                 console.log('Start External');
+                console.log(profile);
                 this.googleUser=profile;
                 console.log(this.googleUser);
                 //this.basicInfo = this.googleUser.getBasicProfile();

@@ -47,6 +47,7 @@
     export default {
         name: "login",
         data(){
+            BasicProfile:null;
             return{
                 startUp:{
                     'apiKey': 'AIzaSyDZ3qbbsYsPvWV90w1SJd4z86zKAtsMAtE',
@@ -57,7 +58,7 @@
         },
         methods:{
             onSuccess(googleUser){
-                const BasicProfile = googleUser.getBasicProfile();
+                this.BasicProfile = googleUser.getBasicProfile();
                 const aa = BasicProfile.getEmail();
                 //const profile = googleUser;
                 /* Returns
