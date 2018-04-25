@@ -57,7 +57,8 @@
         },
         methods:{
             onSuccess(googleUser){
-                const profile = googleUser.getBasicProfile();
+                const BasicProfile = googleUser.getBasicProfile();
+                const aa = BasicProfile.getEmail();
                 //const profile = googleUser;
                 /* Returns
                gapi.auth2.BasicProfile 	You can retrieve the properties of gapi.auth2.BasicProfile with the following methods:
@@ -70,8 +71,8 @@
                 BasicProfile.getEmail()*/
 
                 console.log('Internal');
-                console.log(profile);
-                this.$emit('user_profile', this.profile);
+                console.log(aa);
+                this.$emit('user_profile', BasicProfile);
             },
             onFail(err){
                 console.log('Failed to Login',err);
