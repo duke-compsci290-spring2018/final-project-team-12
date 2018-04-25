@@ -49,7 +49,6 @@
         data(){
             
             return{
-                BasicProfile:null,
                 startUp:{
                     'apiKey': 'AIzaSyDZ3qbbsYsPvWV90w1SJd4z86zKAtsMAtE',
                     'client_id': '422071649995-4eorv459gegr16gf6dm0q1n0qorvlap8.apps.googleusercontent.com',

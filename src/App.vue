@@ -7,7 +7,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
-    <login v-if="!loggedIn() && firstVisit()" v-on:user_profile="recProfile"></login>
+    <login v-if="!loggedIn() && firstVisit()" v-on:user_profile="recProfile($event)"></login>
     <v-else>
     <task-board>
       <task-group></task-group>
