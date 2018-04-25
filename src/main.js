@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
+import GSignInButton from 'vue-google-signin-button'
+
 
 var config = {
     apiKey: "AIzaSyDhlhBm0bC7eCM_p2hO4AbEOHpdu8uTCsk",
@@ -15,7 +17,7 @@ var config = {
 var db = firebase.initializeApp(config).database();
 var storageRef = firebase.storage().ref();
 
-
+Vue.use(GSignInButton)
 Vue.use(Vuetify)
 Vue.use(VueFire);
 

@@ -7,7 +7,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
-    <login v-if="!loggedIn() && firstVisit()"></login>
+    <login v-if="!loggedIn() && firstVisit()" v-on:user_profile="recProfile"></login>
     <v-else>
     <task-board>
       <task-group></task-group>
@@ -24,7 +24,10 @@
 
     export default {
         data () {
-
+            return{
+            googleUser:null,
+            basicInfo:null
+            }
         },
         methods: {
             loggedIn: function(){
@@ -32,6 +35,13 @@
             },
             firstVisit: function(){
               return true;
+            },
+            recProfile(profile){
+                this.googleUser=profile;
+                console.log(this.googleUser);
+                this.basicInfo = this.googleUser.getBasicProfile();
+                console.log('Basic');
+                console.log(this.basicInfo);
             }
         },
         components:{
@@ -45,6 +55,15 @@
 
 <style>
 
+    .g-signin-button {
+  /* This is where you control how the button looks. Be creative! */
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 3px;
+  background-color: #3c82f7;
+  color: #fff;
+  box-shadow: 0 3px 0 #0f69ff;
+}
 
   body, .thin {
     font-family: 'Quicksand', sans-serif;
