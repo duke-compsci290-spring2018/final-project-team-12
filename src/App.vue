@@ -1,6 +1,5 @@
 <template>
   <v-app dark>
-      <Map1></Map1>
     <v-toolbar prominent>
       <v-spacer></v-spacer>
       <v-toolbar-title>
@@ -8,10 +7,13 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
-  <task-confirm></task-confirm>
+  <task-confirm>
+    
+    </task-confirm>
     <!--<login v-if="!loggedIn() && firstVisit()" v-on:user_profile="recProfile($event)"></login>-->
     <task-board>
       <task-group></task-group>
+        <Map1></Map1>
     </task-board>
   </v-app>
 </template>

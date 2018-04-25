@@ -3,6 +3,7 @@ import App from './App.vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
 import GSignInButton from 'vue-google-signin-button'
+import * as VueGoogleMaps from 'vue2-google-maps';
 
 
 var config = {
@@ -20,8 +21,14 @@ var storageRef = firebase.storage().ref();
 Vue.use(GSignInButton)
 Vue.use(Vuetify)
 Vue.use(VueFire);
+ Vue.use(VueGoogleMaps, {
+            load: {
+                key: 'AIzaSyDZ3qbbsYsPvWV90w1SJd4z86zKAtsMAtE',
+                libraries: 'places'
+            }
+        })
 
 new Vue({
   el: '#app',
   render: h => h(App)
-})
+})gi

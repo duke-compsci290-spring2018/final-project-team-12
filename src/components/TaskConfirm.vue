@@ -50,6 +50,7 @@
 </template>
 
 <script>
+      import Map1 from './Map1.vue';
     export default {
         name: "task-confirm"
     }
