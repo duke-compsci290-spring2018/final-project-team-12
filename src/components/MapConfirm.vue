@@ -1,6 +1,6 @@
 <template>
     <v-menu  origin="center center" top top offset-y v-model="visibility" :close-on-content-click=false>
-        <v-btn fab small color="grey lighten-1" slot="activator" @click="pos=getLocation(pos)">
+        <v-btn fab small color="grey lighten-1" slot="activator" @click="pos=getLocation(pos);center=pos">
             <v-icon color="white">
                 my_location
             </v-icon>
@@ -24,7 +24,7 @@
 
         </gmap-map>
                 </v-flex>
-                <v-btn @click="pos=getLocation(pos);" light>
+                <v-btn @click="pos=getLocation(pos);" :disabled="bActive"light>
                     <!--btn here-->
                     Set Location
                     
@@ -44,6 +44,7 @@
         data(){
             
             return{
+                bActive:true,
                 visibility:true,
                 pos:{
                     lat:0,
@@ -64,9 +65,12 @@
             },
               getLocation(pos1){
 
+                   var vm = this;
+                  this.bActive = false;
             console.log("running getLoc");
             // Try HTML5 geolocation for current user location
             if (navigator.geolocation) {
+               
                 navigator.geolocation.getCurrentPosition(function(position) {
                         pos1.lat =position.coords.latitude;
                         pos1.lng =position.coords.longitude;
@@ -74,6 +78,8 @@
                     console.log(pos1);
                     
                 }).then(function(){
+                    console.log("position returned");
+                    vm.bActive = true;
                     return pos1});
                  
                     
