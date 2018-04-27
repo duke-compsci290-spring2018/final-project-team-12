@@ -7,9 +7,8 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
-  <task-confirm>
-    
-    </task-confirm>
+  <!--<task-confirm></task-confirm>-->
+    <task-create></task-create>
     <!--<login v-if="!loggedIn() && firstVisit()" v-on:user_profile="recProfile($event)"></login>-->
     <task-board>
       <task-group></task-group>
@@ -24,6 +23,7 @@
     import Login from './components/Login.vue';
     import Map1 from './components/Map1.vue';
     import TaskConfirm from './components/TaskConfirm.vue';
+    import TaskCreate from './components/TaskCreate.vue';
 
 
     export default {
@@ -55,7 +55,8 @@
             RightDrawer,
             TaskBoard,
             Login,
-            TaskConfirm
+            TaskConfirm,
+            TaskCreate
         }
     }
 </script>
