@@ -7,6 +7,7 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
         </v-toolbar>
+        <task-create></task-create>
         <!--<login-->
                 <!--v-if="!loggedIn() && !guestFlag"-->
                 <!--v-on:user_profile="loadUser($event)"-->
