@@ -8,8 +8,8 @@
       <v-spacer></v-spacer>
     </v-toolbar>
   <!--<task-confirm></task-confirm>-->
-    <task-create></task-create>
-    <!--<login v-if="!loggedIn() && firstVisit()" v-on:user_profile="recProfile($event)"></login>-->
+    <!--<task-create></task-create>-->
+    <login v-if="!loggedIn() && firstVisit()" v-on:user_profile="recProfile($event)"></login>
     <task-board>
       <task-group></task-group>
     </task-board>
