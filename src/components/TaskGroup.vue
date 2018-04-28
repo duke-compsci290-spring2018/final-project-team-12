@@ -28,6 +28,16 @@
     export default {
         components:{
             TaskCard
+        },
+        props:['user', 'cards'],
+        methods: {
+            filterCards(){
+                if(this.user == null){
+                    return this.cards;
+                }else{
+                    return this.cards.filter(card =>)
+                }
+            }
         }
     }
 

@@ -25,7 +25,9 @@
         },
         props:[
             'db',
-            'storageRef'
+            'storageRef',
+            'user',
+            ''
         ],
     }
 </script>

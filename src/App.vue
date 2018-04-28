@@ -75,8 +75,8 @@
                 if (this.userExists(this.googleProfile)) {
                     this.addNewUser(this.googleProfile);
                 }
-                else {
-                }
+
+                this.loadGame();
             },
             userExists: function (profile) {
                 var parent = this;
@@ -94,6 +94,10 @@
             addNewUser: function (profile) {
                 var u = new User(profile);
                 this.currentUser = u;
+            },
+            loadGame(){
+                // get user pref cards
+                // show bounty board
             }
         },
         components: {

@@ -7,8 +7,34 @@ class User {
 }
 
 class TaskCard {
-    constructor(){
+    constructor(name, description, points, confirmationMethods, due){
+        name = name;
+        description = description;
+        points = points;
+        confirmationMethods = confirmationMethods;
+        due = due;
 
+        confirmation = new Confirmation();
+        votes = 0;
+        claimed = false;
+    },
+
+    function
+}
+
+class ConfirmationMethods {
+    constructor(location, image, text){
+        this.location = location;
+        this.image = image;
+        this.text = text;
+    }
+}
+
+class Confirmation {
+    constructor(){
+        this.location = null;
+        this.image = null;
+        this.text = null;
     }
 }
 
