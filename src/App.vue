@@ -7,13 +7,21 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
         </v-toolbar>
-        <task-create></task-create>
+        <!--<task-create></task-create>-->
         <!--<login-->
                 <!--v-if="!loggedIn() && !guestFlag"-->
                 <!--v-on:user_profile="loadUser($event)"-->
-                <!--v-on:guest_login="guestLogin()"-->
-        <!--&gt;</login>-->
-        <task-board v-if="!loggedIn()"></task-board>
+                <!--v-on:guest_login="guestLogin()">-->
+        <!--</login>-->
+        <v-layout row>
+
+        </v-layout>
+        <div>
+            <task-board v-if="!loggedIn()"></task-board>
+            <v-container>
+                <admin-dash></admin-dash>
+            </v-container>
+        </div>
     </v-app>
 </template>
 
@@ -25,6 +33,7 @@
     import Map1 from './components/Map1.vue';
     import TaskConfirm from './components/TaskConfirm.vue';
     import TaskCreate from './components/TaskCreate.vue';
+    import AdminDash from './components/AdminDash.vue';
 
     import User from "./DataStructs.js";
 
@@ -52,7 +61,8 @@
                 storageRef: storageRef,
                 googleProfile: null,
                 currentUser: null,
-                guestFlag: false
+                guestFlag: false,
+                adminFlag: false
             }
         },
         methods: {
@@ -66,6 +76,9 @@
             },
             guestLogin: function () {
                 this.guestFlag = true;
+            },
+            adminLogin: function() {
+                this.adminFlag = true;
             },
             loadUser: function (profile) {
                 console.log(profile);
@@ -107,7 +120,8 @@
             TaskBoard,
             Login,
             TaskConfirm,
-            TaskCreate
+            TaskCreate,
+            AdminDash
         }
     }
 </script>

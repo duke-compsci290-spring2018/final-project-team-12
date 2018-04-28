@@ -1,11 +1,23 @@
 <template>
     <v-navigation-drawer
-            hide-overlay
-            :mini-variant.sync="mini"
             right
             floating
+            mini-variant
+            permanent
+            transparent
     >
-        asdf
+        yay
+        a
+        ya
+        ay
+        asd
+        asd
+        as
+        dasd
+        asd
+        as
+        sad
+
     </v-navigation-drawer>
 </template>
 
@@ -22,5 +34,7 @@
 </script>
 
 <style scoped>
-
+    v-navigation-drawer {
+        background:rgba(0, 0, 0, 0.3);
+    }
 </style>

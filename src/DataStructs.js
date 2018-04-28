@@ -3,6 +3,7 @@ class User {
         this.email = profile.getEmail();
         this.name = profile.getName();
         this.avatar = profile.getImageUrl();
+        this.admin = false;
     }
 }
 
@@ -17,6 +18,8 @@ class TaskCard {
         confirmation = new Confirmation();
         votes = 0;
         claimed = false;
+        claimer = null;
+        dateClaimed = null;
         users = [];
     }
 }
@@ -44,6 +47,10 @@ class Location {
         this.radius = radius;
         this.place = place;
     }
+}
+
+class Relay {
+
 }
 
 module.exports = User, TaskCard, Location, Confirmation, ConfirmationMethods;

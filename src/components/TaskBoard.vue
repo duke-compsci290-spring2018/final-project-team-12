@@ -1,18 +1,16 @@
 <template>
-    <v-container>
-        <right-drawer></right-drawer>
-        <v-container fluid grid-list-lg>
+    <v-container fluid grid-list-md>
             <v-layout row>
-                <v-flex xs12>
+                <v-flex xs11>
                     <task-group></task-group>
                 </v-flex>
+                <right-drawer></right-drawer>
             </v-layout>
             <v-layout row wrap>
-                <v-flex xs12>
+                <v-flex xs11>
                     <task-group></task-group>
                 </v-flex>
             </v-layout>
-        </v-container>
     </v-container>
 </template>
 
