@@ -7,7 +7,11 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
         </v-toolbar>
-        <login v-if="!loggedIn() && firstVisit()" v-on:user_profile="loadUser($event)"></login>
+        <login
+                v-if="!loggedIn() && firstVisit()"
+                v-on:user_profile="loadUser($event)"
+                v-on:guest_login="guestLogin()"
+        ></login>
         <task-board v-if="loggedIn()"></task-board>
     </v-app>
 </template>
@@ -56,10 +60,11 @@
                 console.log(this.storageRef);
             },
             loggedIn: function () {
-                return currentUser == null && !guestFlag;
+                console.log("logged in : " + this.currentUser);
+                return this.currentUser != null && !this.guestFlag;
             },
             guestLogin: function () {
-                guestFlag = true;
+                this.guestFlag = true;
             },
             loadUser: function (profile) {
                 console.log(profile);

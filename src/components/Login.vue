@@ -37,7 +37,7 @@
                         </v-layout>
                         <v-layout row justify-center>
                             <v-flex xs11>
-                                <v-btn large block class="login" light color="white">
+                                <v-btn @click="$emit('guest_login', true);" large block class="login" light color="white">
                                     Continue as guest
                                 </v-btn>
                             </v-flex>
