@@ -1,9 +1,9 @@
 <template>
-    <v-card dark>
-        <v-container fluid grid-list-md>
+    <v-card dark height="50vh" min-width="800px">
+        <v-container height="50vh"fluid grid-list-md>
             <v-layout row>
-                <v-flex xs8>
-                    <v-card height="100%" tile flat dark>
+                <v-flex xs12>
+                    <v-card tile height="100%" flat dark>
                         <v-toolbar color="transparent" flat>
                             <v-toolbar-title class="name">Some name</v-toolbar-title>
                         </v-toolbar>
@@ -15,20 +15,19 @@
                         </v-btn>
                     </v-card>
                 </v-flex>
-                <v-flex xs4>
-                    <v-card height="100%" flat tile light>
+                <v-flex xs5>
+                    <v-card flat height="100%" tile light>
                         <v-toolbar dense flat color="transparent">
                             <v-spacer>
-
                             </v-spacer>
                             <v-chip disabled outline small>
                                 08-02-2012
                             </v-chip>
+                            <v-spacer>
+                            </v-spacer>
                         </v-toolbar>
-                        <v-card-text>
-                            <p class="description">
-                                asdfasdf hello dog shit cock ass mtoherfucker
-                            </p>
+                        <v-card-text class="description">
+                            Lorem ipsum dolor sit amet, te pro veri aliquam complectitur, eos at zril mentitum recusabo, ei aperiri eruditi quaerendum cum.
                         </v-card-text>
                     </v-card>
                 </v-flex>
@@ -55,6 +54,7 @@
         font-size: 1vw;
         height: 100%;
         width: 100%;
+        text-overflow: ellipsis;
     }
 
     .name {

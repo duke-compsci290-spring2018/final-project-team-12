@@ -1,13 +1,7 @@
 <template>
-    <v-container fluid grid-list-md>
+    <v-container fluid grid-list-lg>
             <v-layout row>
-                <v-flex xs11>
-                    <task-group></task-group>
-                </v-flex>
-                <right-drawer></right-drawer>
-            </v-layout>
-            <v-layout row wrap>
-                <v-flex xs11>
+                <v-flex xs12>
                     <task-group></task-group>
                 </v-flex>
             </v-layout>
@@ -27,7 +21,8 @@
         props: [
             'db',
             'storageRef',
-            'user'
+            'user',
+            'relay'
         ],
     }
 </script>

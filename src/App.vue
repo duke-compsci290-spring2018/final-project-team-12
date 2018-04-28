@@ -7,31 +7,13 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
         </v-toolbar>
-<<<<<<< HEAD
-        <!--<task-create></task-create>-->
-        <!--<login-->
-                <!--v-if="!loggedIn() && !guestFlag"-->
-                <!--v-on:user_profile="loadUser($event)"-->
-                <!--v-on:guest_login="guestLogin()">-->
-        <!--</login>-->
-        <v-layout row>
-
-        </v-layout>
-        <div>
-            <task-board v-if="!loggedIn()"></task-board>
-            <v-container>
-                <admin-dash></admin-dash>
-            </v-container>
-        </div>
-=======
 <!--        <task-create></task-create>-->
         <login
                 v-if="!loggedIn() && !guestFlag"
                 v-on:user_profile="loadUser($event)"
                 v-on:guest_login="guestLogin()">
     </login>
-        <task-board v-if="!loggedIn()"></task-board>
->>>>>>> c09c2b702d89691981e45e278d57a3e596587890
+        <task-board :user="currentUser" v-if="!loggedIn()"></task-board>
     </v-app>
 </template>
 

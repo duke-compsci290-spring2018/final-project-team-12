@@ -21,9 +21,28 @@
         <v-card light flat>
             <v-container grid-list-lg fluid>
                 <v-layout class="cardList" row>
-                    <v-flex xs3>
+                    <v-flex xs5>
                         <task-card></task-card>
                     </v-flex>
+                    <v-flex width="600px">
+                        <task-card></task-card>
+                    </v-flex>
+                    <v-flex>
+                        <task-card></task-card>
+                    </v-flex>
+                    <v-flex>
+                        <task-card></task-card>
+                    </v-flex>
+                    <v-flex>
+                        <task-card></task-card>
+                    </v-flex>
+                    <v-flex>
+                        <task-card></task-card>
+                    </v-flex>
+                    <v-flex>
+                        <task-card></task-card>
+                    </v-flex>
+
                 </v-layout>
             </v-container>
         </v-card>
@@ -59,5 +78,6 @@
 
     .cardList {
         overflow-x: scroll;
+        overflow-y: hidden;
     }
 </style>
