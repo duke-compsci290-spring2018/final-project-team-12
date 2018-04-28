@@ -109,8 +109,6 @@
         color: #d0d0d0;
     }
 
-
-
     h3, .reg {
         font-family: 'Quicksand', sans-serif;
         font-size: 40px;

@@ -1,28 +1,15 @@
 <template>
-  <v-app dark>
-    <v-toolbar prominent>
-      <v-spacer></v-spacer>
-      <v-toolbar-title>
-        <span class="thin">relay</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-    </v-toolbar>
-
-      <v-btn @click="checkFire">DO IT</v-btn>
-  <task-confirm :db="db" :storageRef="storageRef"></task-confirm>
-<!--    <task-create></task-create>-->
-    <!--<login v-if="!loggedIn() && firstVisit()" v-on:user_profile="recProfile($event)"></login>-->
-    <task-board>
-      <task-group></task-group>
-    </task-board>
-
-  <!--<task-confirm></task-confirm>-->
-    <!--<task-create></task-create>-->
-    <login v-if="!loggedIn() && firstVisit()" v-on:user_profile="loadUser($event)"></login>
-    <task-board v-if="loggedIn()"></task-board>
-    <!--<board-browser v-if="guestAcces()"></board-browser>-->
-
-  </v-app>
+    <v-app dark>
+        <v-toolbar prominent>
+            <v-spacer></v-spacer>
+            <v-toolbar-title>
+                <span class="thin">relay</span>
+            </v-toolbar-title>
+            <v-spacer></v-spacer>
+        </v-toolbar>
+        <login v-if="!loggedIn() && firstVisit()" v-on:user_profile="loadUser($event)"></login>
+        <task-board v-if="loggedIn()"></task-board>
+    </v-app>
 </template>
 
 <script>
@@ -33,55 +20,78 @@
     import Map1 from './components/Map1.vue';
     import TaskConfirm from './components/TaskConfirm.vue';
     import TaskCreate from './components/TaskCreate.vue';
-    
+
+    import User from "./DataStructs.js";
+
     var config = {
-    apiKey: "AIzaSyDhlhBm0bC7eCM_p2hO4AbEOHpdu8uTCsk",
-    authDomain: "todo-list-7368e.firebaseapp.com",
-    databaseURL: "https://todo-list-7368e.firebaseio.com",
-    projectId: "todo-list-7368e",
-    storageBucket: "todo-list-7368e.appspot.com",
-    messagingSenderId: "422071649995"
-};
+        apiKey: "AIzaSyDhlhBm0bC7eCM_p2hO4AbEOHpdu8uTCsk",
+        authDomain: "todo-list-7368e.firebaseapp.com",
+        databaseURL: "https://todo-list-7368e.firebaseio.com",
+        projectId: "todo-list-7368e",
+        storageBucket: "todo-list-7368e.appspot.com",
+        messagingSenderId: "422071649995"
+    };
 
-var db = firebase.initializeApp(config).database();
-var storageRef = firebase.storage().ref();
+    var db = firebase.initializeApp(config).database();
+    var storageRef = firebase.storage().ref();
+    var usersRef = db.ref('users');
+    var imagesRef = db.ref('images');
 
-   
 
     export default {
-         db,
+        db,
         storageRef,
-        data () {
-            return{
-                db:db,
-        storageRef:storageRef,
-            googleUser:null,
-            basicInfo:null,
+        data() {
+            return {
+                db: db,
+                storageRef: storageRef,
+                googleProfile: null,
+                currentUser: null,
+                guestFlag: false
             }
         },
         methods: {
-            checkFire: function(){
+            checkFire: function () {
                 console.log(this.db);
                 console.log(this.storageRef);
             },
-            loggedIn: function(){
-              return false;
+            loggedIn: function () {
+                return currentUser == null && !guestFlag;
             },
-            firstVisit: function(){
-              return true;
+            guestLogin: function () {
+                guestFlag = true;
             },
-            loadUser: function(profile){
+            loadUser: function (profile) {
                 console.log(profile);
                 console.log('Start External');
                 console.log(profile);
-                this.googleUser=profile;
-                console.log(this.googleUser);
-                //this.basicInfo = this.googleUser.getBasicProfile();
-                //console.log('Basic');
-                //console.log(this.basicInfo);
+                this.googleProfile = profile;
+                console.log(this.googleProfile);
+                if (this.userExists(this.googleProfile)) {
+                    this.addNewUser(this.googleProfile);
+                }
+                else {
+                }
+            },
+            userExists: function (profile) {
+                var parent = this;
+                return usersRef.once('value').then(function(snapshot) {
+                    var ret = false;
+                    snapshot.forEach(function(u){
+                        if(u.child('email').val()==profile.getEmail()){
+                            ret = true;
+                            this.currentUser = u;
+                        }
+                    });
+                    return ret;
+                });
+            },
+            addNewUser: function (profile) {
+                var u = new User(profile);
+                this.currentUser = u;
             }
         },
-        components:{
+        components: {
             LeftDrawer,
             RightDrawer,
             TaskBoard,
@@ -95,18 +105,18 @@ var storageRef = firebase.storage().ref();
 <style>
 
     .g-signin-button {
-  /* This is where you control how the button looks. Be creative! */
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 3px;
-  background-color: #3c82f7;
-  color: #fff;
-  box-shadow: 0 3px 0 #0f69ff;
-}
+        /* This is where you control how the button looks. Be creative! */
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 3px;
+        background-color: #3c82f7;
+        color: #fff;
+        box-shadow: 0 3px 0 #0f69ff;
+    }
 
-  body, .thin {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 35px;
-    color: #d0d0d0;
-  }
+    body, .thin {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 35px;
+        color: #d0d0d0;
+    }
 </style>
