@@ -46,4 +46,4 @@ class Location {
     }
 }
 
-module.exports = User, TaskCard, Location;
+module.exports = User, TaskCard, Location, Confirmation, ConfirmationMethods;

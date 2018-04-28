@@ -7,12 +7,12 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
         </v-toolbar>
-        <login
-                v-if="!loggedIn() && !guestFlag"
-                v-on:user_profile="loadUser($event)"
-                v-on:guest_login="guestLogin()"
-        ></login>
-        <task-board v-if="loggedIn()"></task-board>
+        <!--<login-->
+                <!--v-if="!loggedIn() && !guestFlag"-->
+                <!--v-on:user_profile="loadUser($event)"-->
+                <!--v-on:guest_login="guestLogin()"-->
+        <!--&gt;</login>-->
+        <task-board v-if="!loggedIn()"></task-board>
     </v-app>
 </template>
 
