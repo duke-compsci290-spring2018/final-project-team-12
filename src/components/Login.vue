@@ -4,10 +4,10 @@
             <v-dialog
                     value="true"
                     persistent
-                    min-width="25vw"
-                    max-width="30vw"
-                    min-height="50vh"
-
+                    width="500px"
+                    height="800px"
+                    max-width="90vw"
+                    max-height="70vh"
             >
                 <v-card>
                     <v-container grid-list-lg>

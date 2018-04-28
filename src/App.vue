@@ -72,10 +72,9 @@
                 console.log(profile);
                 this.googleProfile = profile;
                 console.log(this.googleProfile);
-                if (this.userExists(this.googleProfile)) {
+                if (!this.userExists(this.googleProfile)) {
                     this.addNewUser(this.googleProfile);
                 }
-
                 this.loadGame();
             },
             userExists: function (profile) {
@@ -85,7 +84,7 @@
                     snapshot.forEach(function(u){
                         if(u.child('email').val()==profile.getEmail()){
                             ret = true;
-                            this.currentUser = u;
+                            this.currentUser = u.val();
                         }
                     });
                     return ret;
