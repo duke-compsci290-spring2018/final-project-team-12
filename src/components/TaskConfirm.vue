@@ -20,11 +20,8 @@
                     <v-toolbar-title>Confirm</v-toolbar-title>
                     <v-spacer></v-spacer>
                     <map-confirm></map-confirm>
-                    <v-btn fab small color="grey lighten-1">
-                        <v-icon color="white">
-                            add_a_photo
-                        </v-icon>
-                    </v-btn>
+                    <photo-confirm :db="this.db" :storageRef="this.storageRef"></photo-confirm>
+                   
 
                 </v-toolbar>
             </v-container>
@@ -35,7 +32,7 @@
                         save
                     </v-icon>
                 </v-btn>
-                <v-btn large icon color="red">
+                <v-btn @click="checkFire" large icon color="red">
                     <v-icon color="white">
                         check
                     </v-icon>
@@ -50,10 +47,22 @@
       import Map1 from './Map1.vue';
 
     import MapConfirm from "./MapConfirm.vue";
+    import PhotoConfirm from "./PhotoConfirm.vue";
     export default {
         name: "task-confirm",
         components: {
-            MapConfirm
+            MapConfirm,
+            PhotoConfirm
+        },
+        props:[
+            'db',
+            'storageRef'
+        ],
+        methods:{
+            checkFire: function(){
+                console.log(this.db);
+                console.log(this.storageRef);
+            },
         }
     }
 </script>

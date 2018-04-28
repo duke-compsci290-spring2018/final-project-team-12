@@ -6,6 +6,7 @@ import GSignInButton from 'vue-google-signin-button'
 import * as VueGoogleMaps from 'vue2-google-maps'
 
 
+/*
 var config = {
     apiKey: "AIzaSyDhlhBm0bC7eCM_p2hO4AbEOHpdu8uTCsk",
     authDomain: "todo-list-7368e.firebaseapp.com",
@@ -17,6 +18,7 @@ var config = {
 
 var db = firebase.initializeApp(config).database();
 var storageRef = firebase.storage().ref();
+*/
 
 Vue.use(GSignInButton)
 Vue.use(Vuetify)

@@ -22,7 +22,11 @@
         name: "task-board",
         components:{
             TaskGroup
-        }
+        },
+        props:[
+            'db',
+            'storageRef'
+        ],
     }
 </script>
 

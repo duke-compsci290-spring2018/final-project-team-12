@@ -24,7 +24,7 @@
                         
                           <gmap-circle
                                        ref="circle"
-                         :@radius_changed="rUpdate(this.radius)"
+                         :@radius_changed="rUpdate"
                          :editable="true"
                          :center="pos"
                          :draggable="false"

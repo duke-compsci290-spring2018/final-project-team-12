@@ -7,8 +7,9 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
-  <!--<task-confirm></task-confirm>-->
-    <task-create></task-create>
+      <v-btn @click="checkFire">DO IT</v-btn>
+  <task-confirm :db="db" :storageRef="storageRef"></task-confirm>
+<!--    <task-create></task-create>-->
     <!--<login v-if="!loggedIn() && firstVisit()" v-on:user_profile="recProfile($event)"></login>-->
     <task-board>
       <task-group></task-group>
@@ -24,16 +25,37 @@
     import Map1 from './components/Map1.vue';
     import TaskConfirm from './components/TaskConfirm.vue';
     import TaskCreate from './components/TaskCreate.vue';
+    
+    var config = {
+    apiKey: "AIzaSyDhlhBm0bC7eCM_p2hO4AbEOHpdu8uTCsk",
+    authDomain: "todo-list-7368e.firebaseapp.com",
+    databaseURL: "https://todo-list-7368e.firebaseio.com",
+    projectId: "todo-list-7368e",
+    storageBucket: "todo-list-7368e.appspot.com",
+    messagingSenderId: "422071649995"
+};
 
+var db = firebase.initializeApp(config).database();
+var storageRef = firebase.storage().ref();
+
+   
 
     export default {
+         db,
+        storageRef,
         data () {
             return{
+                db:db,
+        storageRef:storageRef,
             googleUser:null,
             basicInfo:null,
             }
         },
         methods: {
+            checkFire: function(){
+                console.log(this.db);
+                console.log(this.storageRef);
+            },
             loggedIn: function(){
               return false;
             },
