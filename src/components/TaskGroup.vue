@@ -35,7 +35,7 @@
                 if(this.user == null){
                     return this.cards;
                 }else{
-                    return this.cards.filter(card =>)
+                    // return this.cards.filter(card => card.users
                 }
             }
         }

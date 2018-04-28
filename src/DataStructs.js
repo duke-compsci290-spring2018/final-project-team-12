@@ -17,9 +17,8 @@ class TaskCard {
         confirmation = new Confirmation();
         votes = 0;
         claimed = false;
-    },
-
-    function
+        users = [];
+    }
 }
 
 class ConfirmationMethods {
