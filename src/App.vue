@@ -8,6 +8,7 @@
             <v-spacer></v-spacer>
         </v-toolbar>
 <!--        <task-create></task-create>-->
+        <admin-dash :db="db"></admin-dash>
         <login
                 v-if="!loggedIn() && !guestFlag"
                 v-on:user_profile="loadUser($event)"
@@ -47,10 +48,14 @@
     export default {
         db,
         storageRef,
+        usersRef,
+        imagesRef,
         data() {
             return {
                 db: db,
                 storageRef: storageRef,
+                usersRef:usersRef,
+                imagesRef:imagesRef,
                 googleProfile: null,
                 currentUser: null,
                 guestFlag: false,

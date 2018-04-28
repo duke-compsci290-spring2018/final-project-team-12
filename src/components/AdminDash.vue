@@ -80,8 +80,12 @@
                                     <v-flex xs12>
                                         <v-layout row>
                                             <v-flex xs6>
-                                                <v-btn block large color="orange darken-2">
+                                                <v-btn @click="goToFirebase" block large color="orange darken-2">
                                                     Firebase / Site Maintenance
+                                                    <v-icon right dark>open_in_new</v-icon>
+                                                </v-btn>
+                                                <v-btn @click="goToCloud" block large color="blue darken-2">
+                                                     Cloud Platform / Analytics
                                                     <v-icon right dark>open_in_new</v-icon>
                                                 </v-btn>
                                             </v-flex>
@@ -129,6 +133,9 @@
 
     export default {
         name: "admin-dash",
+        props:[
+            'db'
+        ],
         data() {
             return {
                 adminDialog: true
@@ -137,6 +144,15 @@
         methods: {
             deadline: function () {
                 return "August 22, 2022";
+            },
+            goToFirebase: function (){
+                //database
+               window.open('https://todo-list-7368e.firebaseio.com/');
+               
+            },
+            goToCloud: function(){
+                 //cloud platform
+                window.open('https://console.cloud.google.com/apis/dashboard?project=todo-list-7368e');
             }
         },
         components: {

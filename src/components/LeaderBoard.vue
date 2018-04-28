@@ -11,6 +11,9 @@
 <script>
     export default {
         name: "leader-board",
+        props:[
+            'db'
+        ],
         data() {
             return{
                 temp: {
