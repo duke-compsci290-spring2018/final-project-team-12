@@ -11,7 +11,7 @@
                     <gmap-map
                             :center="pos"
                             :zoom="zoom"
-                            style="height:60vh;width:80vw"
+                            style="height:40vh;width:80vw"
                     >
                         <gmap-marker
                                 :position="pos"
@@ -24,7 +24,7 @@
                         <gmap-circle
                                 ref="circle"
                                 :@radius_changed="rUpdate"
-                                :editable="true"
+                                :editable="false"
                                 :center="pos"
                                 :draggable="false"
                                 :radius=1000
@@ -37,15 +37,22 @@
 
 
                     </gmap-map>
-
+   <gmap-street-view-panorama
+      :position="pos"
+      ref="pano"
+      @position_changed="sUpdate"
+      :pov="pov"
+      style="height:30vh;width:80vw">
+    </gmap-street-view-panorama>
                 </v-flex>
                 <v-flex xs1>
+                   
                     <gmap-autocomplete @place_changed="setPlace">
                     </gmap-autocomplete>
                 </v-flex>
-                <v-btn @click="pos=getLocation(pos);" light>
+                <!--<v-btn @click="pos=getLocation(pos);" light>
                     Set Location
-                </v-btn>
+                </v-btn>-->
                 <v-btn @click="confirmTarget(pos); visibility=false" light>
                     Confirm Location
                 </v-btn>
@@ -74,6 +81,10 @@
                     lat: 0,
                     lng: 0
                 },
+                 pov: {
+            pitch: 0,
+            heading: 0,
+          },
                 zoom: 12
             }
         },
@@ -93,8 +104,6 @@
                     navigator.geolocation.getCurrentPosition(function (position) {
                         pos1.lat = position.coords.latitude;
                         pos1.lng = position.coords.longitude;
-
-                        console.log(pos1);
 
                     }).then(function () {
                         console.log("promise returned");
@@ -138,13 +147,25 @@
                     this.place = null;
                 }
             },
+            sUpdate(loc) {
+            this.pos = {
+              lat: loc.lat(),
+              lng: loc.lng(),
+            }
+                this.center =this.pos;
+          },
 
         }
     }
 </script>
-
 <style scoped>
 
+  .map-container {
+    width: 400px;
+    height: 400px;
+    display: inline-block;
+  }
+  
     #map {
         height: 60%;
     }
