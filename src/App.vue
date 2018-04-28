@@ -8,7 +8,7 @@
             <v-spacer></v-spacer>
         </v-toolbar>
         <login
-                v-if="!loggedIn() && firstVisit()"
+                v-if="!loggedIn() && !guestFlag"
                 v-on:user_profile="loadUser($event)"
                 v-on:guest_login="guestLogin()"
         ></login>
