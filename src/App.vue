@@ -93,6 +93,7 @@
             },
             addNewUser: function (profile) {
                 var u = new User(profile);
+                usersRef.push(u);
                 this.currentUser = u;
             },
             loadGame(){
