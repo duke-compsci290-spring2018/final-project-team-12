@@ -1,21 +1,22 @@
 <template>
-        <v-expansion-panel>
-
-        </v-expansion-panel>
+    <v-navigation-drawer
+            hide-overlay
+            :mini-variant.sync="mini"
+            right
+            floating
+    >
+        asdf
+    </v-navigation-drawer>
 </template>
 
 <script>
 
-    // import TaskProposal from './components/TaskProposal.vue';
-    // import PointProposal from './components/PointProposal.vue';
-    // import Confirmation from './components/Confirmation.vue';
-
     export default {
         name: "right-drawer",
-        components:{
-                // TaskProposal,
-                // PointProposal,
-                // Confirmation
+        components: {
+            // TaskProposal,
+            // PointProposal,
+            // Confirmation
         }
     }
 </script>

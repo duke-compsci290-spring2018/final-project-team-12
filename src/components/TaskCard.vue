@@ -1,16 +1,21 @@
 <template>
     <v-card dark>
-        <v-container>
+        <v-container fluid grid-list-md>
             <v-layout row>
-                <v-flex xs7>
+                <v-flex xs8>
                     <v-card height="100%" tile flat dark>
-                        <span class="title">Some name</span>
+                        <v-toolbar color="transparent" flat>
+                            <v-toolbar-title class="name">Some name</v-toolbar-title>
+                        </v-toolbar>
                         <v-card-text class="points">
                             80 pts
                         </v-card-text>
+                        <v-btn large block light>
+                            CLAIM
+                        </v-btn>
                     </v-card>
                 </v-flex>
-                <v-flex xs5>
+                <v-flex xs4>
                     <v-card height="100%" flat tile light>
                         <v-toolbar dense flat color="transparent">
                             <v-spacer>
@@ -19,12 +24,6 @@
                             <v-chip disabled outline small>
                                 08-02-2012
                             </v-chip>
-                            <v-spacer></v-spacer>
-                            <v-btn icon>
-                                <v-icon color="grey darken-3">
-                                    zoom_out_map
-                                </v-icon>
-                            </v-btn>
                         </v-toolbar>
                         <v-card-text>
                             <p class="description">
@@ -34,6 +33,7 @@
                     </v-card>
                 </v-flex>
             </v-layout>
+
         </v-container>
     </v-card>
 </template>
@@ -57,10 +57,10 @@
         width: 100%;
     }
 
-    .title {
+    .name {
         overflow-wrap: normal;
         font-family: 'Quicksand', sans-serif;
-        font-size: 5vw;
+        font-size: 2vw;
     }
 
     .points {
@@ -68,6 +68,6 @@
         margin: auto;
         overflow-wrap: normal;
         font-family: 'Quicksand', sans-serif;
-        font-size: 5vw;
+        font-size: 4vw;
     }
 </style>

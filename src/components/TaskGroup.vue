@@ -21,7 +21,7 @@
         <v-card light flat>
             <v-container grid-list-lg fluid>
                 <v-layout class="cardList" row>
-                    <v-flex xs4>
+                    <v-flex xs3>
                         <task-card></task-card>
                     </v-flex>
                 </v-layout>
@@ -54,7 +54,7 @@
 
 <style scoped>
     .taskGroup {
-        max-height: 45vh;
+        max-height: 50vh;
     }
 
     .cardList {
