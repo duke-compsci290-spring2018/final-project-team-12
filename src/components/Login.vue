@@ -1,14 +1,23 @@
 <template>
     <div>
         <v-layout row justify-center>
-            <v-dialog value="true" persistent min-width="25vw" max-width="30vw" min-height="50vh">
+            <v-dialog
+                    value="true"
+                    persistent
+                    min-width="25vw"
+                    max-width="30vw"
+                    min-height="50vh"
+
+            >
                 <v-card>
                     <v-container grid-list-lg>
-                        <v-toolbar flat prominent color="transparent">
-                            <v-spacer></v-spacer>
-                            <span class="reg">Welcome to relay!</span>
-                            <v-spacer></v-spacer>
-                        </v-toolbar>
+                        <v-layout row>
+                            <v-toolbar flat prominent color="transparent">
+                                <v-spacer></v-spacer>
+                                <span class="reg">Welcome to relay!</span>
+                                <v-spacer></v-spacer>
+                            </v-toolbar>
+                        </v-layout>
                         <v-layout row justify-center>
                             <v-flex xs11>
                                 <g-signin-button
@@ -96,7 +105,7 @@
 
     span, .thin {
         font-family: 'Quicksand', sans-serif;
-        font-size: 25px;
+        font-size: 30px;
         color: #d0d0d0;
     }
 

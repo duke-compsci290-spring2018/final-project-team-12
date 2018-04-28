@@ -9,10 +9,9 @@
     </v-toolbar>
   <!--<task-confirm></task-confirm>-->
     <!--<task-create></task-create>-->
-    <login v-if="!loggedIn() && firstVisit()" v-on:user_profile="recProfile($event)"></login>
-    <task-board>
-      <task-group></task-group>
-    </task-board>
+    <login v-if="!loggedIn() && firstVisit()" v-on:user_profile="loadUser($event)"></login>
+    <task-board v-if="loggedIn()"></task-board>
+    <!--<board-browser v-if="guestAcces()"></board-browser>-->
   </v-app>
 </template>
 
@@ -40,7 +39,8 @@
             firstVisit: function(){
               return true;
             },
-            recProfile: function(profile){
+            loadUser: function(profile){
+                console.log(profile);
                 console.log('Start External');
                 console.log(profile);
                 this.googleUser=profile;
