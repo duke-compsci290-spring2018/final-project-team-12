@@ -32,7 +32,7 @@
         </v-layout>
         <v-layout row>
             <v-flex xs12>
-                <task-group :user="user"></task-group>
+                <task-group :user="user" :storageRef="this.storageRef" :db="this.db"></task-group>
             </v-flex>
         </v-layout>
     </v-container>

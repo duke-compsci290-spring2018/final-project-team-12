@@ -15,6 +15,8 @@
     </login>
         <task-board
                 :user="currentUser"
+                :storageRef="storageRef"
+                    :db="db"
                 v-if="routeTask"
         ></task-board>
 

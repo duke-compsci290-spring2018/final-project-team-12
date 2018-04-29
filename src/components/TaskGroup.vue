@@ -18,25 +18,19 @@
             <v-container grid-list-lg fluid>
                 <v-layout class="cardList" row>
                     <v-flex xs5>
-                        <task-card></task-card>
+                        <task-card :storageRef="storageRef" :db="db"></task-card >
                     </v-flex>
                     <v-flex width="600px">
-                        <task-card></task-card>
+                        <task-card :storageRef="storageRef" :db="db"></task-card >
                     </v-flex>
                     <v-flex>
-                        <task-card></task-card>
+                        <task-card :storageRef="storageRef" :db="db"></task-card >
                     </v-flex>
                     <v-flex>
-                        <task-card></task-card>
+                        <task-card :storageRef="storageRef" :db="db"></task-card >
                     </v-flex>
                     <v-flex>
-                        <task-card></task-card>
-                    </v-flex>
-                    <v-flex>
-                        <task-card></task-card>
-                    </v-flex>
-                    <v-flex>
-                        <task-card></task-card>
+                        <task-card :storageRef="storageRef" :db="db"></task-card >
                     </v-flex>
 
                 </v-layout>
@@ -52,7 +46,7 @@
         components: {
             TaskCard
         },
-        props: ['user', 'cards'],
+        props: ['user', 'cards','storageRef','db'],
         methods: {
             filterCards() {
                 if (this.user == null) {

@@ -10,9 +10,11 @@
                         <v-card-text class="points">
                             80 pts
                         </v-card-text>
-                        <v-btn large block light>
+                        <!--<v-btn large block light>
                             CLAIM
-                        </v-btn>
+                        </v-btn>-->
+                        <task-confirm :storageRef="this.storageRef" :db="this.db"></task-confirm>
+                      
                     </v-card>
                 </v-flex>
                 <v-flex xs5>
@@ -37,9 +39,16 @@
 </template>
 
 <script>
+    import TaskConfirm from "./TaskConfirm.vue";
     export default {
         name: "task-card",
-        props: ["cardJson"],
+        props: ["cardJson",
+               "storageRef",
+               "db"],
+        components:{
+            TaskConfirm,
+        
+        },
         data() {
             return {}
         },
