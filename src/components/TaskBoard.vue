@@ -15,9 +15,6 @@
                     </v-layout>
                 </v-card>
             </v-flex>
-            <v-btn block @click="$emit(create_card, true)">
-                temp card creator
-            </v-btn>
         </v-layout>
         <v-layout row>
             <v-flex xs12>

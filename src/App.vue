@@ -12,17 +12,15 @@
                 v-on:user_profile="loadUser($event)"
                 v-on:guest_login="guestLogin()">
     </login>
-<<<<<<< HEAD
-
         <task-board
                 :user="currentUser"
                 v-if="routeTask"
-                v-on:create_card="showCardCreator()"
         ></task-board>
-=======
-        <task-board :user="currentUser" v-if="loggedIn() || guestFlag"></task-board>
-        <proposal-board :user="currentUser" v-if="loggedIn() || guestFlag"></proposal-board>
->>>>>>> 63c0c1de8038079f30cd2528a5614294d5e90be6
+
+        <proposal-board
+                :user="currentUser"
+                v-if="routeProposal"
+        ></proposal-board>
         <!--<proposal-board :user="currentUser" v-if="loggedIn() && proposalView()"></proposal-board>-->
         <!--<approval-board :user="currentUser" v-if="loggedIn() && approvalView()"></approval-board>-->
         <!--<stat-board :user="currentUser" v-if="loggedIn() && statView() || guestFlag"></stat-board>-->
@@ -173,11 +171,8 @@
             TaskConfirm,
             TaskCreate,
             AdminDash,
-<<<<<<< HEAD
-            FooterNav
-=======
+            FooterNav,
             ProposalBoard
->>>>>>> 63c0c1de8038079f30cd2528a5614294d5e90be6
         },
         created: {
 
