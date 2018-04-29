@@ -152,12 +152,13 @@
                             ret = true;
                             parent.currentUser = u.val();
                         }
-                    }).then(function(){
-                        if(!ret){
-                            this.addNewUser(this.googleProfile);
-                        }
                     });
                     return ret;
+                }).then(function(r){
+                    console.log("finding user returned: " + r);
+                    if(!r){
+                        this.addNewUser(this.googleProfile);
+                    }
                 });
             },
             addNewUser: function (profile) {
