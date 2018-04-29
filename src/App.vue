@@ -18,7 +18,6 @@
                 :db="db"
                 :cards="this.cards"
                 :storageRef="storageRef"
-                :db="db"
                 v-if="routeTask"
         ></task-board>
 
