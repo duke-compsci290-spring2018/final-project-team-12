@@ -5,7 +5,7 @@
         </v-layout>
         <v-layout row>
             <v-flex xs12>
-                <proposal-group :cards="cards" :user="user"></proposal-group>
+                <proposal-group :cards="cards" :cardsRef="cardsRef" :user="user"></proposal-group>
             </v-flex>
         </v-layout>
 
@@ -28,7 +28,6 @@
         },
         data () {
             return {
-                user:this.user,
                 createTask: false,
                 cardsRef: this.db.ref('cards')
             }

@@ -10,11 +10,15 @@ export default class TaskCard {
 
         this.confirmation = new Confirmation();
         this.votes = 0;
+
+        this.claimer = null;
+        this.dateClaimed = null;
+
+        this.yesVotes = [];
+        this.noVotes = [];
+
         this.approved = false;
         this.claimed = false;
         this.confirmed = false;
-        this.claimer = null;
-        this.dateClaimed = null;
-        this.users = [];
     }
 }

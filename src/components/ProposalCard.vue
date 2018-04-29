@@ -13,16 +13,16 @@
                         <v-card-actions>
                             <v-layout justify-center row>
                                 <v-flex xs6>
-                                    <v-btn @click="" block medium color="green darken-2">
-
-                                        <v-icon dark>done</v-icon>
+                                    <v-btn @click="voteYes()" block v-bind:disabled="voted()" medium color="green darken-2">
+                                        <v-icon left dark>done</v-icon>
+                                        {{yes.length}}
                                     </v-btn>
                                 </v-flex>
 
                                 <v-flex xs6>
-                                    <v-btn @click="" block medium color="red darken-2">
-
-                                        <v-icon dark>block</v-icon>
+                                    <v-btn @click="voteNo()" block v-bind:disabled="voted()" medium color="red darken-2">
+                                        <v-icon left dark>block</v-icon>
+                                        {{no.length}}
                                     </v-btn>
                                 </v-flex>
                             </v-layout>
@@ -66,12 +66,72 @@
 <script>
     export default {
         name: "proposal-card",
-        props: ["cardJson"],
+        props: ["cardJson", "user", "cardsRef"],
         data() {
             return {
-                cards: []
+                hasVoted: false,
+                yes: [],
+                no: []
             }
         },
+        methods: {
+            getVotes(name){
+                var votesRef = this.cardsRef.child(this.cardJson['.key']).child(name);
+                var votes = [];
+                var parent = this;
+                return votesRef.once('value', function(snapshot){
+                    var val = snapshot.val();
+                    if (val !=null) {
+                        votes = Object.values(val);
+                    }
+                }).then(function(){
+                    if(name=="noVotes"){
+                        parent.no=votes;
+                    }
+                    if(name=="yesVotes"){
+                        parent.yes=votes;
+                    }
+                    return votes;
+                });
+            },
+            getNoVotes(){
+                this.getVotes('noVotes');
+                console.log(this.no);
+            },
+            getYesVotes(){
+                this.getVotes('yesVotes');
+                console.log(this.yes);
+            },
+            canYesVote(){;
+                if(this.yes.indexOf(this.user.email)<0){
+                    return true;
+                }
+                return false;
+            },
+            canNoVote(){
+                if(this.no.indexOf(this.user.email)<0){
+                    return true;
+                }
+                return false;
+            },
+            voteYes(){
+                this.hasVoted=true;
+                this.yes.push(this.user.email);
+                this.$emit('proposal_yes', true);
+            },
+            voteNo(){
+                this.hasVoted=true;
+                this.no.push(this.user.email);
+                this.$emit('proposal_no', true);
+            },
+            voted(){
+                return !(this.canYesVote() && this.canNoVote());
+            }
+        },
+        created() {
+            this.getYesVotes(),
+            this.getNoVotes()
+        }
     }
 </script>
 

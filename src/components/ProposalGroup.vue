@@ -18,7 +18,12 @@
             <v-container grid-list-lg fluid>
                 <v-layout class="cardList" row>
                     <v-flex xs5 v-for="card in filterCards()">
-                        <proposal-card :cardJson="card"></proposal-card>
+                        <proposal-card
+                                :cardJson="card"
+                                :user="user"
+                                :cardsRef="cardsRef"
+                                v-on:proposal_yes="addYesVote(card)"
+                        ></proposal-card>
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -33,12 +38,19 @@
         components: {
             ProposalCard
         },
-        props: ['user', 'cards'],
+        props: ['user', 'cards', 'cardsRef'],
         methods: {
             filterCards() {
-                var a = this.cards.filter(card => !card.approved);
-                console.log(a);
-                return a;
+                return this.cards.filter(card => !card.approved);
+            },
+            addYesVote(card){
+                console.log("before " +  this.cardsRef.child(card['.key']).child('yesVotes'));
+                this.cardsRef.child(card['.key']).child('yesVotes').push(this.user.email);
+
+                console.log("after " + this.cardsRef.child(card['.key']).child('yesVotes'));
+            },
+            addNoVote(card){
+
             }
         }
     }
