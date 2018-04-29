@@ -157,7 +157,7 @@
                 }).then(function(r){
                     console.log("finding user returned: " + r);
                     if(!r){
-                        this.addNewUser(this.googleProfile);
+                        parent.addNewUser(this.googleProfile);
                     }
                 });
             },
