@@ -10,6 +10,7 @@
         <login
                 v-if="!loggedIn() && !guestFlag"
                 v-on:user_profile="loadUser($event)"
+                v-on:fake_login="fakeLogin($event)"
                 v-on:guest_login="guestLogin()">
     </login>
         <task-board
@@ -91,6 +92,11 @@
             }
         },
         methods: {
+            fakeLogin: function(user){
+                this.currentUser = user;
+                this.adminFlag = true;
+                this.routeTask=true;
+            },
             showBoard: function(boardName){
                 console.log(boardName);
                 switch(boardName){

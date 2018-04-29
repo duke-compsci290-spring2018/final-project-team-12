@@ -42,6 +42,13 @@
                                 </v-btn>
                             </v-flex>
                         </v-layout>
+                        <v-layout row justify-center>
+                            <v-flex xs11>
+                                <v-btn @click="fakeLogin()" large block class="login" light color="white">
+                                    fake admin login
+                                </v-btn>
+                            </v-flex>
+                        </v-layout>
                     </v-container>
                 </v-card>
             </v-dialog>
@@ -63,6 +70,14 @@
             }
         },
         methods: {
+            fakeLogin() {
+                var user = {
+                    email:'asdftwinkie@gmail.com',
+                    name:'kill me',
+                    admin:true
+                };
+                this.$emit('fake_login', user);
+            },
             onSuccess(googleUser) {
                 const BasicProfile2 = googleUser.getBasicProfile();
                 const aa = BasicProfile2.getEmail();
