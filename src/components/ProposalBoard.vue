@@ -1,7 +1,7 @@
 <template>
     <v-container fluid grid-list-lg>
         <v-layout row justify-center>
-                <task-create :user="user"></task-create>
+                <task-create :cardsRef="cardsRef" :user="user"></task-create>
         </v-layout>
         <v-layout row>
             <v-flex xs12>
@@ -29,7 +29,8 @@
         data () {
             return {
                 user:this.user,
-                createTask: false
+                createTask: false,
+                cardsRef: this.db.ref('cards')
             }
         },
         props: [

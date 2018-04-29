@@ -19,6 +19,7 @@
 
         <proposal-board
                 :user="currentUser"
+                :db="db"
                 v-if="routeProposal"
         ></proposal-board>
 

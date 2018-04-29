@@ -17,10 +17,14 @@
             <span>Tasks</span>
             <v-icon>list</v-icon>
         </v-btn>
-        <v-btn dark v-if="user!=null">
+        <v-btn dark>
             <span>Proposals</span>
             <v-icon>create</v-icon>
         </v-btn>
+        <!--<v-btn dark v-if="user!=null">-->
+            <!--<span>Proposals</span>-->
+            <!--<v-icon>create</v-icon>-->
+        <!--</v-btn>-->
         <v-btn dark v-if="user!=null">
             <span>Approve</span>
             <v-icon>thumbs_up_down</v-icon>
@@ -84,7 +88,7 @@
                 }
                 if(this.user==undefined && toReturn=="proposal"){
                     console.log("fuck");
-                    toReturn = "stat";
+                    toReturn = "proposal";
                 }
                 this.$emit("page_change", toReturn);
             }
