@@ -37,16 +37,16 @@
 
 
                     </gmap-map>
-   <gmap-street-view-panorama
-      :position="pos"
-      ref="pano"
-      @position_changed="sUpdate"
-      :pov="pov"
-      style="height:30vh;width:80vw">
-    </gmap-street-view-panorama>
+                    <gmap-street-view-panorama
+                            :position="pos"
+                            ref="pano"
+                            @position_changed="sUpdate"
+                            :pov="pov"
+                            style="height:30vh;width:80vw">
+                    </gmap-street-view-panorama>
                 </v-flex>
                 <v-flex xs1>
-                   
+
                     <gmap-autocomplete @place_changed="setPlace">
                     </gmap-autocomplete>
                 </v-flex>
@@ -62,12 +62,10 @@
 </template>
 
 <script>
-
-
+    import Location from "../DataStructs.js";
     export default {
         name: "map-create",
         data() {
-
             return {
                 place: null,
                 eLoc: "",
@@ -81,10 +79,10 @@
                     lat: 0,
                     lng: 0
                 },
-                 pov: {
-            pitch: 0,
-            heading: 0,
-          },
+                pov: {
+                    pitch: 0,
+                    heading: 0,
+                },
                 zoom: 12
             }
         },
@@ -94,7 +92,8 @@
                 console.log(pos);
                 console.log("radius:");
                 console.log(this.rad);
-                this.$emit('get_location', pos);
+                var loc = new Location(pos.lat, pos.lng, this.rad, this.place);
+                this.$emit('get_location', loc);
             },
             getLocation(pos1) {
                 var vm = this;
@@ -148,29 +147,27 @@
                 }
             },
             sUpdate(loc) {
-            this.pos = {
-              lat: loc.lat(),
-              lng: loc.lng(),
-            }
-                this.center =this.pos;
-          },
+                this.pos = {
+                    lat: loc.lat(),
+                    lng: loc.lng(),
+                }
+                this.center = this.pos;
+            },
 
         }
     }
 </script>
 <style scoped>
 
-  .map-container {
-    width: 400px;
-    height: 400px;
-    display: inline-block;
-  }
-  
+    .map-container {
+        width: 400px;
+        height: 400px;
+        display: inline-block;
+    }
+
     #map {
         height: 60%;
     }
-
-
 
     html, body {
         height: 80%;
