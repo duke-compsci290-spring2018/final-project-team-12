@@ -90,9 +90,13 @@
                                                 </v-btn>
                                             </v-flex>
                                             <v-flex xs6>
-                                                <v-btn block large color="deep-orange darken-2">
+                                                <v-btn @click="getUsers" block large color="deep-orange darken-2">
                                                     Ban a User
                                                     <v-icon right dark>gavel</v-icon>
+                                                </v-btn>
+                                                <v-btn @click="getBanned" block large color="green darken-1">
+                                                    Reinstate a User
+                                                    <v-icon right dark>autorenew</v-icon>
                                                 </v-btn>
                                             </v-flex>
                                         </v-layout>
@@ -138,7 +142,9 @@
         ],
         data() {
             return {
-                adminDialog: true
+                adminDialog: true,
+                userList:[],
+                banList:[],
             }
         },
         methods: {
@@ -153,6 +159,23 @@
             goToCloud: function(){
                  //cloud platform
                 window.open('https://console.cloud.google.com/apis/dashboard?project=todo-list-7368e');
+            },
+            getUsers: function(){
+                this.$bindAsArray('this.userList', this.db.ref('users'));
+                console.log(this.userList);
+                return this.userList;
+            },
+            getBanned: function(){
+                this.$bindAsArray('this.userList', this.db.ref('users'));
+                this.banList = this.userList.filter(user=>user.banned==true);
+                console.log(this.banList);
+                return this.banList;
+            },
+            banUser:function(user){
+                db.ref('users').child(user).child('banned').set(true);
+            },
+            reinstateUser: function(user){
+                db.ref('users').child(user).child('banned').set(false);
             }
         },
         components: {

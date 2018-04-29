@@ -41,6 +41,9 @@
 <script>
     export default {
         name: "map-confirm",
+        props:[
+            'db'
+        ],
         data(){
             
             return{

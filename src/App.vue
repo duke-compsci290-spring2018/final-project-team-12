@@ -8,7 +8,7 @@
             <v-spacer></v-spacer>
         </v-toolbar>
 <!--        <task-create></task-create>-->
-        <admin-dash :db="db"></admin-dash>
+        <admin-dash :db="this.db"></admin-dash>
         <login
                 v-if="!loggedIn() && !guestFlag"
                 v-on:user_profile="loadUser($event)"

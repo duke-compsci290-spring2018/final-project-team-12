@@ -19,7 +19,7 @@
                 <v-toolbar dense color="grey darken-5">
                     <v-toolbar-title>Confirm</v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <map-confirm></map-confirm>
+                    <map-confirm :db="this.db"></map-confirm>
                     <photo-confirm :db="this.db" :storageRef="this.storageRef"></photo-confirm>
                    
 
