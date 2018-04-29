@@ -2,7 +2,7 @@
     <v-container fluid grid-list-lg>
             <v-layout row>
                 <v-flex xs12>
-                    <task-group></task-group>
+                    <task-group :user="user"></task-group>
                 </v-flex>
             </v-layout>
     </v-container>

@@ -98,7 +98,7 @@
                     snapshot.forEach(function(u){
                         if(u.child('email').val()==profile.getEmail()){
                             ret = true;
-                            this.currentUser = u.val();
+                            parent.currentUser = u.val();
                         }
                     });
                     return ret;
