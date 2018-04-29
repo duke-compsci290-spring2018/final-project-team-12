@@ -111,44 +111,10 @@
 <script>
 
     import Map1 from './Map1.vue';
-    // import TaskCard from '../TaskCard.js';
-    // import ConfirmationMethods from '../ConfirmationMethods.js';
+    import TaskCard from '../classes/TaskCard.js';
+    import ConfirmationMethods from '../classes/ConfirmationMethods.js';
 
     import MapCreate from "./MapCreate.vue";
-
-    class ConfirmationMethods {
-        constructor(location, image, text){
-            this.location = location;
-            this.image = image;
-            this.text = text;
-        }
-    }
-
-    class Confirmation {
-        constructor(){
-            this.location = false;
-            this.image = false;
-            this.text = false;
-        }
-    }
-
-    class TaskCard {
-
-        constructor(name, description, points, confirmationMethods, due){
-            this.name = name;
-            this.description = description;
-            this.points = points;
-            this.confirmationMethods = confirmationMethods;
-            this.due = due;
-
-            this.confirmation = new Confirmation();
-            this.votes = 0;
-            this.claimed = false;
-            this.claimer = null;
-            this.dateClaimed = null;
-            this.users = [];
-        }
-    }
 
 
     export default {

@@ -62,7 +62,7 @@
 </template>
 
 <script>
-    import Location from "../DataStructs.js";
+    import Location from "../classes/Location.js";
     export default {
         name: "map-create",
         data() {
