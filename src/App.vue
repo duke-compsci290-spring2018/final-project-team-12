@@ -137,10 +137,8 @@
                 console.log(profile);
                 this.googleProfile = profile;
                 console.log(this.googleProfile);
-                if (!this.userExists(this.googleProfile)) {
-                    console.log("new User being added to fb");
-                    this.addNewUser(this.googleProfile);
-                }
+                var exists =
+                this.userExists(this.googleProfile);
                 this.loadGame();
             },
             userExists: function (profile) {
@@ -152,12 +150,17 @@
                             ret = true;
                             parent.currentUser = u.val();
                         }
+                    }).then(function(){
+                        if(!ret){
+                            this.addNewUser(this.googleProfile);
+                        }
                     });
                     return ret;
                 });
             },
             addNewUser: function (profile) {
                 var u = new User(profile);
+                console.log("");
                 usersRef.push(u).then(function(){
                     this.currentUser = u;
                 });

@@ -28,17 +28,22 @@
                     <v-toolbar-title>Choose confirmations methods: </v-toolbar-title>
                     <v-spacer></v-spacer>
                     <map-create></map-create>
-                    <v-btn depressed fab small color="grey lighten-3">
-                        <v-icon color="grey">
-                            add_a_photo
-                        </v-icon>
-                    </v-btn>
-                    <v-btn
-                            @click="addPhotoConfirm()"
+                    <v-btn  v-if="!image"
+                            @click="image=true;"
                             depressed
                             fab
                             small
                             color="grey lighten-3">
+                        <v-icon color="grey">
+                            add_a_photo
+                        </v-icon>
+                    </v-btn>
+                    <v-btn v-if="!text"
+                           @click="text=true;"
+                           depressed
+                           fab
+                           small
+                           color="grey lighten-3">
                         <v-icon color="grey">
                             comment
                         </v-icon>
@@ -76,6 +81,9 @@
                 image = false;
                 text = false;
             }
+        },
+        methods: {
+
         }
     }
 </script>
