@@ -1,22 +1,16 @@
 <template>
-    <v-layout row justify-center>
-        <v-dialog
-                v-model="adminDialog"
-                fullscreen
-                hide-overlay
-                transition="dialog-bottom-transition"
-        >
-            <v-card>
-                <v-toolbar>
-                    <v-btn icon @click="adminDialog = false">
-                        <v-icon>close</v-icon>
-                    </v-btn>
-                    <v-toolbar-title class="dashTitle">Game Master Dashboard</v-toolbar-title>
-                    <v-spacer></v-spacer>
-                    <!--<v-toolbar-items>-->
-                    <!--<v-btn dark flat @click="adminDialog = false">apply</v-btn>-->
-                    <!--</v-toolbar-items>-->
-                </v-toolbar>
+    <!--<v-layout row justify-center>-->
+            <!--<v-card>-->
+                <!--<v-toolbar>-->
+                    <!--<v-btn icon @click="adminDialog = false">-->
+                        <!--<v-icon>close</v-icon>-->
+                    <!--</v-btn>-->
+                    <!--<v-toolbar-title class="dashTitle">Game Master Dashboard</v-toolbar-title>-->
+                    <!--<v-spacer></v-spacer>-->
+                    <!--&lt;!&ndash;<v-toolbar-items>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<v-btn dark flat @click="adminDialog = false">apply</v-btn>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</v-toolbar-items>&ndash;&gt;-->
+                <!--</v-toolbar>-->
 
                 <v-container fluid grid-list-lg>
                     <v-layout row justify-center>
@@ -124,12 +118,8 @@
                         </v-flex>
                     </v-layout>
                 </v-container>
-            </v-card>
-            <v-expansion-panel>
-
-            </v-expansion-panel>
-        </v-dialog>
-    </v-layout>
+            <!--</v-card>-->
+    <!--</v-layout>-->
 </template>
 
 <script>

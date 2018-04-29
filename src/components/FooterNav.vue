@@ -1,10 +1,17 @@
 <template>
+    <!--<v-bottom-nav-->
+        <!--absolute-->
+        <!--shift-->
+        <!--:value="true"-->
+        <!--:active.sync="e2"-->
+        <!--:color="color"-->
+    <!--&gt;-->
     <v-bottom-nav
-        absolute
-        shift
-        :value="true"
-        :active.sync="e2"
-        :color="color"
+            color="grey darken-4"
+            absolute
+            shift
+            :value="true"
+            :active.sync="page"
     >
         <v-btn dark>
             <span>Tasks</span>
@@ -22,10 +29,10 @@
             <span>Stats</span>
             <v-icon>trending_up</v-icon>
         </v-btn>
-        <!--<v-btn dark v-if="user.admin">-->
-            <!--<span>Master Control</span>-->
-            <!--<v-icon>build</v-icon>-->
-        <!--</v-btn>-->
+        <v-btn dark>
+            <span>Admin Dashboard</span>
+            <v-icon>build</v-icon>
+        </v-btn>
     </v-bottom-nav>
 </template>
 
@@ -35,22 +42,50 @@
         props: ["user"],
         data () {
             return {
-                e2: 0
+                // e2: 0
+                page: 0
             }
         },
         computed:{
-            color () {
-                switch (this.e2) {
+            // color () {
+            //     switch (this.e2) {
+            //         case 0:
+            //             return 'grey darken-4'
+            //         case 1:
+            //             return 'teal'
+            //         case 2:
+            //             return 'brown'
+            //         case 3:
+            //             return 'indigo'
+            //     }
+            // }
+
+        },
+        watch: {
+            page: function(){
+                console.log("page " + this.page);
+                var toReturn="";
+                switch(this.page){
                     case 0:
-                        return 'grey darken-4'
+                        toReturn="task";
+                        break;
                     case 1:
-                        return 'teal'
+                        toReturn="proposal";
+                        break;
                     case 2:
-                        return 'brown'
+                        toReturn="approval";
+                        break;
                     case 3:
-                        return 'indigo'
+                        toReturn="stat";
+                        break;
+                    case 4:
+                        toReturn="admin";
+                        break;
                 }
+                this.$emit("page_change", toReturn);
             }
+        },
+        methods:{
         }
     }
 </script>

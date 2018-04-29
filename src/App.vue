@@ -7,16 +7,27 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
         </v-toolbar>
-        <admin-dash :db="this.db"></admin-dash>
         <login
                 v-if="!loggedIn() && !guestFlag"
                 v-on:user_profile="loadUser($event)"
                 v-on:guest_login="guestLogin()">
     </login>
-        <task-board :user="currentUser" v-if="loggedIn() || guestFlag"></task-board>
+
+        <task-board
+                :user="currentUser"
+                v-if="routeTask"
+                v-on:create_card="showCardCreator()"
+        ></task-board>
         <!--<proposal-board :user="currentUser" v-if="loggedIn() && proposalView()"></proposal-board>-->
         <!--<approval-board :user="currentUser" v-if="loggedIn() && approvalView()"></approval-board>-->
         <!--<stat-board :user="currentUser" v-if="loggedIn() && statView() || guestFlag"></stat-board>-->
+        <admin-dash :db="db" v-if="routeAdmin"></admin-dash>
+        <v-footer>
+            <footer-nav
+                    :user="user"
+                    v-on:page_change="showBoard($event)"
+            ></footer-nav>
+        </v-footer>
     </v-app>
 </template>
 
@@ -29,6 +40,7 @@
     import TaskConfirm from './components/TaskConfirm.vue';
     import TaskCreate from './components/TaskCreate.vue';
     import AdminDash from './components/AdminDash.vue';
+    import FooterNav from './components/FooterNav.vue';
 
     import User from "./DataStructs.js";
 
@@ -61,10 +73,42 @@
                 googleProfile: null,
                 currentUser: null,
                 guestFlag: false,
-                adminFlag: false
+                adminFlag: false,
+
+                routeTask: true,
+                routeProposal: false,
+                routeApproval: false,
+                routeAdmin: false,
+                routeStat: false
             }
         },
         methods: {
+            showBoard: function(boardName){
+                console.log(boardName);
+                switch(boardName){
+                    case "task":
+                        console.log("fuck me in the ass");
+                        this.routeTask = true;
+                        this.routeProposal = this.routeApproval = this.routeAdmin = this.routeStat = false;
+                        break;
+                    case "proposal":
+                        this.routeProposal = true;
+                        this.routeTask = this.routeApproval = this.routeAdmin = this.routeStat = false;
+                        break;
+                    case "approval":
+                        this.routeApproval = true;
+                        this.routeProposal = this.routeTask = this.routeAdmin = this.routeStat = false;
+                        break;
+                    case "stat":
+                        this.routeStat = true;
+                        this.routeProposal = this.routeApproval = this.routeAdmin = this.routeTask = false;
+                        break;
+                    case "admin":
+                        this.routeAdmin = true;
+                        this.routeProposal = this.routeApproval = this.routeTask = this.routeStat = false;
+                        break;
+                }
+            },
             checkFire: function () {
                 console.log(this.db);
                 console.log(this.storageRef);
@@ -74,6 +118,7 @@
                 return this.currentUser != null && !this.guestFlag;
             },
             guestLogin: function () {
+                this.routeTask = true;
                 this.guestFlag = true;
             },
             adminLogin: function() {
@@ -121,7 +166,8 @@
             Login,
             TaskConfirm,
             TaskCreate,
-            AdminDash
+            AdminDash,
+            FooterNav
         },
         created: {
 
