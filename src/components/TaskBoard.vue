@@ -15,6 +15,20 @@
                     </v-layout>
                 </v-card>
             </v-flex>
+            <v-flex xs5>
+                <v-card light>
+                    <v-toolbar dense flat>
+                        <v-spacer></v-spacer>
+                        <v-toolbar-title class="subDashTitle">
+                            {{user.name}}'s Point Total
+                        </v-toolbar-title>
+                        <v-spacer></v-spacer>
+                    </v-toolbar>
+                    <v-layout row justify-center>
+                        69
+                    </v-layout>
+                </v-card>
+            </v-flex>
         </v-layout>
         <v-layout row>
             <v-flex xs12>
