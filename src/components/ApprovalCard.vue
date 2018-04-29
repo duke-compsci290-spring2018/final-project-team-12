@@ -1,89 +1,93 @@
 <template>
-    <v-card dark height="50vh" min-width="800px">
-        <v-container height="50vh" fluid grid-list-md>
-            <v-layout row>
-                <v-flex xs12>
-                    <v-card tile height="100%" flat dark>
-                        <v-toolbar color="transparent" flat>
-                            <v-toolbar-title class="name">{{cardJson.name}}</v-toolbar-title>
-                        </v-toolbar>
-                        <v-card-text class="points">
-                            {{cardJson.points}} pts
-                        </v-card-text>
-                       <v-layout justify-center row>
-                                <v-flex xs6>
-                                    <v-btn @click="voteYes()" block v-bind:disabled="voted()" medium color="green darken-2">
-                                        <v-icon left dark>thumb_up</v-icon>
-                                        {{yes.length}}
-                                    </v-btn>
-                                </v-flex>
+<v-card dark height="50vh" min-width="800px">
+    <v-container height="50vh" fluid grid-list-md>
+        <v-layout row>
+            <v-flex xs12>
+                <v-card tile height="100%" flat dark>
+                    <v-toolbar color="transparent" flat>
+                        <v-toolbar-title class="name">{{cardJson.name}}</v-toolbar-title>
+    </v-toolbar>
+                    <v-card-text class="points">
+                        {{cardJson.points}} pts
+    </v-card-text>
+                    <v-layout justify-center row>
+                        <v-flex xs6>
+                            <v-btn @click="voteYes()" block v-bind:disabled="voted()" medium color="green darken-2">
+                                <v-icon left dark>thumb_up</v-icon>
+                                {{yes.length}}
+    </v-btn>
+    </v-flex>
 
-                                <v-flex xs6>
-                                    <v-btn @click="voteNo()" block v-bind:disabled="voted()" medium color="red darken-2">
-                                        <v-icon left dark>thumb_down</v-icon>
-                                        {{no.length}}
-                                    </v-btn>
-                                </v-flex>
-                            </v-layout>
-
-
-                    </v-card>
-                </v-flex>
-                <v-flex xs5>
-                    <v-card flat height="100%" tile light>
-                        <v-toolbar dense flat color="transparent">
-                            <v-spacer>
-                            </v-spacer>
-                            <v-chip disabled outline small>
-                               {{cardJson.due}}
-                            </v-chip>
-                            <v-spacer>
-                            </v-spacer>
-                        </v-toolbar>
-                        <v-card-text class="description">
-                            {{cardJson.description}}
-
-                            <v-spacer></v-spacer>
-                            <v-layout justify-center row>
-                                  
-                                <v-btn fab small color="grey lighten-1" slot="activator" @click="showMap=!showMap">
-                                    <v-icon center small color="black">
-                                        my_location
-                                    </v-icon>
-                                </v-btn>
-                                <v-spacer></v-spacer>
-                                <v-btn fab small icon color="grey lighten-1">
-                                    <v-icon center color="black">
-                                        add_a_photo
-                                    </v-icon>
-                                </v-btn>
-                                
-                                <v-btn fab small color="grey lighten-1" slot="activator" @click="">
-                                    <v-icon center small color="black">
-                                        comment
-                                    </v-icon>
-                                </v-btn>
-                            </v-layout>
+                        <v-flex xs6>
+                            <v-btn @click="voteNo()" block v-bind:disabled="voted()" medium color="red darken-2">
+                                <v-icon left dark>thumb_down</v-icon>
+                                {{no.length}}
+    </v-btn>
+    </v-flex>
+    </v-layout>
 
 
-                        </v-card-text>
-<v-card v-if="showMap">
+    </v-card>
+    </v-flex>
+            <v-flex xs5>
+                <v-card flat height="100%" tile light>
+                    <v-toolbar dense flat color="transparent">
+                        <v-spacer>
+    </v-spacer>
+                        <v-chip disabled outline small>
+                            {{cardJson.due}}
+    </v-chip>
+                        <v-spacer>
+    </v-spacer>
+    </v-toolbar>
+                    <v-card-text class="description">
+                        {{cardJson.description}}
 
-       <gmap-map
-                  :center="cardJson.confirmation.location"
-                  :zoom="zoom"
-                  style="height:20vh;width:30vw"
-                  >
-            <gmap-marker
-                         :position="cardJson.confirmation.location"
-                         :clickable="true"
-                         :draggable="false"
-                         @click=""
-                         ></gmap-marker>
-                        
-                           <gmap-circle
+                        <v-spacer></v-spacer>
+                       
+
+    </v-card-text>
+    </v-card>
+    </v-flex>
+    </v-layout>
+
+        <v-layout justify-center row>
+
+                            <v-menu origin="center center" top top offset-y :close-on-content-click=false>
+        <v-btn fab small color="grey lighten-1" slot="activator" @click="">
+            <v-icon color="black">
+                my_location
+            </v-icon>
+        </v-btn>
+        <v-card max-width="60vh" light>
+            <v-container grid-list-md fluid>
+                <v-flex xs9>
+                    <gmap-map
+                            :center="{
+                                   lat:36,
+                                   lng:-78
+                                   }"
+                            :zoom="12"
+                            style="height:40vh;width:80vw"
+                    >
+                        <gmap-marker
+                                :position="{
+                                   lat:36,
+                                   lng:-78
+                                   }"
+                                :clickable="true"
+                                :draggable="false"
+                                @click=""
+                        ></gmap-marker>
+
+
+                        <gmap-circle
+                                ref="circle"
                                 :editable="false"
-                                :center="cLocation"
+                                :center="{
+                                         lat:cLocation.x,
+                                         lng:cLocation.y
+                                         }"
                                 :draggable="false"
                                 :radius=1000
                                 :options="{strokeColor: '#011AC7',
@@ -94,14 +98,58 @@
                         ></gmap-circle>
 
 
-        </gmap-map>
-    
-    </v-card>
-
-                    </v-card>
+                    </gmap-map>
+                    <gmap-street-view-panorama
+                            :position="{
+                                   lat:36,
+                                   lng:-78
+                                   }"
+                            ref="pano"
+                            @position_changed=""
+                            style="height:30vh;width:80vw">
+                    </gmap-street-view-panorama>
                 </v-flex>
-            </v-layout>
-        </v-container>
+                
+            </v-container>
+        </v-card>
+    </v-menu>
+                           
+                          
+                           <v-menu origin="center center" top top offset-y :close-on-content-click=false>
+        <v-btn fab small color="grey lighten-1" slot="activator" @click="">
+            <v-icon color="black">
+                add_a_photo
+            </v-icon>
+        </v-btn>
+        <v-card max-width="60vh" light>
+            <v-container grid-list-md fluid>
+               <img src="" alt="confirmation image">
+            </v-container>
+        </v-card>
+    </v-menu>
+              
+            
+            
+                            
+      <v-menu origin="center center" top top offset-y :close-on-content-click=false>
+        <v-btn fab small color="grey lighten-1" slot="activator" @click="">
+            <v-icon color="black">
+                comment
+            </v-icon>
+        </v-btn>
+        <v-card max-width="60vh" light>
+            <v-container grid-list-md fluid>
+              <v-card-text class="points">
+                        {{cardJson.points}} pts
+    </v-card-text>
+            </v-container>
+        </v-card>
+    </v-menu>                    
+                            
+                            
+    </v-layout>
+    </v-container>
+
     </v-card>
 </template>
 
@@ -112,7 +160,7 @@
             "cardJson",
             'user',
             'cardsRef'
-               ],
+        ],
         data() {
             return {
                 hasVoted: false,
@@ -122,10 +170,10 @@
                 showImage:false,
                 showComment:false,
                 cLocation:null,
-                CARD:null
+                confirmation:null,
             }
         },
-           methods: {
+        methods: {
             getVotes(name){
                 var votesRef = this.cardsRef.child(this.cardJson['.key']).child(name);
                 var votes = [];
@@ -145,6 +193,19 @@
                     return votes;
                 });
             },
+            getEvidence(){
+                var confirmationRef = this.cardsRef.child(this.cardJson['.key']).child("confirmationMethods").child("location");
+                
+                var parent = this;
+                return confirmationRef.once('value', function(snapshot){
+                    var val = snapshot.val();
+                    return val;
+                }).then(function(val){
+                    parent.cLocation = val;
+                });
+                console.log("CDX");
+                console.log(this.confirmation);
+            },
             getNoVotes(){
                 this.getVotes('noConfirm');
                 console.log(this.no);
@@ -152,6 +213,14 @@
             getYesVotes(){
                 this.getVotes('yesConfirm');
                 console.log(this.yes);
+                
+                var vm = this;
+            var cRef = this.cardsRef.child(this.cardJson['.key']);
+            return cRef.once('value', function(snapshot){
+                vm.CARD = snapshot.val();
+            });
+            console.log("CARD")
+            console.log(vm.CARD);
             },
             canYesVote(){
                 if(this.yes.indexOf(this.user.email)<0){
@@ -180,13 +249,10 @@
             }
         },
         created() {
-            var vm = this;
-          this.cardJson.once('value', function(snapshot){
-                     vm.CARD = snapshot.val();
-          });
-            console.log(vm.CARD);
-            this.getYesVotes(),
-            this.getNoVotes()
+            
+            this.getYesVotes();
+            this.getNoVotes();
+            this.getEvidence();
         }
     }
 </script>
