@@ -37,9 +37,7 @@
         name: "task-board",
         components: {
             TaskGroup,
-            RightDrawer,
-            FooterNav,
-            Countdown
+            Countdown,
         },
         data: {
             return() {
