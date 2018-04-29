@@ -4,7 +4,7 @@
         <v-container fluid grid-list-lg>
             <v-layout row>
                 <v-flex xs12>
-                    <task-group :user="user"></task-group>
+                    <proposal-group :user="user"></proposal-group>
                 </v-flex>
             </v-layout>
         </v-container>
@@ -15,16 +15,16 @@
 </template>
 
 <script>
-    import TaskGroup from "./TaskGroup.vue";
+     import ProposalGroup from "./ProposalGroup.vue";
     import RightDrawer from "./RightDrawer.vue";
     import FooterNav from "./FooterNav.vue";
 
     export default {
         name: "task-board",
         components: {
-            TaskGroup,
             RightDrawer,
             FooterNav,
+            ProposalGroup
         },
         data: {
             return() {

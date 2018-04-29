@@ -14,6 +14,7 @@
                 v-on:guest_login="guestLogin()">
     </login>
         <task-board :user="currentUser" v-if="loggedIn() || guestFlag"></task-board>
+        <proposal-board :user="currentUser" v-if="loggedIn() || guestFlag"></proposal-board>
         <!--<proposal-board :user="currentUser" v-if="loggedIn() && proposalView()"></proposal-board>-->
         <!--<approval-board :user="currentUser" v-if="loggedIn() && approvalView()"></approval-board>-->
         <!--<stat-board :user="currentUser" v-if="loggedIn() && statView() || guestFlag"></stat-board>-->
@@ -24,6 +25,7 @@
     import LeftDrawer from './components/LeftDrawer.vue';
     import RightDrawer from './components/RightDrawer.vue';
     import TaskBoard from './components/TaskBoard.vue';
+     import ProposalBoard from './components/ProposalBoard.vue';
     import Login from './components/Login.vue';
     import Map1 from './components/Map1.vue';
     import TaskConfirm from './components/TaskConfirm.vue';
@@ -121,7 +123,8 @@
             Login,
             TaskConfirm,
             TaskCreate,
-            AdminDash
+            AdminDash,
+            ProposalBoard
         },
         created: {
 

@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-CS 290.02 Final Project Plan
+CS 290.02 Relay
 ===
-
 ## Authors
 Lucas Tiger Liu [ltl9] & Jeremy Chen [jc587]
 
@@ -10,29 +8,26 @@ Lucas Tiger Liu [ltl9] & Jeremy Chen [jc587]
  
  Our application aims to create a peer-to-peer system that gamifies tasks of any nature (self-improvement, productivity, or debauchery, whatever you like!)
  
- The structure of our application resonates with some aspects of Scrum. There will be boards of some form, where participants can vote on challenges and point values/rewards associated with these challenges. The more interesting aspects of our application will be found in the means of confirming the completion of challenges, analyzing/visualizing player/challenge data, and the structure of our data.
- 
+ The structure of our application resonates with some aspects of Scrum. Participants can vote on challenges and point values/rewards associated with these challenges. The more interesting aspects of our application will be found in the means of confirming the completion of challenges, analyzing/visualizing player/challenge data, and the structure of our data.
  
  
 ## Features
 
+## Web Service / JSON Data Served
+    JSON data from the game can be received by accessing the address https://todo-list-7368e.firebaseio.com/GameStats.
+    This will return a JSON data format of a limited section of our database, the portion the project intends to share. Attempting to access other sections of the database will result in a "denied permission."
 ### Login/User Creation
 #### Google OAuth (2.0)
 We will use Google OAuth to let users create accounts and login with their Google accounts. This way Google will handle secure authentication of users.
 
 
 ### Game
-#### Creation
-* Game Name: 
-* Invite Members: 
-* Choose Game Type: 
-* Define Win Conditions: 
 
 #### Win Conditions
 
 With a set deadline
-* Number of Points: Whoever reaches a set goal for points by the deadline will win
-* Number of Tasks Completed: Whoever reaches a set goal for number of tasks will win
+* Number of Points: Whoever reaches a set goal for points by the deadline will win. 
+
 * If no player reaches the goal in time: Whoever has the most points or tasks wins
 
 With a static number of tasks
@@ -48,15 +43,14 @@ With a static number of tasks
     * This user can invite and remove players from the game
     * The Game Master is not a player
 * Player
-    * Can join a game through an invite from a Game Master
+    * Can join the game by logging in with Google
     * Can complete tasks to obtain rewards
     * Can vote to approve or disapprove proposed tasks
     * Can help validate the completion of a task
     * Can propose a new game task, to be approved by the group. 
-* Spectator
-    * The spectator can view private games by name, and view the standings of participants within those games. The spectator cannot participate.
-* Guest (No Login)
-    * No login required. Anyone can visit the site and look up public games by name, and view the standings of participants within those games
+* Spectator Guest (No Login)
+    * The spectator can view the standings of participants within those games. The spectator cannot participate.
+
 #### Adding Players
 The Game Master can add new players to the game by email. Invited players will be sent an email.
 ### Task/Challenges
