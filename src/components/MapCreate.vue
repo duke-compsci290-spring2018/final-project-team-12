@@ -1,6 +1,6 @@
 <template>
     <v-menu origin="center center" top top offset-y v-model="visibility" :close-on-content-click=false>
-        <v-btn fab depressed small color="grey lighten-3" slot="activator" @click="pos=getLocation(pos);center=pos">
+        <v-btn fab depressed small color="grey lighten-3" slot="activator" @click="getLocation();center=pos">
             <v-icon color="grey">
                 my_location
             </v-icon>
@@ -53,7 +53,7 @@
                 <!--<v-btn @click="pos=getLocation(pos);" light>
                     Set Location
                 </v-btn>-->
-                <v-btn @click="confirmTarget(pos); visibility=false" light>
+                <v-btn @click="confirmTarget(); visibility=false" light>
                     Confirm Location
                 </v-btn>
             </v-container>
@@ -87,28 +87,25 @@
             }
         },
         methods: {
-            confirmTarget(pos) {
+            confirmTarget() {
+                var vm =this;
                 console.log('Emitting Location');
                 console.log(pos);
                 console.log("radius:");
                 console.log(this.rad);
-                var loc = new Location(pos.lat, pos.lng, this.rad, this.place);
+                var loc = new Location(this.pos.lat, this.pos.lng, this.rad, this.place.name);
                 this.$emit('get_location', loc);
             },
-            getLocation(pos1) {
+            getLocation() {
                 var vm = this;
                 console.log("running getLoc");
                 // Try HTML5 geolocation for current user location
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function (position) {
-                        pos1.lat = position.coords.latitude;
-                        pos1.lng = position.coords.longitude;
+                        vm.pos.lat = position.coords.latitude;
+                        vm.pos.lng = position.coords.longitude;
 
-                    }).then(function () {
-                        console.log("promise returned");
-                        vm.center = pos1;
-                        return pos1
-                    });
+                    })
 
 
                 } else {

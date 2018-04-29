@@ -21,6 +21,7 @@
         <proposal-board
                 :user="currentUser"
                 :db="db"
+                :cards="this.cards"
                 v-if="routeProposal"
         ></proposal-board>
 
@@ -65,6 +66,7 @@
     var db = firebase.initializeApp(config).database();
     var storageRef = firebase.storage().ref();
     var usersRef = db.ref('users');
+    var cardsRef = db.ref('cards');
     var imagesRef = db.ref('images');
 
 
@@ -90,6 +92,12 @@
                 routeAdmin: false,
                 routeStat: false
             }
+        },
+        firebase: {
+            users: usersRef,
+            cards: cardsRef,
+            images: imagesRef
+
         },
         methods: {
             fakeLogin: function(user){

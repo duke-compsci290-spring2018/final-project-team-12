@@ -5,10 +5,10 @@
                 <v-flex xs12>
                     <v-card tile height="100%" flat dark>
                         <v-toolbar color="transparent" flat>
-                            <v-toolbar-title class="name">Proposal Name</v-toolbar-title>
+                            <v-toolbar-title class="name">{{cardJson.name}}</v-toolbar-title>
                         </v-toolbar>
                         <v-card-text class="points">
-                            80 pts
+                            {{cardJson.points}} pts
                         </v-card-text>
                         <v-card-actions>
                             <v-layout justify-center row>
@@ -33,22 +33,26 @@
                     <v-toolbar dense color="white">
                         <v-spacer></v-spacer>
                         <v-chip disabled outline small>
-                            08-02-2012
+                            {{cardJson.due}}
                         </v-chip>
                         <v-spacer></v-spacer>
                     </v-toolbar>
                     <v-card flat height="100%" tile light>
                         <v-card-text class="description">
-                            Proposal Description, says what task actually is
+                            {{cardJson.description}}
                         </v-card-text>
                         <v-toolbar flat dense color="grey lighten-3">
                             <v-spacer></v-spacer>
-                            <v-icon small color="grey darken-2">
+                            <v-icon v-if="cardJson.confirmationMethods.location!=null && cardJson.confirmationMethods.location!=false" small color="grey darken-2">
                                 my_location
                             </v-icon>
                             <v-spacer></v-spacer>
-                            <v-icon small color="grey darken-2">
+                            <v-icon v-if="cardJson.confirmationMethods.image!=null && cardJson.confirmationMethods.image!=false" small color="grey darken-2">
                                 add_a_photo
+                            </v-icon>
+                            <v-spacer></v-spacer>
+                            <v-icon v-if="cardJson.confirmationMethods.text!=null && cardJson.confirmationMethods.text!=false" small color="grey darken-2">
+                                comment
                             </v-icon>
                             <v-spacer></v-spacer>
                         </v-toolbar>

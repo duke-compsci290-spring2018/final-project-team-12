@@ -50,8 +50,8 @@
                     <v-toolbar-title>Choose confirmations methods:</v-toolbar-title>
                     <v-spacer></v-spacer>
 
-                    <map-create v-if="location==null" v-on:get_location="location=loc; $forceUpdate()"></map-create>
-                    <v-btn v-if="location!=null" @click="location=null" icon color="success">
+                    <map-create v-if="location==null" v-on:get_location="location=$event; $forceUpdate()"></map-create>
+                    <v-btn v-if="location!=null" @click="location=null" fab smallcolor="success">
                         <v-icon color="white">
                             my_location
                         </v-icon>
@@ -139,12 +139,9 @@
         },
         methods: {
             createCard() {
-
-                console.log("wadda afwep8;j");
+                console.log(this.location);
                 var cm = new ConfirmationMethods(this.location, this.image, this.text);
-                console.log("fuck me");
                 var card = new TaskCard(this.currTaskName, this.currTaskDescription, this.points, cm, this.due);
-                console.log("hey " + this.cardsRef);
                 this.cardsRef.push(card);
                 this.open = false;
             },

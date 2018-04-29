@@ -17,28 +17,9 @@
         <v-card light flat tile>
             <v-container grid-list-lg fluid>
                 <v-layout class="cardList" row>
-                    <v-flex xs5>
-                        <proposal-card></proposal-card>
+                    <v-flex xs5 v-for="card in filterCards()">
+                        <proposal-card :cardJson="card"></proposal-card>
                     </v-flex>
-                    <v-flex width="600px">
-                        <proposal-card></proposal-card>
-                    </v-flex>
-                    <v-flex>
-                        <proposal-card></proposal-card>
-                    </v-flex>
-                    <v-flex>
-                        <proposal-card></proposal-card>
-                    </v-flex>
-                    <v-flex>
-                        <proposal-card></proposal-card>
-                    </v-flex>
-                    <v-flex>
-                        <proposal-card></proposal-card>
-                    </v-flex>
-                    <v-flex>
-                        <proposal-card></proposal-card>
-                    </v-flex>
-
                 </v-layout>
             </v-container>
         </v-card>
@@ -55,11 +36,9 @@
         props: ['user', 'cards'],
         methods: {
             filterCards() {
-                if (this.user == null) {
-                    return this.cards;
-                } else {
-                    // return this.cards.filter(card => card.users
-                }
+                var a = this.cards.filter(card => !card.approved);
+                console.log(a);
+                return a;
             }
         }
     }

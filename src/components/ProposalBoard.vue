@@ -5,7 +5,7 @@
         </v-layout>
         <v-layout row>
             <v-flex xs12>
-                <proposal-group :user="user"></proposal-group>
+                <proposal-group :cards="cards" :user="user"></proposal-group>
             </v-flex>
         </v-layout>
 
@@ -35,6 +35,7 @@
         },
         props: [
             'db',
+            'cards',
             'storageRef',
             'user',
             'relay'
