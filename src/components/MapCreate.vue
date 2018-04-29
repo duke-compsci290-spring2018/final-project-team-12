@@ -1,6 +1,6 @@
 <template>
     <v-menu origin="center center" top top offset-y v-model="visibility" :close-on-content-click=false>
-        <v-btn fab depressed small color="grey lighten-2" slot="activator" @click="pos=getLocation(pos);center=pos">
+        <v-btn fab depressed small color="grey lighten-3" slot="activator" @click="pos=getLocation(pos);center=pos">
             <v-icon color="grey">
                 my_location
             </v-icon>
