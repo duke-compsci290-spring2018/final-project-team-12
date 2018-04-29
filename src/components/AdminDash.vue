@@ -82,7 +82,7 @@
                                             <v-flex xs6>
                                                 <v-btn @click="goToFirebase" block large color="orange darken-2">
                                                     Firebase / Site Maintenance
-                                                    <v-icon right dark>open_in_new</v-icon>
+                                                    <v-icon right dark>whatshot</v-icon>
                                                 </v-btn>
                                                 <v-btn @click="goToCloud" block large color="blue darken-2">
                                                      Cloud Platform / Analytics

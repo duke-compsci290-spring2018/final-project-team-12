@@ -5,6 +5,9 @@
                     <task-group :user="user"></task-group>
                 </v-flex>
             </v-layout>
+            <v-footer>
+
+            </v-footer>
     </v-container>
 </template>
 
@@ -24,6 +27,8 @@
             'user',
             'relay'
         ],
+        methods: {
+        }
     }
 </script>
 

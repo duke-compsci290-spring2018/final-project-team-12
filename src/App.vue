@@ -13,7 +13,7 @@
                 v-on:user_profile="loadUser($event)"
                 v-on:guest_login="guestLogin()">
     </login>
-        <task-board :user="currentUser" v-if="loggedIn() && taskView() || guestFlag"></task-board>
+        <task-board :user="currentUser" v-if="loggedIn() || guestFlag"></task-board>
         <proposal-board :user="currentUser" v-if="loggedIn() && proposalView()"></proposal-board>
         <approval-board :user="currentUser" v-if="loggedIn() && approvalView()"></approval-board>
         <stat-board :user="currentUser" v-if="loggedIn() && statView() || guestFlag"></stat-board>
@@ -106,12 +106,12 @@
             },
             addNewUser: function (profile) {
                 var u = new User(profile);
-                usersRef.push(u);
-                this.currentUser = u;
+                usersRef.push(u).then(function(){
+                    this.currentUser = u;
+                });
             },
             loadGame(){
-                // get user pref cards
-                // show bounty board
+                console.log("when loaded currentUser: " + this.currentUser);
             }
         },
         components: {
@@ -122,6 +122,9 @@
             TaskConfirm,
             TaskCreate,
             AdminDash
+        },
+        created: {
+
         }
     }
 </script>

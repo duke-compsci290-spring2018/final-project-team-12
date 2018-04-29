@@ -5,6 +5,7 @@ class User {
         this.avatar = profile.getImageUrl();
         this.admin = false;
         this.banned = false;
+        this.color = "light";
     }
 }
 
