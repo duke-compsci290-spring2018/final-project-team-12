@@ -137,11 +137,10 @@
                 console.log(profile);
                 this.googleProfile = profile;
                 console.log(this.googleProfile);
-                var exists =
-                this.userExists(this.googleProfile).then(function()
-                    {
-                        this.loadGame();
-                    });
+                var parent = this;
+                this.userExists(this.googleProfile).then(function(){
+                    parent.loadGame();
+                });
             },
             userExists: function (profile) {
                 var parent = this;
@@ -158,15 +157,17 @@
                     console.log("finding user returned: " + r);
                     console.log("FUCK ME IN THE ASS");
                     if(!r.ret){
+                        console.log("System.out.println(" + r.parent.googleProfile +")");
                         r.parent.addNewUser(r.parent.googleProfile);
                     }
                 });
             },
             addNewUser: function (profile) {
+                var parent = this;
                 var u = new User(profile);
                 console.log("");
                 usersRef.push(u).then(function(){
-                    this.currentUser = u;
+                    parent.currentUser = u;
                 });
             },
             loadGame(){
