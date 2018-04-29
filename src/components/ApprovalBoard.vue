@@ -1,31 +1,30 @@
 <template>
+    <div>
+        your SCORE + time left
         <v-container fluid grid-list-lg>
             <v-layout row>
                 <v-flex xs12>
-                <v-btn class="newTask" large block light color="grey lighten-2">
-                    Propose a New Task
-                </v-btn>
-                </v-flex>
-            </v-layout>
-            <v-layout row>
-                <v-flex xs12>
-                    <proposal-group :user="user"></proposal-group>
+                    <approval-group :user="user"></approval-group>
                 </v-flex>
             </v-layout>
         </v-container>
+        <v-footer>
+            <footer-nav :user="user"></footer-nav>
+        </v-footer>
+    </div>
 </template>
 
 <script>
-     import ProposalGroup from "./ProposalGroup.vue";
+     import ApprovalGroup from "./ApprovalGroup.vue";
     import RightDrawer from "./RightDrawer.vue";
     import FooterNav from "./FooterNav.vue";
 
     export default {
-        name: "proposal-board",
+        name: "approval-board",
         components: {
             RightDrawer,
             FooterNav,
-            ProposalGroup
+            ApprovalGroup
         },
         data: {
             return() {
@@ -43,7 +42,4 @@
 </script>
 
 <style scoped>
-    .newTask{
-        
-    }
 </style>
