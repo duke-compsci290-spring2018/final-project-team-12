@@ -22,10 +22,10 @@
             <span>Stats</span>
             <v-icon>trending_up</v-icon>
         </v-btn>
-        <v-btn dark v-if="user.admin">
-            <span>Master Control</span>
-            <v-icon>build</v-icon>
-        </v-btn>
+        <!--<v-btn dark v-if="user.admin">-->
+            <!--<span>Master Control</span>-->
+            <!--<v-icon>build</v-icon>-->
+        <!--</v-btn>-->
     </v-bottom-nav>
 </template>
 
@@ -35,14 +35,14 @@
         props: ["user"],
         data () {
             return {
-                e2: 1
+                e2: 0
             }
         },
         computed:{
             color () {
                 switch (this.e2) {
                     case 0:
-                        return 'blue-grey'
+                        return 'grey darken-4'
                     case 1:
                         return 'teal'
                     case 2:

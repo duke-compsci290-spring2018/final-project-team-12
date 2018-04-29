@@ -7,20 +7,14 @@
             flat
             color="transparent"
     >
-        <v-toolbar light flat transparent>
-            <v-toolbar-title>
-                Some User's Tasks
+        <v-toolbar dark>
+            <v-spacer></v-spacer>
+            <v-toolbar-title class="grouptitle">
+                Tasks to Complete
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-toolbar-items>
-                <v-btn icon>
-                    <v-icon>
-
-                    </v-icon>
-                </v-btn>
-            </v-toolbar-items>
         </v-toolbar>
-        <v-card light flat color="transparent">
+        <v-card light flat tile>
             <v-container grid-list-lg fluid>
                 <v-layout class="cardList" row>
                     <v-flex xs5>
@@ -77,6 +71,11 @@
     .taskGroup {
         max-height: 70vh;
         background-color: rgba(0,0,0,0);
+    }
+
+    .grouptitle {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 30px;
     }
 
     .cardList {

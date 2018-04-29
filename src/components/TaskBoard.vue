@@ -1,14 +1,17 @@
 <template>
-    <v-container fluid grid-list-lg>
+    <div>
+        your SCORE + time left
+        <v-container fluid grid-list-lg>
             <v-layout row>
                 <v-flex xs12>
                     <task-group :user="user"></task-group>
                 </v-flex>
             </v-layout>
-            <v-footer>
-                <footer-nav :user="user"></footer-nav>
-            </v-footer>
-    </v-container>
+        </v-container>
+        <v-footer>
+            <footer-nav :user="user"></footer-nav>
+        </v-footer>
+    </div>
 </template>
 
 <script>
@@ -24,7 +27,7 @@
             FooterNav
         },
         data: {
-            return () {
+            return() {
                 user = this.user
             }
         },
@@ -34,8 +37,7 @@
             'user',
             'relay'
         ],
-        methods: {
-        }
+        methods: {}
     }
 </script>
 
