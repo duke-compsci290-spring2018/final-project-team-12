@@ -18,7 +18,7 @@
                 </v-card-text>
                 <v-toolbar dense color="grey darken-5">
                     <v-toolbar-title>Choose confirmations methods: </v-toolbar-title>
-                    <v-spacer></v-spacer>
+                    <v-spacer></v-spacer>uy8
                     <map-create></map-create>
                     <v-btn depressed fab small color="grey lighten-2">
                         <v-icon color="grey">

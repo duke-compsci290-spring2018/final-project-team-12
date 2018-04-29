@@ -10,7 +10,7 @@
         <v-toolbar dark>
             <v-spacer></v-spacer>
             <v-toolbar-title class="grouptitle">
-                Tasks to Complete
+                Vote on Proposed Tasks
             </v-toolbar-title>
             <v-spacer></v-spacer>
         </v-toolbar>
@@ -69,7 +69,7 @@
 
 <style scoped>
     .taskGroup {
-        max-height: 70vh;
+        max-height: 30vh;
         background-color: rgba(0,0,0,0);
     }
 
