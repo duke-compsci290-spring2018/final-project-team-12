@@ -4,7 +4,7 @@
         shift
         :value="true"
         :active.sync="e2"
-        color="color"
+        :color="color"
     >
         <v-btn dark>
             <span>Tasks</span>
@@ -34,7 +34,9 @@
         name: "footer-nav",
         props: ["user"],
         data () {
-
+            return {
+                e2: 1
+            }
         },
         computed:{
             color () {

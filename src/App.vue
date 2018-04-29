@@ -14,9 +14,9 @@
                 v-on:guest_login="guestLogin()">
     </login>
         <task-board :user="currentUser" v-if="loggedIn() || guestFlag"></task-board>
-        <proposal-board :user="currentUser" v-if="loggedIn() && proposalView()"></proposal-board>
-        <approval-board :user="currentUser" v-if="loggedIn() && approvalView()"></approval-board>
-        <stat-board :user="currentUser" v-if="loggedIn() && statView() || guestFlag"></stat-board>
+        <!--<proposal-board :user="currentUser" v-if="loggedIn() && proposalView()"></proposal-board>-->
+        <!--<approval-board :user="currentUser" v-if="loggedIn() && approvalView()"></approval-board>-->
+        <!--<stat-board :user="currentUser" v-if="loggedIn() && statView() || guestFlag"></stat-board>-->
     </v-app>
 </template>
 
