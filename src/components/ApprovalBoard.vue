@@ -2,7 +2,7 @@
         <v-container fluid grid-list-lg>
             <v-layout row>
                 <v-flex xs12>
-                    <approval-group :user="user"></approval-group>
+                    <approval-group :cards="cards" :cardsRef="cardsRef" :user="user"></approval-group>
                 </v-flex>
             </v-layout>
         </v-container>
@@ -20,16 +20,18 @@
             FooterNav,
             ApprovalGroup
         },
-        data: {
-            return() {
-                user:this.user
+        data(){
+            return {
+                cardsRef: this.db.ref('cards')
             }
         },
         props: [
             'db',
             'storageRef',
             'user',
-            'relay'
+            'relay',
+            'cards'
+            
         ],
         methods: {}
     }

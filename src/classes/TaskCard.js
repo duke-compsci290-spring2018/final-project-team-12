@@ -16,6 +16,8 @@ export default class TaskCard {
 
         this.yesVotes = [];
         this.noVotes = [];
+        this.yesConfirm =[];
+        this.noConfirm=[];
 
         this.approved = false;
         this.claimed = false;

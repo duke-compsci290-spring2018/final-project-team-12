@@ -17,27 +17,16 @@
         <v-card light flat tile>
             <v-container grid-list-lg fluid>
                 <v-layout class="cardList" row>
-                    <v-flex xs5>
-                        <approval-card></approval-card>
+                    <v-flex xs5 v-for="card in filterCards()">
+                        <approval-card
+                                :cardJson="card"
+                                :user="user"
+                                :cardsRef="cardsRef"
+                                v-on:proposal_yes="addYesVote(card)"
+                                v-on:proposal_no="addNoVote(card)"
+                        ></approval-card>
                     </v-flex>
-                    <v-flex width="600px">
-                        <approval-card></approval-card>
-                    </v-flex>
-                    <v-flex>
-                        <approval-card></approval-card>
-                    </v-flex>
-                    <v-flex>
-                        <approval-card></approval-card>
-                    </v-flex>
-                    <v-flex>
-                        <approval-card></approval-card>
-                    </v-flex>
-                    <v-flex>
-                        <approval-card></approval-card>
-                    </v-flex>
-                    <v-flex>
-                        <approval-card></approval-card>
-                    </v-flex>
+
 
                 </v-layout>
             </v-container>
@@ -49,18 +38,26 @@
     import ApprovalCard from "./ApprovalCard.vue";
 
     export default {
-        name:"approval-group",
+        name: "approval-group",
         components: {
             ApprovalCard
         },
-        props: ['user', 'cards'],
+        props: ['user', 'cards', 'cardsRef'],
         methods: {
             filterCards() {
-                if (this.user == null) {
-                    return this.cards;
-                } else {
-                    // return this.cards.filter(card => card.users
-                }
+                return this.cards.filter(card => (!card.confirmed && card.claimed));
+            },
+            addYesVote(card) {
+                console.log("before " + this.cardsRef.child(card['.key']).child('yesConfirm'));
+                this.cardsRef.child(card['.key']).child('yesConfirm').push(this.user.email);
+
+                console.log("after " + this.cardsRef.child(card['.key']).child('yesConfirm'));
+            },
+            addNoVote(card) {
+                console.log("before " + this.cardsRef.child(card['.key']).child('noConfirm'));
+                this.cardsRef.child(card['.key']).child('noConfirm').push(this.user.email);
+
+                console.log("after " + this.cardsRef.child(card['.key']).child('noConfirm'));
             }
         }
     }
@@ -71,7 +68,7 @@
 <style scoped>
     .taskGroup {
         max-height: 70vh;
-        background-color: rgba(0,0,0,0);
+        background-color: rgba(0, 0, 0, 0);
     }
 
     .grouptitle {

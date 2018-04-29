@@ -38,7 +38,7 @@
         components: {
             TaskCard
         },
-        props: ['user', 'cards', 'cardsRef', 'usersRef'],
+        props: ['user', 'cards', 'cardsRef', 'usersRef', 'storageRef','db'],
         methods: {
             filterCards() {
                 return this.cards.filter(card => card.approved && !card.confirmed && !card.claimed);

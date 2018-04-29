@@ -1,5 +1,11 @@
 <template>
-    <v-dialog value="true" max-width="80vh">
+    <v-dialog value="true" max-width="80vh" v-model="open">
+        <v-btn class="newTask" large block light
+               slot="activator"
+               @click="reset()"
+               color="grey lighten-2">
+            Claim
+        </v-btn>
         <v-card light>
             <v-toolbar light flat color="grey lighten-3">
                 <v-toolbar-title color="black">
@@ -13,9 +19,12 @@
                 </v-btn>
             </v-toolbar>
             <v-container fluid grid-list-lg>
-                <v-card-text>
-                    ASDF
-                </v-card-text>
+                <v-text-field light
+                              name="card-name-input"
+                              label="Confirmation Notes"
+                              textarea
+                              v-model="description"
+                ></v-text-field>
                 <v-toolbar dense color="grey darken-5">
                     <v-toolbar-title>Confirm</v-toolbar-title>
                     <v-spacer></v-spacer>
@@ -25,11 +34,7 @@
             </v-container>
             <v-toolbar color="grey lighten-3">
                 <v-spacer></v-spacer>
-                <v-btn large icon color="grey">
-                    <v-icon color="white">
-                        save
-                    </v-icon>
-                </v-btn>
+                
                 <v-btn @click="checkFire" large icon color="red">
                     <v-icon color="white">
                         check
@@ -43,11 +48,25 @@
 <script>
 
       import Map1 from './Map1.vue';
-
     import MapConfirm from "./MapConfirm.vue";
     import PhotoConfirm from "./PhotoConfirm.vue";
+    import ConfirmationMethods from '../classes/ConfirmationMethods.js';
     export default {
         name: "task-confirm",
+        data (){
+            return{
+                 open: false,
+                location: null,
+                image: null,
+                text: false,
+                description:'',
+                target:{
+                    lat:36,
+                    lng:-78
+                }
+                
+            }
+        },
         components: {
             MapConfirm,
             PhotoConfirm
@@ -60,7 +79,19 @@
             checkFire: function(){
                 console.log(this.db);
                 console.log(this.storageRef);
+                this.$emit('get_location', this.location);
+                this.$emit('get_image', this.image);
+                this.$emit('get_description', this.description);
+                
             },
+            reset: function(){
+                 this.open =false;
+                this.location=null;
+                this.image=null;
+                this.text=false;
+                this.description='';
+                
+        }
         }
     }
 </script>

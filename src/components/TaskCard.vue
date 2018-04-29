@@ -1,6 +1,6 @@
 <template>
     <v-card dark height="50vh" min-width="800px">
-        <v-container height="50vh"fluid grid-list-md>
+        <v-container height="50vh" fluid grid-list-md>
             <v-layout row>
                 <v-flex xs12>
                     <v-card tile height="100%" flat dark>
@@ -10,9 +10,11 @@
                         <v-card-text class="points">
                             {{cardJson.points}} pts
                         </v-card-text>
-                        <v-btn large block light>
+                        <!--<v-btn large block light>
                             CLAIM
-                        </v-btn>
+                        </v-btn>-->
+                        <task-confirm :storageRef="this.storageRef" :db="this.db"></task-confirm>
+
                     </v-card>
                 </v-flex>
                 <v-flex xs5>
@@ -37,12 +39,20 @@
 </template>
 
 <script>
+    import TaskConfirm from "./TaskConfirm.vue";
+
     export default {
         name: "task-card",
-        props: ["cardJson", "user", "cardsRef", "usersRef"],
-        data() {
-            return {}
-        },
+        props: ["cardJson",
+                "user",
+                "cardsRef",
+                "usersRef",
+                "storageRef",
+                "db"],
+        components: {
+            TaskConfirm,
+
+        }
     }
 </script>
 

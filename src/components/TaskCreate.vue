@@ -52,7 +52,7 @@
                     <v-spacer></v-spacer>
 
                     <map-create v-if="location==null" v-on:get_location="location=$event; $forceUpdate()"></map-create>
-                    <v-btn v-if="location!=null" @click="location=null" fab smallcolor="success">
+                    <v-btn v-if="location!=null" @click="location=null" fab small color="success">
                         <v-icon color="white">
                             my_location
                         </v-icon>
