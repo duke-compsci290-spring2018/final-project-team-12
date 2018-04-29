@@ -1,6 +1,4 @@
 <template>
-    <div>
-        your SCORE + time left
         <v-container fluid grid-list-lg>
             <v-layout row>
                 <v-flex xs12>
@@ -8,10 +6,6 @@
                 </v-flex>
             </v-layout>
         </v-container>
-        <v-footer>
-            <footer-nav :user="user"></footer-nav>
-        </v-footer>
-    </div>
 </template>
 
 <script>

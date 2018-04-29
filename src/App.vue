@@ -21,9 +21,12 @@
                 :user="currentUser"
                 v-if="routeProposal"
         ></proposal-board>
-        <!--<proposal-board :user="currentUser" v-if="loggedIn() && proposalView()"></proposal-board>-->
-        <!--<approval-board :user="currentUser" v-if="loggedIn() && approvalView()"></approval-board>-->
-        <!--<stat-board :user="currentUser" v-if="loggedIn() && statView() || guestFlag"></stat-board>-->
+
+        <approval-board
+                :user="currentUser"
+                v-if="routeApproval"
+        ></approval-board>
+
         <admin-dash :db="db" v-if="routeAdmin"></admin-dash>
         <v-footer>
             <footer-nav
@@ -35,7 +38,6 @@
 </template>
 
 <script>
-    import LeftDrawer from './components/LeftDrawer.vue';
     import RightDrawer from './components/RightDrawer.vue';
     import TaskBoard from './components/TaskBoard.vue';
     import ProposalBoard from './components/ProposalBoard.vue';
@@ -165,7 +167,6 @@
             }
         },
         components: {
-            LeftDrawer,
             RightDrawer,
             TaskBoard,
             Login,

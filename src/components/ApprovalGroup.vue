@@ -10,7 +10,7 @@
         <v-toolbar dark>
             <v-spacer></v-spacer>
             <v-toolbar-title class="grouptitle">
-                Tasks to Complete
+                Approve Claimed Tasks
             </v-toolbar-title>
             <v-spacer></v-spacer>
         </v-toolbar>
