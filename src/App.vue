@@ -153,11 +153,11 @@
                             parent.currentUser = u.val();
                         }
                     });
-                    return ret;
+                    return {"ret": ret, "parent":parent};
                 }).then(function(r){
                     console.log("finding user returned: " + r);
                     console.log("FUCK ME IN THE ASS");
-                    if(!r){
+                    if(!r.ret){
                         parent.addNewUser(this.googleProfile);
                     }
                 });
