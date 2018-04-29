@@ -158,7 +158,7 @@
                     console.log("finding user returned: " + r);
                     console.log("FUCK ME IN THE ASS");
                     if(!r.ret){
-                        parent.addNewUser(this.googleProfile);
+                        r.parent.addNewUser(r.parent.googleProfile);
                     }
                 });
             },
