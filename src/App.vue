@@ -15,6 +15,8 @@
     </login>
         <task-board
                 :user="currentUser"
+                :db="db"
+                :cards="this.cards"
                 v-if="routeTask"
         ></task-board>
 

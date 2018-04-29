@@ -22,7 +22,7 @@
                                 :cardJson="card"
                                 :user="user"
                                 :cardsRef="cardsRef"
-                                v-on:proposal_yes="addYesVote(card)"
+                                :usersRef="usersRef"
                         ></proposal-card>
                     </v-flex>
                 </v-layout>
@@ -38,19 +38,10 @@
         components: {
             ProposalCard
         },
-        props: ['user', 'cards', 'cardsRef'],
+        props: ['user', 'cards', 'cardsRef', 'usersRef'],
         methods: {
             filterCards() {
                 return this.cards.filter(card => !card.approved);
-            },
-            addYesVote(card){
-                console.log("before " +  this.cardsRef.child(card['.key']).child('yesVotes'));
-                this.cardsRef.child(card['.key']).child('yesVotes').push(this.user.email);
-
-                console.log("after " + this.cardsRef.child(card['.key']).child('yesVotes'));
-            },
-            addNoVote(card){
-
             }
         }
     }

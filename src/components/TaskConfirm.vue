@@ -21,8 +21,6 @@
                     <v-spacer></v-spacer>
                     <map-confirm :db="this.db"></map-confirm>
                     <photo-confirm :db="this.db" :storageRef="this.storageRef"></photo-confirm>
-                   
-
                 </v-toolbar>
             </v-container>
             <v-toolbar color="grey lighten-3">

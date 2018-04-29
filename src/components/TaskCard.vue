@@ -5,10 +5,10 @@
                 <v-flex xs12>
                     <v-card tile height="100%" flat dark>
                         <v-toolbar color="transparent" flat>
-                            <v-toolbar-title class="name">Some name</v-toolbar-title>
+                            <v-toolbar-title class="name">{{cardJson.name}}</v-toolbar-title>
                         </v-toolbar>
                         <v-card-text class="points">
-                            80 pts
+                            {{cardJson.points}} pts
                         </v-card-text>
                         <v-btn large block light>
                             CLAIM
@@ -21,13 +21,13 @@
                             <v-spacer>
                             </v-spacer>
                             <v-chip disabled outline small>
-                                08-02-2012
+                                {{cardJson.due}}
                             </v-chip>
                             <v-spacer>
                             </v-spacer>
                         </v-toolbar>
                         <v-card-text class="description">
-                            Lorem ipsum dolor sit amet, te pro veri aliquam complectitur, eos at zril mentitum recusabo, ei aperiri eruditi quaerendum cum.
+                            {{cardJson.description}}
                         </v-card-text>
                     </v-card>
                 </v-flex>
@@ -39,7 +39,7 @@
 <script>
     export default {
         name: "task-card",
-        props: ["cardJson"],
+        props: ["cardJson", "user", "cardsRef", "usersRef"],
         data() {
             return {}
         },

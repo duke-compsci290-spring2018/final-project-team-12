@@ -17,28 +17,14 @@
         <v-card light flat tile>
             <v-container grid-list-lg fluid>
                 <v-layout class="cardList" row>
-                    <v-flex xs5>
-                        <task-card></task-card>
+                    <v-flex xs5 v-for="card in filterCards()">
+                        <task-card
+                                :cardJson="card"
+                                :user="user"
+                                :cardsRef="cardsRef"
+                                :usersRef="usersRef"
+                        ></task-card>
                     </v-flex>
-                    <v-flex width="600px">
-                        <task-card></task-card>
-                    </v-flex>
-                    <v-flex>
-                        <task-card></task-card>
-                    </v-flex>
-                    <v-flex>
-                        <task-card></task-card>
-                    </v-flex>
-                    <v-flex>
-                        <task-card></task-card>
-                    </v-flex>
-                    <v-flex>
-                        <task-card></task-card>
-                    </v-flex>
-                    <v-flex>
-                        <task-card></task-card>
-                    </v-flex>
-
                 </v-layout>
             </v-container>
         </v-card>
@@ -52,14 +38,10 @@
         components: {
             TaskCard
         },
-        props: ['user', 'cards'],
+        props: ['user', 'cards', 'cardsRef', 'usersRef'],
         methods: {
             filterCards() {
-                if (this.user == null) {
-                    return this.cards;
-                } else {
-                    // return this.cards.filter(card => card.users
-                }
+                return this.cards.filter(card => card.approved && !card.confirmed && !card.claimed);
             }
         }
     }

@@ -32,7 +32,7 @@
         </v-layout>
         <v-layout row>
             <v-flex xs12>
-                <task-group :user="user"></task-group>
+                <task-group :cards="cards" :cardsRef="cardsRef" :usersRef="usersRef" :user="user"></task-group>
             </v-flex>
         </v-layout>
     </v-container>
@@ -50,16 +50,18 @@
             TaskGroup,
             Countdown,
         },
-        data: {
-            return() {
-                user:this.user
+        data() {
+            return {
+                cardsRef: this.db.ref('cards'),
+                usersRef: this.db.ref('users')
             }
         },
         props: [
             'db',
             'storageRef',
             'user',
-            'relay'
+            'relay',
+            'cards'
         ],
         methods: {
             deadline: function () {
