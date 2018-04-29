@@ -28,7 +28,9 @@
         ></proposal-board>
 
         <approval-board
-                :user="currentUser"
+                 :user="currentUser"
+                :db="db"
+                :cards="this.cards"
                 v-if="routeApproval"
         ></approval-board>
 

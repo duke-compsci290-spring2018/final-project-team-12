@@ -23,6 +23,7 @@
                                 :user="user"
                                 :cardsRef="cardsRef"
                                 v-on:proposal_yes="addYesVote(card)"
+                                v-on:proposal_no="addnoVote(card)"
                         ></proposal-card>
                     </v-flex>
                 </v-layout>
@@ -50,6 +51,10 @@
                 console.log("after " + this.cardsRef.child(card['.key']).child('yesVotes'));
             },
             addNoVote(card){
+                console.log("before " +  this.cardsRef.child(card['.key']).child('noVotes'));
+                this.cardsRef.child(card['.key']).child('noVotes').push(this.user.email);
+
+                console.log("after " + this.cardsRef.child(card['.key']).child('noVotes'));
 
             }
         }

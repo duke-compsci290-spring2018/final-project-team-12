@@ -102,7 +102,7 @@
                 this.getVotes('yesVotes');
                 console.log(this.yes);
             },
-            canYesVote(){;
+            canYesVote(){
                 if(this.yes.indexOf(this.user.email)<0){
                     return true;
                 }
