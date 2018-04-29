@@ -85,8 +85,8 @@
                                 ref="circle"
                                 :editable="false"
                                 :center="{
-                                         lat:cLocation.x,
-                                         lng:cLocation.y
+                                         lat:0,
+                                         lng:0
                                          }"
                                 :draggable="false"
                                 :radius=1000
@@ -194,17 +194,18 @@
                 });
             },
             getEvidence(){
-                var confirmationRef = this.cardsRef.child(this.cardJson['.key']).child("confirmationMethods").child("location");
-                
-                var parent = this;
+                console.log("START EVID");
+                var confirmationRef = this.cardsRef.child(this.cardJson['.key']).child('confirmationMethods').child('location');
+                console.log(confirmationRef);
+                var vm = this;
                 return confirmationRef.once('value', function(snapshot){
                     var val = snapshot.val();
+                    console.log(val);
+                     vm.cLocation = val;
+                    console.log(vm.cLocation);
                     return val;
-                }).then(function(val){
-                    parent.cLocation = val;
                 });
-                console.log("CDX");
-                console.log(this.confirmation);
+                console.log(vm.confirmation);
             },
             getNoVotes(){
                 this.getVotes('noConfirm');
