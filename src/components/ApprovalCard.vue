@@ -1,75 +1,73 @@
 <template>
-<v-card dark height="50vh" min-width="800px">
-    <v-container height="50vh"fluid grid-list-md>
-        <v-layout row>
-            <v-flex xs12>
-                <v-card tile height="100%" flat dark>
-                    <v-toolbar color="transparent" flat>
-                        <v-toolbar-title class="name">approval Name</v-toolbar-title>
-    </v-toolbar>
-                    <v-card-text class="points">
-                        80 pts
-    </v-card-text>
-                    <v-layout justify-center row>
-    <v-flex xs6>
-        <v-btn @click="" block medium color="green darken-2">
-                        
-                        <v-icon  dark>thumb_up</v-icon>
-    </v-btn>
-    </v-flex>
-                        
-    <v-flex xs6>
-          <v-btn @click="" block medium color="red darken-2">
-                    
-                        <v-icon dark>thumb_down</v-icon>
-    </v-btn>
-    </v-flex>
-    </v-layout>
-                    
-  
-    </v-card>
-    </v-flex>
-            <v-flex xs5>
-                <v-card flat height="100%" tile light>
-                    <v-toolbar dense flat color="transparent">
-                        <v-spacer>
-    </v-spacer>
-                        <v-chip disabled outline small>
-                            08-02-2012
-    </v-chip>
-                        <v-spacer>
-    </v-spacer>
-    </v-toolbar>
-                    <v-card-text class="description">
-                        approval Description, says what task actually is
-                       
-                        <v-spacer></v-spacer>
-                    
+    <v-card dark height="50vh" min-width="800px">
+        <v-container height="50vh" fluid grid-list-md>
+            <v-layout row>
+                <v-flex xs12>
+                    <v-card tile height="100%" flat dark>
+                        <v-toolbar color="transparent" flat>
+                            <v-toolbar-title class="name">approval Name</v-toolbar-title>
+                        </v-toolbar>
+                        <v-card-text class="points">
+                            80 pts
+                        </v-card-text>
                         <v-layout justify-center row>
-               
-                <v-btn fab small color="grey lighten-1" slot="activator" @click="">
-                    <v-icon  center small color="black">
-                        my_location
-                    </v-icon>
-    </v-btn>
-               <v-spacer></v-spacer>
-                 <v-btn fab small icon color="grey lighten-1">
-                    <v-icon center color="black">
-                        add_a_photo
-                    </v-icon>
-    </v-btn>
-            </v-layout>
-                        
-                        
-                        
-                              
-    </v-card-text>
-                    
+                            <v-flex xs6>
+                                <v-btn @click="" block medium color="green darken-2">
 
-    </v-card>
-    </v-flex>
-    </v-layout>
-    </v-container>
+                                    <v-icon dark>thumb_up</v-icon>
+                                </v-btn>
+                            </v-flex>
+
+                            <v-flex xs6>
+                                <v-btn @click="" block medium color="red darken-2">
+
+                                    <v-icon dark>thumb_down</v-icon>
+                                </v-btn>
+                            </v-flex>
+                        </v-layout>
+
+
+                    </v-card>
+                </v-flex>
+                <v-flex xs5>
+                    <v-card flat height="100%" tile light>
+                        <v-toolbar dense flat color="transparent">
+                            <v-spacer>
+                            </v-spacer>
+                            <v-chip disabled outline small>
+                                08-02-2012
+                            </v-chip>
+                            <v-spacer>
+                            </v-spacer>
+                        </v-toolbar>
+                        <v-card-text class="description">
+                            approval Description, says what task actually is
+
+                            <v-spacer></v-spacer>
+
+                            <v-layout justify-center row>
+
+                                <v-btn fab small color="grey lighten-1" slot="activator" @click="">
+                                    <v-icon center small color="black">
+                                        my_location
+                                    </v-icon>
+                                </v-btn>
+                                <v-spacer></v-spacer>
+                                <v-btn fab small icon color="grey lighten-1">
+                                    <v-icon center color="black">
+                                        add_a_photo
+                                    </v-icon>
+                                </v-btn>
+                            </v-layout>
+
+
+                        </v-card-text>
+
+
+                    </v-card>
+                </v-flex>
+            </v-layout>
+        </v-container>
     </v-card>
 </template>
 
@@ -79,7 +77,7 @@
         props: ["cardJson"],
         data() {
             return {
-                cards:[]
+                cards: []
             }
         },
     }

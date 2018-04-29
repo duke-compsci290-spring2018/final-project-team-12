@@ -12,12 +12,6 @@
                 v-on:user_profile="loadUser($event)"
                 v-on:guest_login="guestLogin()">
     </login>
-<<<<<<< HEAD
-        <task-board :user="currentUser" v-if="loggedIn() || guestFlag"></task-board>
-<!--        <proposal-board :user="currentUser" v-if="loggedIn() || guestFlag"></proposal-board>-->
-      
-        <approval-board :user="currentUser" v-if="loggedIn() || guestFlag"></approval-board>
-=======
         <task-board
                 :user="currentUser"
                 v-if="routeTask"
@@ -29,7 +23,6 @@
         ></proposal-board>
         <!--<proposal-board :user="currentUser" v-if="loggedIn() && proposalView()"></proposal-board>-->
         <!--<approval-board :user="currentUser" v-if="loggedIn() && approvalView()"></approval-board>-->
->>>>>>> e8cc31fa6c349961c0e0cb677674f339d51ae884
         <!--<stat-board :user="currentUser" v-if="loggedIn() && statView() || guestFlag"></stat-board>-->
         <admin-dash :db="db" v-if="routeAdmin"></admin-dash>
         <v-footer>
