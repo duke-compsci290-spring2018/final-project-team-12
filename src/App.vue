@@ -7,14 +7,16 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
         </v-toolbar>
-<!--        <task-create></task-create>-->
         <admin-dash :db="this.db"></admin-dash>
         <login
                 v-if="!loggedIn() && !guestFlag"
                 v-on:user_profile="loadUser($event)"
                 v-on:guest_login="guestLogin()">
     </login>
-        <task-board :user="currentUser" v-if="!loggedIn()"></task-board>
+        <task-board :user="currentUser" v-if="loggedIn() && taskView() || guestFlag"></task-board>
+        <proposal-board :user="currentUser" v-if="loggedIn() && proposalView()"></proposal-board>
+        <approval-board :user="currentUser" v-if="loggedIn() && approvalView()"></approval-board>
+        <stat-board :user="currentUser" v-if="loggedIn() && statView() || guestFlag"></stat-board>
     </v-app>
 </template>
 
@@ -84,6 +86,7 @@
                 this.googleProfile = profile;
                 console.log(this.googleProfile);
                 if (!this.userExists(this.googleProfile)) {
+                    console.log("new User being added to fb");
                     this.addNewUser(this.googleProfile);
                 }
                 this.loadGame();

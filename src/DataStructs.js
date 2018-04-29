@@ -4,6 +4,7 @@ class User {
         this.name = profile.getName();
         this.avatar = profile.getImageUrl();
         this.admin = false;
+        this.banned = false;
     }
 }
 

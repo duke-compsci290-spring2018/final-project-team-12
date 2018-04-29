@@ -3,7 +3,9 @@
 <template>
     <v-card
             class="taskGroup"
-            light
+            dark
+            flat
+            color="transparent"
     >
         <v-toolbar light flat transparent>
             <v-toolbar-title>
@@ -18,7 +20,7 @@
                 </v-btn>
             </v-toolbar-items>
         </v-toolbar>
-        <v-card light flat>
+        <v-card light flat color="transparent">
             <v-container grid-list-lg fluid>
                 <v-layout class="cardList" row>
                     <v-flex xs5>
@@ -73,7 +75,8 @@
 
 <style scoped>
     .taskGroup {
-        max-height: 50vh;
+        max-height: 70vh;
+        background-color: rgba(0,0,0,0);
     }
 
     .cardList {

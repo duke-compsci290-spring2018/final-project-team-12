@@ -86,7 +86,7 @@
                                                 </v-btn>
                                                 <v-btn @click="goToCloud" block large color="blue darken-2">
                                                      Cloud Platform / Analytics
-                                                    <v-icon right dark>open_in_new</v-icon>
+                                                    <v-icon right dark>cloud</v-icon>
                                                 </v-btn>
                                             </v-flex>
                                             <v-flex xs6>
