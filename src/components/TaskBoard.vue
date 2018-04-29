@@ -28,7 +28,7 @@
         },
         data: {
             return() {
-                user = this.user
+                user:this.user
             }
         },
         props: [

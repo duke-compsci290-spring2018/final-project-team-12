@@ -4,7 +4,7 @@
         <v-container fluid grid-list-lg>
             <v-layout row>
                 <v-flex xs12>
-                    <proposal-group :user="user"></proposal-group>
+                    <approval-group :user="user"></approval-group>
                 </v-flex>
             </v-layout>
         </v-container>
@@ -15,16 +15,16 @@
 </template>
 
 <script>
-     import ProposalGroup from "./ProposalGroup.vue";
+     import ApprovalGroup from "./ApprovalGroup.vue";
     import RightDrawer from "./RightDrawer.vue";
     import FooterNav from "./FooterNav.vue";
 
     export default {
-        name: "proposal-board",
+        name: "approval-board",
         components: {
             RightDrawer,
             FooterNav,
-            ProposalGroup
+            ApprovalGroup
         },
         data: {
             return() {

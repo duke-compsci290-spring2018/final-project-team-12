@@ -14,9 +14,9 @@
                 v-on:guest_login="guestLogin()">
     </login>
         <task-board :user="currentUser" v-if="loggedIn() || guestFlag"></task-board>
-        <proposal-board :user="currentUser" v-if="loggedIn() || guestFlag"></proposal-board>
-        <!--<proposal-board :user="currentUser" v-if="loggedIn() && proposalView()"></proposal-board>-->
-        <!--<approval-board :user="currentUser" v-if="loggedIn() && approvalView()"></approval-board>-->
+<!--        <proposal-board :user="currentUser" v-if="loggedIn() || guestFlag"></proposal-board>-->
+      
+        <approval-board :user="currentUser" v-if="loggedIn() || guestFlag"></approval-board>
         <!--<stat-board :user="currentUser" v-if="loggedIn() && statView() || guestFlag"></stat-board>-->
     </v-app>
 </template>
@@ -25,7 +25,8 @@
     import LeftDrawer from './components/LeftDrawer.vue';
     import RightDrawer from './components/RightDrawer.vue';
     import TaskBoard from './components/TaskBoard.vue';
-     import ProposalBoard from './components/ProposalBoard.vue';
+    import ProposalBoard from './components/ProposalBoard.vue';
+    import ApprovalBoard from './components/ApprovalBoard.vue';
     import Login from './components/Login.vue';
     import Map1 from './components/Map1.vue';
     import TaskConfirm from './components/TaskConfirm.vue';
@@ -124,7 +125,8 @@
             TaskConfirm,
             TaskCreate,
             AdminDash,
-            ProposalBoard
+            ProposalBoard,
+            ApprovalBoard
         },
         created: {
 
