@@ -138,8 +138,10 @@
                 this.googleProfile = profile;
                 console.log(this.googleProfile);
                 var exists =
-                this.userExists(this.googleProfile);
-                this.loadGame();
+                this.userExists(this.googleProfile).then(function()
+                    {
+                        this.loadGame();
+                    });
             },
             userExists: function (profile) {
                 var parent = this;
