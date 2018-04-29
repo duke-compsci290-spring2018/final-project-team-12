@@ -17,11 +17,11 @@
             <span>Tasks</span>
             <v-icon>list</v-icon>
         </v-btn>
-        <v-btn dark>
+        <v-btn dark v-if="user!=null">
             <span>Proposals</span>
             <v-icon>create</v-icon>
         </v-btn>
-        <v-btn dark>
+        <v-btn dark v-if="user!=null">
             <span>Approve</span>
             <v-icon>thumbs_up_down</v-icon>
         </v-btn>
@@ -29,7 +29,7 @@
             <span>Stats</span>
             <v-icon>trending_up</v-icon>
         </v-btn>
-        <v-btn dark>
+        <v-btn dark v-if="user!=null && user.admin">
             <span>Admin Dashboard</span>
             <v-icon>build</v-icon>
         </v-btn>
@@ -42,7 +42,7 @@
         props: ["user"],
         data () {
             return {
-                // e2: 0
+                // user:this.user,
                 page: 0
             }
         },
@@ -64,7 +64,7 @@
         watch: {
             page: function(){
                 console.log("page " + this.page);
-                var toReturn="";
+                var toReturn;
                 switch(this.page){
                     case 0:
                         toReturn="task";
@@ -81,6 +81,10 @@
                     case 4:
                         toReturn="admin";
                         break;
+                }
+                if(this.user==undefined && toReturn=="proposal"){
+                    console.log("fuck");
+                    toReturn = "stat";
                 }
                 this.$emit("page_change", toReturn);
             }

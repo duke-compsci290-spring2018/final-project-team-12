@@ -1,7 +1,7 @@
 <template>
     <v-container fluid grid-list-lg>
         <v-layout row justify-center>
-            <v-flex xs5>
+            <v-flex xs6>
                 <v-card light>
                     <v-toolbar dense flat>
                         <v-spacer></v-spacer>
@@ -15,8 +15,8 @@
                     </v-layout>
                 </v-card>
             </v-flex>
-            <v-flex xs5>
-                <v-card light>
+            <v-flex xs6>
+                <v-card light v-if="user!=null">
                     <v-toolbar dense flat>
                         <v-spacer></v-spacer>
                         <v-toolbar-title class="subDashTitle">
@@ -25,7 +25,7 @@
                         <v-spacer></v-spacer>
                     </v-toolbar>
                     <v-layout row justify-center>
-                        69
+                        69 / 100
                     </v-layout>
                 </v-card>
             </v-flex>

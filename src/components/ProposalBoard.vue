@@ -1,7 +1,7 @@
 <template>
     <v-container fluid grid-list-lg>
         <v-layout row justify-center>
-                <task-create></task-create>
+                <task-create :user="user"></task-create>
         </v-layout>
         <v-layout row>
             <v-flex xs12>
@@ -26,8 +26,9 @@
             ProposalGroup,
             TaskCreate
         },
-        data: {
-            return() {
+        data () {
+            return {
+                user:this.user,
                 createTask: false
             }
         },

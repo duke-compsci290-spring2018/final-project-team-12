@@ -29,12 +29,21 @@
                     <v-spacer></v-spacer>
                     <map-create></map-create>
                     <v-btn  v-if="!image"
-                            @click="image=true;"
+                            @click="image=!image;"
                             depressed
                             fab
                             small
                             color="grey lighten-3">
                         <v-icon color="grey">
+                            add_a_photo
+                        </v-icon>
+                    </v-btn>
+                    <v-btn  v-if="image"
+                            @click="image=!image;"
+                            fab
+                            small
+                            color="success">
+                        <v-icon color="white">
                             add_a_photo
                         </v-icon>
                     </v-btn>
@@ -45,6 +54,15 @@
                            small
                            color="grey lighten-3">
                         <v-icon color="grey">
+                            comment
+                        </v-icon>
+                    </v-btn>
+                    <v-btn v-if="text"
+                           @click="text=!text;"
+                           fab
+                           small
+                           color="success">
+                        <v-icon color="white">
                             comment
                         </v-icon>
                     </v-btn>
@@ -73,9 +91,10 @@
         components: {
             MapCreate
         },
-        props:[],
+        props:["user"],
         data: {
             return() {
+                user = this.user,
                 cardJson = null;
                 location = null;
                 image = false;

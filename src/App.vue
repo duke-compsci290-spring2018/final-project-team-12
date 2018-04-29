@@ -30,7 +30,7 @@
         <admin-dash :db="db" v-if="routeAdmin"></admin-dash>
         <v-footer>
             <footer-nav
-                    :user="user"
+                    :user="currentUser"
                     v-on:page_change="showBoard($event)"
             ></footer-nav>
         </v-footer>
@@ -154,10 +154,7 @@
                     });
                     return {"ret": ret, "parent":parent};
                 }).then(function(r){
-                    console.log("finding user returned: " + r);
-                    console.log("FUCK ME IN THE ASS");
                     if(!r.ret){
-                        console.log("System.out.println(" + r.parent.googleProfile +")");
                         r.parent.addNewUser(r.parent.googleProfile);
                     }
                 });
