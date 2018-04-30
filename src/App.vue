@@ -12,11 +12,12 @@
                 v-on:user_profile="loadUser($event)"
                 v-on:fake_login="fakeLogin($event)"
                 v-on:guest_login="guestLogin()">
-    </login>
+        </login>
         <task-board
                 :user="currentUser"
+                :db="db"
+                :cards="this.cards"
                 :storageRef="storageRef"
-                    :db="db"
                 v-if="routeTask"
         ></task-board>
 
@@ -28,7 +29,7 @@
         ></proposal-board>
 
         <approval-board
-                 :user="currentUser"
+                :user="currentUser"
                 :db="db"
                 :cards="this.cards"
                 v-if="routeApproval"
@@ -83,8 +84,8 @@
             return {
                 db: db,
                 storageRef: storageRef,
-                usersRef:usersRef,
-                imagesRef:imagesRef,
+                usersRef: usersRef,
+                imagesRef: imagesRef,
                 googleProfile: null,
                 currentUser: null,
                 guestFlag: false,
@@ -104,14 +105,14 @@
 
         },
         methods: {
-            fakeLogin: function(user){
+            fakeLogin: function (user) {
                 this.currentUser = user;
                 this.adminFlag = true;
-                this.routeTask=true;
+                this.routeTask = true;
             },
-            showBoard: function(boardName){
+            showBoard: function (boardName) {
                 console.log(boardName);
-                switch(boardName){
+                switch (boardName) {
                     case "task":
                         console.log("fuck me in the ass");
                         this.routeTask = true;
@@ -147,7 +148,7 @@
                 this.routeTask = true;
                 this.guestFlag = true;
             },
-            adminLogin: function() {
+            adminLogin: function () {
                 this.adminFlag = true;
             },
             loadUser: function (profile) {
@@ -157,23 +158,23 @@
                 this.googleProfile = profile;
                 console.log(this.googleProfile);
                 var parent = this;
-                this.userExists(this.googleProfile).then(function(){
+                this.userExists(this.googleProfile).then(function () {
                     parent.loadGame();
                 });
             },
             userExists: function (profile) {
                 var parent = this;
-                return usersRef.once('value').then(function(snapshot) {
+                return usersRef.once('value').then(function (snapshot) {
                     var ret = false;
-                    snapshot.forEach(function(u){
-                        if(u.child('email').val()==profile.getEmail()){
+                    snapshot.forEach(function (u) {
+                        if (u.child('email').val() == profile.getEmail()) {
                             ret = true;
                             parent.currentUser = u.val();
                         }
                     });
-                    return {"ret": ret, "parent":parent};
-                }).then(function(r){
-                    if(!r.ret){
+                    return {"ret": ret, "parent": parent};
+                }).then(function (r) {
+                    if (!r.ret) {
                         r.parent.addNewUser(r.parent.googleProfile);
                     }
                 });
@@ -182,11 +183,11 @@
                 var parent = this;
                 var u = new User(profile);
                 console.log("");
-                usersRef.push(u).then(function(){
+                usersRef.push(u).then(function () {
                     parent.currentUser = u;
                 });
             },
-            loadGame(){
+            loadGame() {
                 console.log("when loaded currentUser: " + this.currentUser);
             }
         },
@@ -202,9 +203,7 @@
             FooterNav,
 
         },
-        created: {
-
-        }
+        created: {}
     }
 </script>
 

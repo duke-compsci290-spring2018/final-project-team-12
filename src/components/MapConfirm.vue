@@ -1,5 +1,5 @@
 <template>
-    <v-menu  origin="center center" top top offset-y v-model="visibility" :close-on-content-click=false>
+    <v-menu origin="center center" top top offset-y v-model="visibility" :close-on-content-click=false>
         <v-btn fab small color="grey lighten-1" slot="activator" @click="getLocation();center=pos">
             <v-icon color="white">
                 my_location
@@ -8,23 +8,23 @@
         <v-card max-width="60vh" light>
             <v-container grid-list-md fluid>
                 <v-flex xs9>
-                <!--MAP HERE-->
-                    
+                    <!--MAP HERE-->
+
                     <gmap-map
-                  :center="pos"
-                  :zoom="zoom"
-                  style="height:60vh;width:50vw"
-                  >
-            <gmap-marker
-                         :position="pos"
-                         :clickable="true"
-                         :draggable="false"
-                         @click="center = pos"
-                         ></gmap-marker>
-                        
-                           <gmap-circle
+                            :center="pos"
+                            :zoom="zoom"
+                            style="height:60vh;width:50vw"
+                    >
+                        <gmap-marker
+                                :position="pos"
+                                :clickable="true"
+                                :draggable="false"
+                                @click="center = pos"
+                        ></gmap-marker>
+
+                        <gmap-circle
                                 :editable="false"
-                                :center="fakeTarget"
+                                :center="target"
                                 :draggable="false"
                                 :radius=5000
                                 :options="{strokeColor: '#011AC7',
@@ -35,17 +35,17 @@
                         ></gmap-circle>
 
 
-        </gmap-map>
+                    </gmap-map>
                 </v-flex>
-                <v-btn @click="getLocation();center=pos" :disabled="bActive"light>
+                <v-btn @click="getLocation();center=pos" :disabled="bActive" light>
                     <!--btn here-->
                     Refresh Location
-                    
+
                 </v-btn>
-                
+
                 <v-btn @click="confirmTarget(pos); visibility=false" light>
-                Confirm Location
-                    </v-btn>
+                    Confirm Location
+                </v-btn>
             </v-container>
         </v-card>
     </v-menu>
@@ -54,64 +54,64 @@
 <script>
     export default {
         name: "map-confirm",
-        props:[
+        props: [
             'db',
             'target'
         ],
-        data(){
-            
-            return{
-                bActive:true,
-                visibility:true,
-                
-                pos:{
-                    lat:0,
+        data() {
+
+            return {
+                bActive: true,
+                visibility: true,
+
+                pos: {
+                    lat: 0,
                     lng: 0
                 },
-                center:{
-                    lat:0,
+                center: {
+                    lat: 0,
                     lng: 0
                 },
-                zoom:12,
-                fakeTarget:{
-                    lat:36,
-                    lng:-79
+                zoom: 12,
+                fakeTarget: {
+                    lat: 36,
+                    lng: -79
                 },
             }
         },
-        mounted:function(){
+        mounted: function () {
             //console.log("target");
             //console.log(target);
         },
-        methods:{
-            confirmTarget(pos){
+        methods: {
+            confirmTarget(pos) {
                 console.log('Emitting Location');
                 console.log(pos);
                 this.$emit('get_location', pos);
             },
-              getLocation(){
+            getLocation() {
 
-                   var vm = this;
-                  vm.bActive = true;
-            console.log("running getLoc");
-            // Try HTML5 geolocation for current user location
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                        vm.pos.lat =position.coords.latitude;
-                        vm.pos.lng =position.coords.longitude;
-                     console.log("function got location");
-                    console.log(vm.pos);
-                    vm.bActive=false;
-                });
-                 
-                    
-            }else {
-                // Browser doesn't support Geolocation
-                
-                console.log("failed to get location");
-            }
-                  
-        },
+                var vm = this;
+                vm.bActive = true;
+                console.log("running getLoc");
+                // Try HTML5 geolocation for current user location
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        vm.pos.lat = position.coords.latitude;
+                        vm.pos.lng = position.coords.longitude;
+                        console.log("function got location");
+                        console.log(vm.pos);
+                        vm.bActive = false;
+                    });
+
+
+                } else {
+                    // Browser doesn't support Geolocation
+
+                    console.log("failed to get location");
+                }
+
+            },
 
         }
     }
@@ -119,12 +119,13 @@
 
 <style scoped>
 
-        #map {
-            height: 60%;
-        }
-        html, body {
-            height: 80%;
-            margin: 0;
-            padding: 0;
-        }
+    #map {
+        height: 60%;
+    }
+
+    html, body {
+        height: 80%;
+        margin: 0;
+        padding: 0;
+    }
 </style>

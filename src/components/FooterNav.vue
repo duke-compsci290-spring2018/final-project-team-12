@@ -83,6 +83,7 @@
                         break;
                 }
                 if(this.user==undefined && toReturn=="proposal"){
+                    console.log("shit shouldn't be happening");
                     toReturn = "stat";
                 }
                 this.$emit("page_change", toReturn);

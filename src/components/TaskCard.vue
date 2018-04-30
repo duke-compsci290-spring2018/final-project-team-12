@@ -1,20 +1,20 @@
 <template>
     <v-card dark height="50vh" min-width="800px">
-        <v-container height="50vh"fluid grid-list-md>
+        <v-container height="50vh" fluid grid-list-md>
             <v-layout row>
                 <v-flex xs12>
                     <v-card tile height="100%" flat dark>
                         <v-toolbar color="transparent" flat>
-                            <v-toolbar-title class="name">Some name</v-toolbar-title>
+                            <v-toolbar-title class="name">{{cardJson.name}}</v-toolbar-title>
                         </v-toolbar>
                         <v-card-text class="points">
-                            80 pts
+                            {{cardJson.points}} pts
                         </v-card-text>
                         <!--<v-btn large block light>
                             CLAIM
                         </v-btn>-->
                         <task-confirm :storageRef="this.storageRef" :db="this.db"></task-confirm>
-                      
+
                     </v-card>
                 </v-flex>
                 <v-flex xs5>
@@ -23,13 +23,13 @@
                             <v-spacer>
                             </v-spacer>
                             <v-chip disabled outline small>
-                                08-02-2012
+                                {{cardJson.due}}
                             </v-chip>
                             <v-spacer>
                             </v-spacer>
                         </v-toolbar>
                         <v-card-text class="description">
-                            Lorem ipsum dolor sit amet, te pro veri aliquam complectitur, eos at zril mentitum recusabo, ei aperiri eruditi quaerendum cum.
+                            {{cardJson.description}}
                         </v-card-text>
                     </v-card>
                 </v-flex>
@@ -40,18 +40,19 @@
 
 <script>
     import TaskConfirm from "./TaskConfirm.vue";
+
     export default {
         name: "task-card",
         props: ["cardJson",
-               "storageRef",
-               "db"],
-        components:{
+                "user",
+                "cardsRef",
+                "usersRef",
+                "storageRef",
+                "db"],
+        components: {
             TaskConfirm,
-        
-        },
-        data() {
-            return {}
-        },
+
+        }
     }
 </script>
 

@@ -28,22 +28,8 @@
                 <v-toolbar dense color="grey darken-5">
                     <v-toolbar-title>Confirm</v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <map-confirm v-if="location==null" :db="this.db" :target="target" v-on:get_location="location=$event; $forceUpdate()"></map-confirm>
-                    <v-btn v-if="location!=null" @click="location=null" fab small color="green">
-                        <v-icon color="white">
-                            my_location
-                        </v-icon>
-                    </v-btn>
-                    
-                    
-                    <photo-confirm v-if="image==null":db="this.db" :storageRef="this.storageRef" v-on:get_image="image=$event; $forceUpdate()"></photo-confirm>
-                    <v-btn v-if="image!=null" @click="image=null" fab small color="green">
-                        <v-icon color="white">
-                            add_a_photo
-                        </v-icon>
-                    </v-btn>
-                   
-
+                    <map-confirm :db="this.db"></map-confirm>
+                    <photo-confirm :db="this.db" :storageRef="storageRef"></photo-confirm>
                 </v-toolbar>
             </v-container>
             <v-toolbar color="grey lighten-3">

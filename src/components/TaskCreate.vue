@@ -25,7 +25,7 @@
                               textarea
                               v-model="currTaskDescription"
                 ></v-text-field>
-                <v-toolbar flat dense color="grey darken-5">
+                <v-toolbar class="smol" flat dense color="grey darken-5">
                     <v-toolbar-title>Point value</v-toolbar-title>
                     <v-spacer></v-spacer>
 
@@ -33,7 +33,7 @@
                     </v-slider>
                     <span class="smol">{{this.points}}</span>
                 </v-toolbar>
-                <v-toolbar flat dense color="grey darken-5">
+                <v-toolbar class="smol" flat dense color="grey darken-5">
                     <v-toolbar-title>Due by</v-toolbar-title>
                     <v-spacer></v-spacer>
                     <span class="smol">{{this.due}}</span>
@@ -41,12 +41,13 @@
                         <v-btn slot="activator" icon>
                             <v-icon>date_range</v-icon>
                         </v-btn>
-                        <v-flex xs12 sm6>
-                            <v-date-picker color="red darken-1" v-model="due"></v-date-picker>
-                        </v-flex>
+                        <v-date-picker class="smol" v-model="due"></v-date-picker>
+                        <!--<v-flex xs12 sm6>-->
+
+                        <!--</v-flex>-->
                     </v-menu>
                 </v-toolbar>
-                <v-toolbar flat dense color="grey darken-5">
+                <v-toolbar class="smol" flat dense color="grey darken-5">
                     <v-toolbar-title>Choose confirmations methods:</v-toolbar-title>
                     <v-spacer></v-spacer>
 
@@ -169,6 +170,6 @@
     .smol {
         text-transform: capitalize;
         font-family: 'Quicksand', sans-serif;
-        font-size: 20px;
+        font-size: 22px;
     }
 </style>

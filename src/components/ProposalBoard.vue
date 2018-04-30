@@ -5,7 +5,7 @@
         </v-layout>
         <v-layout row>
             <v-flex xs12>
-                <proposal-group :cards="cards" :cardsRef="cardsRef" :user="user"></proposal-group>
+                <proposal-group :cards="cards" :cardsRef="cardsRef" :usersRef="usersRef" :user="user"></proposal-group>
             </v-flex>
         </v-layout>
 
@@ -29,7 +29,8 @@
         data () {
             return {
                 createTask: false,
-                cardsRef: this.db.ref('cards')
+                cardsRef: this.db.ref('cards'),
+                usersRef: this.db.ref('users')
             }
         },
         props: [
@@ -42,9 +43,6 @@
         methods: {
             showTaskCreate: function () {
                 this.createTask=true;
-            },
-            createTask: function() {
-                return this.createTask;
             }
         }
     }

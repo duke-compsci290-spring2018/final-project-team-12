@@ -1,23 +1,23 @@
 <template>
-    <v-menu  origin="center center" top top offset-y :close-on-content-click=false>
-        
-        
-          <v-btn fab small color="grey lighten-1" slot="activator">
+    <v-menu origin="center center" top top offset-y :close-on-content-click=false>
+
+
+        <v-btn fab small color="grey lighten-1" slot="activator">
             <v-icon color="white">
                 add_a_photo
             </v-icon>
         </v-btn>
-        
-        
+
+
         <v-card max-width="60vh" light>
             <v-container grid-list-md fluid>
                 <v-flex xs9>
                     <!--Image Upload HERE-->
-  <input type="file" id="photoFile" @change="readyFile" />
-                    
-                
+                    <input type="file" id="photoFile" @change="readyFile"/>
+
+
                 </v-flex>
-               
+
 
                 <!--<v-btn :disabled="locked" @click="visibility=false" light>
                     Confirm Image
@@ -28,101 +28,103 @@
 </template>
 
 <script>
-//import db from '../App.vue';
-/*var config1 = {
-    apiKey: "AIzaSyDhlhBm0bC7eCM_p2hO4AbEOHpdu8uTCsk",
-    authDomain: "todo-list-7368e.firebaseapp.com",
-    databaseURL: "https://todo-list-7368e.firebaseio.com",
-    projectId: "todo-list-7368e",
-    storageBucket: "todo-list-7368e.appspot.com",
-    messagingSenderId: "422071649995"
-};
+    //import db from '../App.vue';
+    /*var config1 = {
+        apiKey: "AIzaSyDhlhBm0bC7eCM_p2hO4AbEOHpdu8uTCsk",
+        authDomain: "todo-list-7368e.firebaseapp.com",
+        databaseURL: "https://todo-list-7368e.firebaseio.com",
+        projectId: "todo-list-7368e",
+        storageBucket: "todo-list-7368e.appspot.com",
+        messagingSenderId: "422071649995"
+    };
 
 
-// global access to initialized app database
-var db1 = firebase.initializeApp(config1,"other").database();
-// global reference to remote storage
-var storageRef1 = firebase.storage().ref();*/
-    
+    // global access to initialized app database
+    var db1 = firebase.initializeApp(config1,"other").database();
+    // global reference to remote storage
+    var storageRef1 = firebase.storage().ref();*/
+
     export default {
-        props:[
+        props: [
             'db',
             'storageRef'
         ],
         name: "photo-confirm",
-        data(){
-            
-            return{
-                visibility:true,
-                locked:false,
-                place:null,
-                eLoc:"",
-                
-                center:{
-                    lat:0,
+        data() {
+
+            return {
+                visibility: true,
+                locked: false,
+                place: null,
+                eLoc: "",
+
+                center: {
+                    lat: 0,
                     lng: 0
                 },
-               
+
             }
         },
-        methods:{
-            readyFile(evt){
+        methods: {
+            readyFile(evt) {
                 this.locked = true;
                 var vm = this;
                 var input = evt.target.files;
-                 //var input = document.getElementById('photoFile');
+                //var input = document.getElementById('photoFile');
                 console.log("SPEC");
                 console.log(input);
-                
+                console.log(this.storageRef);
+                console.log(vm.storageRef);
+
                 if (input.length > 0) {
-                var file = input[0];
-                var rn = new Date();
-                // get reference to a storage location
-                vm.storageRef.child('images/' + file.name+rn.getTime())
-                    .put(file)
-                    .then(snapshot => this.addImage(snapshot.downloadURL));
-                // reset input value
-                input.value = '';
-            }else{
-                console.log("invalid input");
-                this.locked = false;
-            }
-                
-               
+                    var file = input[0];
+                    var rn = new Date();
+                    
+                    // get reference to a storage location
+                    vm.storageRef.child('images/' + file.name + rn.getTime())
+                        .put(file)
+                        .then(snapshot => this.addImage(snapshot.downloadURL));
+                    // reset input value
+                    input.value = '';
+                } else {
+                    console.log("invalid input");
+                    this.locked = false;
+                }
+
+
             },
-            confirmImage(){
+            confirmImage() {
                 console.log('Confirming Image');
-                
+
                 this.locked = true;
-                  var input = document.getElementById('photoFile');
+                var input = document.getElementById('photoFile');
                 console.log(input);
                 console.log(input.files.length);
-                  if (input.files.length > 0) {
-                var file = input.files[0];
-                var rn = new Date();
-                // get reference to a storage location
-                storageRef.child('images/' + file.name+rn.getTime())
-                    .put(file)
-                    .then(snapshot => this.addImage(snapshot.downloadURL));
-                // reset input value
-                input.value = '';
-            }else{
-                console.log("invalid input");
-                this.locked = false;
-            }
-    
+                if (input.files.length > 0) {
+                    var file = input.files[0];
+                    var rn = new Date();
+                    // get reference to a storage location
+                    storageRef.child('images/' + file.name + rn.getTime())
+                        .put(file)
+                        .then(snapshot => this.addImage(snapshot.downloadURL));
+                    // reset input value
+                    input.value = '';
+                } else {
+                    console.log("invalid input");
+                    this.locked = false;
+                }
+
             },
             addImage(loc) {
-            // now that image has been stored in Firebase, create a reference to it in database
-            this.db.ref( '/images').push(loc);
-            console.log("set");
+                // now that image has been stored in Firebase, create a reference to it in database
+                this.db.ref('/images').push(loc);
+                console.log("set");
                 console.log(loc);
-                 this.$emit('get_image', loc);
+                this.$emit('get_image', loc);
                 this.locked = false;
 
-        },
-            
-              
+            },
+
 
         }
     }
@@ -133,6 +135,7 @@ var storageRef1 = firebase.storage().ref();*/
     #map {
         height: 60%;
     }
+
     html, body {
         height: 80%;
         margin: 0;

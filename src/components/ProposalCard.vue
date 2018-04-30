@@ -37,7 +37,7 @@
                         </v-chip>
                         <v-spacer></v-spacer>
                     </v-toolbar>
-                    <v-card flat height="100%" tile light>
+                    <v-card flat height="88%" tile light>
                         <v-card-text class="description">
                             {{cardJson.description}}
                         </v-card-text>
@@ -66,7 +66,7 @@
 <script>
     export default {
         name: "proposal-card",
-        props: ["cardJson", "user", "cardsRef"],
+        props: ["cardJson", "user", "cardsRef", "usersRef"],
         data() {
             return {
                 hasVoted: false,
@@ -115,14 +115,38 @@
                 return false;
             },
             voteYes(){
-                this.hasVoted=true;
-                this.yes.push(this.user.email);
-                this.$emit('proposal_yes', true);
+                this.vote('yesVotes', this.yes);
             },
             voteNo(){
+                this.vote('noVotes', this.no);
+            },
+            vote(name, voteList){
                 this.hasVoted=true;
-                this.no.push(this.user.email);
-                this.$emit('proposal_no', true);
+                voteList.push(this.user.email);
+                this.cardsRef.child(this.cardJson['.key']).child(name).push(this.user.email);
+                this.approveOrRemove();
+            },
+            approveOrRemove(){
+                console.log("here");
+                var yesVotes = this.yes.length;
+                var noVotes = this.no.length;
+                var numUsers = 4*(yesVotes + noVotes);
+                var parent = this;
+                this.usersRef.once('value', function(snapshot) {
+                    var users = snapshot.val();
+                    numUsers = Object.values(users).length;
+                    console.log(numUsers);
+                }).then(function(){
+                    if(yesVotes > numUsers/2){
+                        console.log("attempted to approve");
+                        var updates = {};
+                        updates['/' + parent.cardJson['.key'] + '/approved'] = true;
+                        parent.cardsRef.update(updates);
+                    }else if(noVotes > numUsers/2){
+                        console.log("attempted to remove");
+                        parent.cardsRef.child(parent.cardJson['.key']).remove();
+                    }
+                });
             },
             voted(){
                 return !(this.canYesVote() && this.canNoVote());
