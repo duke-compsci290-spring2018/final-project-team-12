@@ -108,7 +108,7 @@
                 routeProposal: false,
                 routeApproval: false,
                 routeAdmin: false,
-                routeStat: false
+                routeStat: false,
             }
         },
         firebase: {
@@ -183,6 +183,9 @@
                         if (u.child('email').val() == profile.getEmail()) {
                             ret = true;
                             parent.currentUser = u.val();
+                            if(parent.currentUser.banned){
+                                parent.guestFlag=true;
+                            }
                         }
                     });
                     return {"ret": ret, "parent": parent};
@@ -219,7 +222,6 @@
             GuestFooterNav
 
         },
-        created: {}
     }
 </script>
 

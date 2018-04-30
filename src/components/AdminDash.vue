@@ -24,14 +24,14 @@
                                     <v-spacer></v-spacer>
                                 </v-toolbar>
                                 <v-layout row justify-center>
-                                    <Countdown v-bind:end="dline"></Countdown>
+                                    <Countdown v-bind:end="deadline"></Countdown>
                                 </v-layout>
                             </v-card>
                             <br>
                             <br>
                             <br>
                            <v-layout row justify-center>
-     <v-date-picker class="smol" v-model="dline"></v-date-picker>
+     <v-date-picker class="smol" v-model="dline" @change="pickR"></v-date-picker>
     </v-layout>
                            
                         </v-flex>
@@ -89,16 +89,16 @@
                                                 </v-btn>
                                             </v-flex>
                                             <v-flex xs6>
-                                                <v-menu  :close-on-content-click=false offset-x left top allow-overflow full-width>
-                         <v-btn @click="getUsers" block large slot="activator" color="deep-orange darken-2">
-                                                    Ban a User
-                                                    <v-icon right dark>gavel</v-icon>
+                                                <v-menu   offset-x left top allow-overflow full-width>
+                         <v-btn @click="getUsers" block large slot="activator" color="green darken-2">
+                                                    Players
+                                                    <v-icon right dark>people</v-icon>
                                                 </v-btn>
                         
                        <v-card height="60vh" width="40vw" light flat tile>
             <v-container grid-list-lg fluid>
-                    <v-flex xs5 v-for="user in userList">
-                        <v-btn color="colorize(user)" @click=""
+                    <v-flex xs5 v-for="(user,index) in userList">
+                        <v-btn :color="colorize(user)" @click="modUser(user,index);$forceUpdate;"
                         >{{user.name}}</v-btn>
                     </v-flex>
             </v-container>
@@ -106,10 +106,6 @@
                     </v-menu>
                                                 
                                                
-                                                <v-btn @click="getBanned" block large color="green darken-1">
-                                                    Reinstate a User
-                                                    <v-icon right dark>autorenew</v-icon>
-                                                </v-btn>
                                             </v-flex>
                                         </v-layout>
                                     </v-flex>
@@ -140,16 +136,24 @@
         props:[
             'db'
         ],
+     
         data() {
             return {
                 adminDialog: true,
                 userList:[],
                 banList:[],
                 threshold:1000,
-                dline:"May 20,2018"
+                deadline:"May 20,2018",
+                dline:'',
+                rrr:[]
+
             }
         },
         methods: {
+            pickR(evt){
+                var input =evt;
+                console.log(input);
+            },
             colorize(user){
                 if(user.admin){
                     return 'black';
@@ -159,9 +163,21 @@
                 }
                 if(!(user.banned)==true){
                     return 'green';
+                }else{
+                    return 'blue';
                 }
             },
-            deadline: function () {
+            modUser(user,index){
+                if(user.admin){
+                    return;
+                }
+                var vm=this;
+                console.log(user.banned);
+                console.log(user);
+                  this.db.ref('users').child(vm.rrr[index]).child('banned').set(!(user.banned));
+                
+            },
+            deadline2: function () {
                 var ref =this.db.ref('metaData').child('endDate');
              
                 var date="";
@@ -199,6 +215,7 @@
                 }).then(function(){
                     parent.userList=us;
                     console.log(parent.userList);
+                    return parent.userList;
                 });
             
             },
@@ -224,11 +241,25 @@
             }
         },
         mounted:function(){
-        console.log("STTT");
             var vm = this;
             this.db.ref('metaData').child('threshold').once('value').then(snapshot=>{
                 vm.threshold=snapshot.val();
             });
+            this.db.ref('metaData').child('endDate').once('value').then(snapshot=>{
+                vm.deadline=snapshot.val();
+            });
+            
+            
+            
+                var cmRef = this.db.ref('users');
+                var parent = this;
+                return cmRef.once('value', function (snapshot) {
+                    var val = snapshot.val();
+                        parent.rrr = Object.keys(val);
+                    console.log('keys');
+                    console.log(parent.rrr);
+                });
+         
     
     },
         components: {

@@ -16,6 +16,10 @@ Lucas Tiger Liu [ltl9] & Jeremy Chen [jc587]
 -a fake admin button is provided on login so that you may test the site (without us having to disclose Google Account Login information)
 Normally one would proceed to Login with Google (Through OAuth 2.0). This will log them in to their existing account or will make a new account for them.
 One can also proceed as a guest (no login), but in this case they cannot play the game, only observe.
+
+Google Accounts for testing - cs290a@gmail.com, password: iloveweb      cs290b@gmail.com, password: iloveweb
+
+View different sections by clicking on the dashboard at the bottom of the page.
  
 
  
@@ -80,9 +84,9 @@ If the task is "confirmed," points are awarded to the player. The status of the 
 
 If the task is "denied," no points are awarded and the task returns to the task board, where it can be claimed again
 
-## End Game
-* When an end game condition has been met, tasks can no longer be created or proposed, and a noticeable visual indicator will show that the game has been completed (for instance, a "you won" modal with an illustration, covering up the game board)
-* The player stats dashboard will also be displayed (or made more prominent) to show player progression and other statistics from the game
+
+
+* The player stats dashboard will display scores ad stats
 
 
 ## Stack
