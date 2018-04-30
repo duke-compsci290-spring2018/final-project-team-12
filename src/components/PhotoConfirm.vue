@@ -58,10 +58,13 @@
                 //var input = document.getElementById('photoFile');
                 console.log("SPEC");
                 console.log(input);
+                console.log(this.storageRef);
+                console.log(vm.storageRef);
 
                 if (input.length > 0) {
                     var file = input[0];
                     var rn = new Date();
+                    
                     // get reference to a storage location
                     vm.storageRef.child('images/' + file.name + rn.getTime())
                         .put(file)

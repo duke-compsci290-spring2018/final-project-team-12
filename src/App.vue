@@ -114,7 +114,6 @@
                 console.log(boardName);
                 switch (boardName) {
                     case "task":
-                        console.log("fuck me in the ass");
                         this.routeTask = true;
                         this.routeProposal = this.routeApproval = this.routeAdmin = this.routeStat = false;
                         break;

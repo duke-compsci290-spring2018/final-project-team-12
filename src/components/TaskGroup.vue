@@ -23,6 +23,8 @@
                                 :user="user"
                                 :cardsRef="cardsRef"
                                 :usersRef="usersRef"
+                                :storageRef="storageRef"
+                                :db="db"
                         ></task-card>
                     </v-flex>
                 </v-layout>

@@ -25,8 +25,6 @@
                                 </v-btn>
                             </v-flex>
                         </v-layout>
-
-
                     </v-card>
                 </v-flex>
                 <v-flex xs5>
@@ -42,18 +40,14 @@
                         </v-toolbar>
                         <v-card-text class="description">
                             {{cardJson.description}}
-
-                            <v-spacer></v-spacer>
-
-
                         </v-card-text>
                     </v-card>
                 </v-flex>
             </v-layout>
 
             <v-layout justify-center row>
-
-                <v-menu origin="center center" top top offset-y :close-on-content-click=false>
+                <v-menu v-if="confirm.location!=null" origin="center center" top top offset-y
+                        :close-on-content-click=false>
                     <v-btn fab small color="grey lighten-1" slot="activator" @click="">
                         <v-icon color="black">
                             my_location
@@ -63,18 +57,12 @@
                         <v-container grid-list-md fluid>
                             <v-flex xs9>
                                 <gmap-map
-                                        :center="{
-                                   lat:36,
-                                   lng:-78
-                                   }"
-                                        :zoom="12"
-                                        style="height:40vh;width:80vw"
+                                        :center="confirm.location"
+                                        :zoom="11"
+                                        style="height:40vh; width:80vw"
                                 >
                                     <gmap-marker
-                                            :position="{
-                                   lat:36,
-                                   lng:-78
-                                   }"
+                                            :position="confirm.location"
                                             :clickable="true"
                                             :draggable="false"
                                             @click=""
@@ -84,53 +72,47 @@
                                     <gmap-circle
                                             ref="circle"
                                             :editable="false"
-                                            :center="{
-                                         lat:cLocation.x,
-                                         lng:cLocation.y
-                                         }"
+                                            :center="{lat:parseFloat(cLocation.location.x),
+                                                      lng:parseFloat(cLocation.location.y)}"
                                             :draggable="false"
                                             :radius=1000
                                             :options="{strokeColor: '#011AC7',
-                                   strokeOpacity: 0.8,
-                                   strokeWeight: 1,
-                                   fillColor: '#011AC7',
-                                   fillOpacity: 0.3}"
-                                    ></gmap-circle>
+                                                       strokeOpacity: 0.8,
+                                                       strokeWeight: 1,
+                                                       fillColor: '#011AC7',
+                                                       fillOpacity: 0.3}"
+                                    />
 
 
                                 </gmap-map>
                                 <gmap-street-view-panorama
-                                        :position="{
-                                   lat:36,
-                                   lng:-78
-                                   }"
+                                        :position="confirm.location"
                                         ref="pano"
                                         @position_changed=""
                                         style="height:30vh;width:80vw">
                                 </gmap-street-view-panorama>
                             </v-flex>
-
                         </v-container>
                     </v-card>
                 </v-menu>
 
-
-                <v-menu origin="center center" top top offset-y :close-on-content-click=false>
-                    <v-btn fab small color="grey lighten-1" slot="activator" @click="">
+                <v-menu v-if="!(confirm.image==null)" origin="center center" top top offset-y
+                        :close-on-content-click=false>
+                    <v-btn fab small color="grey lighten-1" slot="activator">
                         <v-icon color="black">
                             add_a_photo
                         </v-icon>
                     </v-btn>
                     <v-card max-width="60vh" light>
                         <v-container grid-list-md fluid>
-                            <img src="" alt="confirmation image">
+                            <img :src="confirm.image" alt="confirmation image">
                         </v-container>
                     </v-card>
                 </v-menu>
 
 
-                <v-menu origin="center center" top top offset-y :close-on-content-click=false>
-                    <v-btn fab small color="grey lighten-1" slot="activator" @click="">
+                <v-menu v-if="confirm.text" origin="center center" top top offset-y :close-on-content-click=false>
+                    <v-btn fab small color="grey lighten-1" slot="activator">
                         <v-icon color="black">
                             comment
                         </v-icon>
@@ -138,16 +120,13 @@
                     <v-card max-width="60vh" light>
                         <v-container grid-list-md fluid>
                             <v-card-text class="points">
-                                {{cardJson.points}} pts
+                                {{confirm.text}}
                             </v-card-text>
                         </v-container>
                     </v-card>
                 </v-menu>
-
-
             </v-layout>
         </v-container>
-
     </v-card>
 </template>
 
@@ -158,7 +137,8 @@
             "cardJson",
             'user',
             'cardsRef',
-            'usersRef'
+            'usersRef',
+            'db'
         ],
         data() {
             return {
@@ -168,11 +148,50 @@
                 showMap: false,
                 showImage: false,
                 showComment: false,
-                cLocation: null,
-                confirmation: null,
+                cLocation: {},
+                eLocation: [],
+                confirm: {},
+                img: '',
+                text: 'N/A'
             }
         },
         methods: {
+            getConfirmMethods: function () {
+                console.log("ZZZ");
+                var cmRef = this.cardsRef.child(this.cardJson['.key']).child('confirmation');
+                var parent = this;
+                console.log(cmRef);
+                return cmRef.once('value', function (snapshot) {
+                    var val = snapshot.val();
+                    console.log(val);
+                    if (val != null) {
+                        parent.confirm = Object.assign({}, val);
+                    }
+                });
+            },
+            getConfirmMethods2: function () {
+                console.log("222");
+                var cmRef = this.cardsRef.child(this.cardJson['.key']).child('confirmationMethods');
+                var parent = this;
+                console.log(cmRef);
+                return cmRef.once('value', function (snapshot) {
+                    var val = snapshot.val();
+                    console.log(val);
+                    if (val != null) {
+                        parent.cLocation = Object.assign({}, val);
+                    }
+                });
+            },
+            loadText: function (txt) {
+                this.text = txt;
+            },
+            loadImage: function (uri) {
+                this.image = uri;
+            },
+            loadLocation: function (loc) {
+                this.location = loc;
+            },
+
             getVotes(name) {
                 var votesRef = this.cardsRef.child(this.cardJson['.key']).child(name);
                 var votes = [];
@@ -192,18 +211,62 @@
                     return votes;
                 });
             },
-            getEvidence() {
-                var confirmationRef = this.cardsRef.child(this.cardJson['.key']).child("confirmationMethods").child("location");
 
-                var parent = this;
+            getEvidence() {
+                var vm = this;
+                var temp = [];
+                console.log("START");
+                var confirmationRef = this.cardsRef.child(this.cardJson['.key']).child('confirmationMethods').child('location');
+                console.log(confirmationRef);
+
                 return confirmationRef.once('value', function (snapshot) {
                     var val = snapshot.val();
-                    return val;
-                }).then(function (val) {
-                    parent.cLocation = val;
+                    temp = Object.values(val);
+                    vm.cLocation = Object.assign({}, val);
+
+                })
+            },
+            getEvidence2() {
+                console.log("Start2");
+                var confirmationRef = this.cardsRef.child(this.cardJson['.key']).child('confirmation').child('location');
+                console.log(confirmationRef);
+                var vm = this;
+                var temp = [];
+                return confirmationRef.once('value', function (snapshot) {
+                    var val = snapshot.val();
+                    temp = Object.values(val);
+
+
+                }).then(function () {
+                    vm.eLocation = temp;
+                    console.log(vm.eLocation);
+
                 });
-                console.log("CDX");
-                console.log(this.confirmation);
+
+            },
+            getEvidence3() {
+                var confirmationRef = this.cardsRef.child(this.cardJson['.key']).child('confirmation');
+                console.log(confirmationRef);
+                var vm = this;
+                var temp = [];
+                return confirmationRef.once('value', function (snapshot) {
+                    var val = snapshot.val();
+                    temp = Object.values(val);
+
+
+                }).then(function () {
+                    vm.confirmation = temp;
+                    console.log(vm.confirmation);
+                    console.log(vm.confirmation[0]);
+
+                });
+
+            },
+            getImg() {
+                this.img = this.confirmation[0];
+                console.log(this.confirmation[0]);
+                console.log(this.img);
+                return this.confirmation[0];
             },
             getNoVotes() {
                 this.getVotes('noConfirm');
@@ -265,7 +328,7 @@
                         updates['/' + parent.cardJson['.key'] + '/confirmed'] = true;
                     } else if (noVotes > numUsers / 2) {
                         console.log("attempted to remove");
-                        updates['/' + parent.cardJson['.key'] + '/approved'] = false;
+                        updates['/' + parent.cardJson['.key'] + '/approved'] = true;
                         updates['/' + parent.cardJson['.key'] + '/confirmation/location'] = null;
                         updates['/' + parent.cardJson['.key'] + '/confirmation/text'] = null;
                         updates['/' + parent.cardJson['.key'] + '/confirmation/image'] = null;
@@ -282,9 +345,15 @@
         },
         created() {
 
-            this.getYesVotes();
-            this.getNoVotes();
-            this.getEvidence();
+            this.getConfirmMethods();
+            this.getConfirmMethods2();
+            //this.getEvidence();
+            /* this.getYesVotes();
+             this.getNoVotes();
+
+             this.getEvidence2();
+             this.getEvidence3();*/
+
         }
     }
 </script>

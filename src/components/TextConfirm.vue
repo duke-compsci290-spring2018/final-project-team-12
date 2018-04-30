@@ -29,7 +29,7 @@
             }
         },
         created() {
-            userText: userText
+            userText: null
         }
     }
 </script>

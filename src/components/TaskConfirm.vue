@@ -22,7 +22,8 @@
                 <v-toolbar dense color="grey darken-5">
                     <v-toolbar-title>Confirm</v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <text-confirm v-if="confirmMethods.text && text==null"
+
+                    <text-confirm v-if="confirmMethods.text  && text==null"
                                   v-on:get_text="loadText($event)"
                     ></text-confirm>
                     <v-btn fab small depressed color="success" v-if="text!=null">
@@ -31,14 +32,17 @@
                         </v-icon>
                     </v-btn>
                     <map-confirm v-if="confirmMethods.location!=null && location==null" :db="this.db"
-                                 v-on:get_location="loadLocation($event)"
+                                 v-on:get_location="loadLocation($event)" :target="{
+                                                                                   lat:parseFloat(confirmMethods.location.x),
+                                                                                   lng:parseFloat(confirmMethods.location.y)}"
                     ></map-confirm>
                     <v-btn fab small depressed color="success" v-if="location!=null">
                         <v-icon color="white">
                             my_location
                         </v-icon>
                     </v-btn>
-                    <photo-confirm v-if="confirmMethods.image && image==null" :db="this.db" :storageRef="this.storageRef"
+                    <photo-confirm v-if="confirmMethods.image && image==null" :db="this.db"
+                                   :storageRef="this.storageRef"
                                    v-on:get_image="loadImage($event)"
                     ></photo-confirm>
                     <v-btn fab small depressed color="success" v-if="image!=null">
@@ -67,15 +71,17 @@
 
 <script>
 
-      import Map1 from './Map1.vue';
+    import Map1 from './Map1.vue';
     import MapConfirm from "./MapConfirm.vue";
     import PhotoConfirm from "./PhotoConfirm.vue";
+    import XPhoto from "./XPhoto.vue";
     import TextConfirm from "./TextConfirm.vue";
     import ConfirmationMethods from '../classes/ConfirmationMethods.js';
+
     export default {
         name: "task-confirm",
-        data (){
-            return{
+        data() {
+            return {
                 confirmMethods: {},
                 open: false,
                 location: null,
@@ -87,74 +93,75 @@
         components: {
             MapConfirm,
             PhotoConfirm,
-            TextConfirm
+            TextConfirm,
+            XPhoto
         },
-        props:[
+        props: [
             'db',
             'storageRef',
             'cardJson',
             'cardsRef',
             'user'
         ],
-        methods:{
-            allConfirmed: function(){
-                if(this.confirmMethods.location != null && this.location == null){
+        methods: {
+            allConfirmed: function () {
+                if (this.confirmMethods.location != null && this.location == null) {
                     return false;
                 }
-                if(this.confirmMethods.image && this.image == null){
+                if (this.confirmMethods.image && this.image == null) {
                     return false;
                 }
-                if(this.confirmMethods.text && this.text == null){
+                if (this.confirmMethods.text && this.text == null) {
                     return false;
                 }
                 return true;
             },
-            checkFire: function(){
+            checkFire: function () {
                 var updates = {};
                 var parent = this;
 
-                if(this.location!=null)
+                if (this.location != null)
                     updates['/' + this.cardJson['.key'] + '/confirmation/location'] = this.location;
-                if(this.text !=null)
+                if (this.text != null)
                     updates['/' + this.cardJson['.key'] + '/confirmation/text'] = this.text;
-                if(this.image != null)
+                if (this.image != null)
                     updates['/' + this.cardJson['.key'] + '/confirmation/image'] = this.image;
                 updates['/' + this.cardJson['.key'] + '/claimer'] = this.user;
                 updates['/' + this.cardJson['.key'] + '/claimed'] = true;
                 updates['/' + this.cardJson['.key'] + '/dateCompleted'] = new Date();
-                this.cardsRef.update(updates).then(function(){
-                    parent.open=false;
+                this.cardsRef.update(updates).then(function () {
+                    parent.open = false;
                     parent.$forceUpdate();
                 });
 
             },
-            reset: function(){
-                this.open =false;
-                this.location=null;
-                this.image=null;
-                this.text=null;
-                this.description='';
+            reset: function () {
+                this.open = false;
+                this.location = null;
+                this.image = null;
+                this.text = null;
+                this.description = '';
             },
-            getConfirmMethods: function(){
+            getConfirmMethods: function () {
                 var cmRef = this.cardsRef.child(this.cardJson['.key']).child('confirmationMethods');
                 var parent = this;
                 console.log(cmRef);
-                return cmRef.once('value', function(snapshot){
+                return cmRef.once('value', function (snapshot) {
                     var val = snapshot.val();
                     console.log(val);
-                    if (val !=null) {
+                    if (val != null) {
                         parent.confirmMethods = Object.assign({}, val);
                     }
                 });
             },
-            loadText: function(txt){
-                this.text=txt;
+            loadText: function (txt) {
+                this.text = txt;
             },
-            loadImage: function(uri){
-                this.image=uri;
+            loadImage: function (uri) {
+                this.image = uri;
             },
-            loadLocation: function(loc){
-                this.location=loc;
+            loadLocation: function (loc) {
+                this.location = loc;
             }
         },
         created() {

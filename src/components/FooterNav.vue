@@ -1,11 +1,4 @@
 <template>
-    <!--<v-bottom-nav-->
-        <!--absolute-->
-        <!--shift-->
-        <!--:value="true"-->
-        <!--:active.sync="e2"-->
-        <!--:color="color"-->
-    <!--&gt;-->
     <v-bottom-nav
             color="grey darken-4"
             absolute
@@ -47,18 +40,6 @@
             }
         },
         computed:{
-            // color () {
-            //     switch (this.e2) {
-            //         case 0:
-            //             return 'grey darken-4'
-            //         case 1:
-            //             return 'teal'
-            //         case 2:
-            //             return 'brown'
-            //         case 3:
-            //             return 'indigo'
-            //     }
-            // }
 
         },
         watch: {
@@ -83,7 +64,6 @@
                         break;
                 }
                 if(this.user==undefined && toReturn=="proposal"){
-                    console.log("shit shouldn't be happening");
                     toReturn = "stat";
                 }
                 this.$emit("page_change", toReturn);
