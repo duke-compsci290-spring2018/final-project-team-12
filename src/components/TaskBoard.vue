@@ -30,7 +30,7 @@
                         <v-spacer></v-spacer>
                     </v-toolbar>
                     <v-layout row justify-center>
-                        69 / {{threshold}}
+                        {{getUserScore(user)}} / {{threshold}}
                     </v-layout>
                 </v-card>
             </v-flex>
@@ -67,6 +67,21 @@
         methods: {
             deadline: function () {
                 return "August 22, 2022";
+            },
+            getUserScore: function(user){
+                var accum = 0;
+                var parent = this;
+                this.cards.forEach(function(card){
+                    if(card.confirmed){
+                        var points = card.points;
+                        var thisUser = card.claimer;
+                        if(thisUser == user) {
+                            accum += points;
+                        }
+                    }
+                })
+
+                return accum;
             }
         },
         mounted:function(){
