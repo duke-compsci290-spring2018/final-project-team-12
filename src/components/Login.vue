@@ -73,7 +73,7 @@
             fakeLogin() {
                 var user = {
                     email:'asdftwinkie@gmail.com',
-                    name:'kill me',
+                    name:'lolol',
                     admin:true
                 };
                 this.$emit('fake_login', user);

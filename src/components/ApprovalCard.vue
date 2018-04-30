@@ -314,19 +314,17 @@
                 var noVotes = this.no.length;
                 var numUsers = 4 * (yesVotes + noVotes);
                 var parent = this;
-
-                console.log("HIHI " + this.usersRef);
-
+                
                 this.usersRef.once('value', function (snapshot) {
                     var users = snapshot.val();
                     numUsers = Object.values(users).length;
                     console.log(numUsers);
                 }).then(function () {
                     var updates = {};
-                    if (yesVotes > numUsers / 2) {
+                    if (yesVotes * 2 > numUsers) {
                         console.log("attempted to buy a filet 'o fish from micky d's");
                         updates['/' + parent.cardJson['.key'] + '/confirmed'] = true;
-                    } else if (noVotes > numUsers / 2) {
+                    } else if (noVotes * 2 > numUsers) {
                         console.log("attempted to remove");
                         updates['/' + parent.cardJson['.key'] + '/approved'] = true;
                         updates['/' + parent.cardJson['.key'] + '/confirmation/location'] = null;
@@ -344,16 +342,10 @@
             }
         },
         created() {
-
-            this.getConfirmMethods();
-            this.getConfirmMethods2();
-            //this.getEvidence();
-            /* this.getYesVotes();
-             this.getNoVotes();
-
-             this.getEvidence2();
-             this.getEvidence3();*/
-
+                this.getYesVotes(),
+                this.getNoVotes(),
+                this.getConfirmMethods(),
+                this.getConfirmMethods2()
         }
     }
 </script>

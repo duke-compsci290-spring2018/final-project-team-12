@@ -175,7 +175,6 @@
                 });
             },
             userExists: function (profile) {
-                console.log(" 3 0 8 more like fk me mate");
                 var parent = this;
                 return usersRef.once('value').then(function (snapshot) {
                     console.log("167");
