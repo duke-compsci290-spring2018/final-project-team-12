@@ -11,7 +11,7 @@
                             {{cardJson.points}} pts
                         </v-card-text>
                         <v-layout justify-center>
-                            <task-confirm :cardJson="cardJson" :storageRef="this.storageRef" :cardsRef="cardsRef"
+                            <task-confirm v-if="user!=null" :cardJson="cardJson" :storageRef="this.storageRef" :cardsRef="cardsRef"
                                           :db="this.db" :user="user"></task-confirm>
                         </v-layout>
                     </v-card>
