@@ -42,7 +42,9 @@
                     newRank[key] = parent.ranking[key];
                 });
                 console.log(Object.keys(newRank));
-                return Object.keys(newRank);
+                var ls = Object.keys(newRank);
+                ls.reverse()
+                return ls;
             }
         }
     }
