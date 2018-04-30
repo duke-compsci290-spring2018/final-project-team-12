@@ -24,7 +24,7 @@
 
                         <gmap-circle
                                 :editable="false"
-                                :center="fakeTarget"
+                                :center="target"
                                 :draggable="false"
                                 :radius=5000
                                 :options="{strokeColor: '#011AC7',
