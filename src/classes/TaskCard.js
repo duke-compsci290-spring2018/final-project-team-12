@@ -9,7 +9,6 @@ export default class TaskCard {
         this.due = due;
 
         this.confirmation = new Confirmation();
-        this.votes = 0;
 
         this.claimer = null;
         this.dateClaimed = null;
@@ -19,6 +18,7 @@ export default class TaskCard {
         this.yesConfirm =[];
         this.noConfirm=[];
 
+        this.dateCompleted="";
         this.approved = false;
         this.claimed = false;
         this.confirmed = false;

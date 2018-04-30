@@ -23,16 +23,7 @@
         },
         methods: {
             orderedUsers() {
-                var dumbUser = {
-                    "email": "asdf@asdf.com",
-                    "name": "John"
-                }
-                var toreturn = [];
-                for(i = 0; i < 20; i++){
-                    toreturn.push(dumbUser);
-                }
-                return toreturn;
-            },
+            }
         }
     }
 </script>

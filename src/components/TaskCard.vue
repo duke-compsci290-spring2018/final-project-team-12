@@ -12,7 +12,7 @@
                         </v-card-text>
                         <v-layout justify-center>
                             <task-confirm :cardJson="cardJson" :storageRef="this.storageRef" :cardsRef="cardsRef"
-                                          :db="this.db"></task-confirm>
+                                          :db="this.db" :user="user"></task-confirm>
                         </v-layout>
                     </v-card>
                 </v-flex>

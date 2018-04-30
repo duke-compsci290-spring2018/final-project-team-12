@@ -22,7 +22,7 @@
                 <v-toolbar dense color="grey darken-5">
                     <v-toolbar-title>Confirm</v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <text-confirm v-if="confirmMethods.text  && text==null"
+                    <text-confirm v-if="confirmMethods.text && text==null"
                                   v-on:get_text="loadText($event)"
                     ></text-confirm>
                     <v-btn fab small depressed color="success" v-if="text!=null">
@@ -50,7 +50,7 @@
             </v-container>
             <v-toolbar color="grey lighten-3">
                 <v-spacer></v-spacer>
-                <v-btn v-if="allConfirmed()" @click="checkFire" large icon color="red">
+                <v-btn v-if="allConfirmed()" @click="checkFire()" large icon color="red">
                     <v-icon color="white">
                         check
                     </v-icon>
@@ -93,7 +93,8 @@
             'db',
             'storageRef',
             'cardJson',
-            'cardsRef'
+            'cardsRef',
+            'user'
         ],
         methods:{
             allConfirmed: function(){
@@ -109,17 +110,29 @@
                 return true;
             },
             checkFire: function(){
-                console.log(this.db);
-                console.log(this.storageRef);
-                // this.$emit('get_location', this.location);
-                // this.$emit('get_image', this.image);
-                // this.$emit('get_description', this.description);
+                var updates = {};
+                var parent = this;
+
+                if(this.location!=null)
+                    updates['/' + this.cardJson['.key'] + '/confirmation/location'] = this.location;
+                if(this.text !=null)
+                    updates['/' + this.cardJson['.key'] + '/confirmation/text'] = this.text;
+                if(this.image != null)
+                    updates['/' + this.cardJson['.key'] + '/confirmation/image'] = this.image;
+                updates['/' + this.cardJson['.key'] + '/claimer'] = this.user;
+                updates['/' + this.cardJson['.key'] + '/claimed'] = true;
+                updates['/' + this.cardJson['.key'] + '/dateCompleted'] = new Date();
+                this.cardsRef.update(updates).then(function(){
+                    parent.open=false;
+                    parent.$forceUpdate();
+                });
+
             },
             reset: function(){
                 this.open =false;
                 this.location=null;
                 this.image=null;
-                this.text=false;
+                this.text=null;
                 this.description='';
             },
             getConfirmMethods: function(){

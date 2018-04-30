@@ -24,9 +24,12 @@
         name: "text-confirm",
         data() {
             return {
-                userText: "",
+                userText: null,
                 visibility: true
             }
+        },
+        created() {
+            userText: userText
         }
     }
 </script>
