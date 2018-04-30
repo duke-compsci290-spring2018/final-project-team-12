@@ -164,6 +164,7 @@
             userExists: function (profile) {
                 var parent = this;
                 return usersRef.once('value').then(function (snapshot) {
+                    console.log("167");
                     var ret = false;
                     snapshot.forEach(function (u) {
                         if (u.child('email').val() == profile.getEmail()) {
@@ -179,6 +180,7 @@
                 });
             },
             addNewUser: function (profile) {
+                console.log("ASPDFISA " + profile);
                 var parent = this;
                 var u = new User(profile);
                 console.log("");
