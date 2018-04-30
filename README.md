@@ -19,7 +19,24 @@ One can also proceed as a guest (no login), but in this case they cannot play th
 
 Google Accounts for testing - cs290a@gmail.com, password: iloveweb      cs290b@gmail.com, password: iloveweb
 
+
+There are 3 main icons: target (location data), camera (image), and message (text). These are types of evidence that can be required/presented/reviewed throughout the site.
+
 View different sections by clicking on the dashboard at the bottom of the page.
+
+Tasks - see available tasks, claim and provide evidence 
+Proposals - approve or disapprove a task to be created
+Approvals - choose to approve or disapprove of a task completion. Look at the evidence given
+Stats - scores and names, current standings
+Admin Dashboard - only visible for Admins. Here, go to maintenance/database, manage users, reset game, change threshold score
+
+Clicking the players button on the admin dashboard brings up the players - admins black, allowed users green, and banned users red. Click a player to change their status from green/red. The window will close, and the status will update. 
+
+Admins have the greatest control and see all sections.
+
+Players can participate in all levels, but do not have access to the Admin Dashboard.
+
+Banned players cannot participate in tasks and will have a much more limited view of the site, similar to that of the guest.
 
  
 

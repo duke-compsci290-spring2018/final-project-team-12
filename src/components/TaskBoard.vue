@@ -16,7 +16,7 @@
                         <v-spacer></v-spacer>
                     </v-toolbar>
                     <v-layout row justify-center>
-                        <Countdown end="August 22, 2022"></Countdown>
+                        <Countdown end="deadline"></Countdown>
                     </v-layout>
                 </v-card>
             </v-flex>
@@ -54,7 +54,8 @@
             return {
                 cardsRef: this.db.ref('cards'),
                 usersRef: this.db.ref('users'),
-                threshold:1000
+                threshold:1000,
+                deadline:"May 20,2018",
             }
         },
         props: [
@@ -88,6 +89,10 @@
              var vm = this;
             this.db.ref('metaData').child('threshold').once('value').then(snapshot=>{
                 vm.threshold=snapshot.val();
+            });
+            
+            this.db.ref('metaData').child('endDate').once('value').then(snapshot=>{
+                vm.deadline=snapshot.val();
             });
         }
     }
