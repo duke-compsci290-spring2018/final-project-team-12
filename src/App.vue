@@ -68,7 +68,7 @@
     import AdminDash from './components/AdminDash.vue';
     import FooterNav from './components/FooterNav.vue';
     import AdminFooterNav from './components/AdminFooterNav.vue';
-    import FuestFooterNav from './components/GuestFooterNav.vue';
+    import GuestFooterNav from './components/GuestFooterNav.vue';
 
     import User from "./classes/User.js";
 
