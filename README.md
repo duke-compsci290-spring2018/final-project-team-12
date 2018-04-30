@@ -11,6 +11,14 @@ Lucas Tiger Liu [ltl9] & Jeremy Chen [jc587]
  The structure of our application resonates with some aspects of Scrum. Participants can vote on challenges and point values/rewards associated with these challenges. The more interesting aspects of our application will be found in the means of confirming the completion of challenges, analyzing/visualizing player/challenge data, and the structure of our data.
  
  
+## Site Usage
+
+-a fake admin button is provided on login so that you may test the site (without us having to disclose Google Account Login information)
+Normally one would proceed to Login with Google (Through OAuth 2.0). This will log them in to their existing account or will make a new account for them.
+One can also proceed as a guest (no login), but in this case they cannot play the game, only observe.
+ 
+
+ 
 ## Features
 
 ## Web Service / JSON Data Served
@@ -30,18 +38,13 @@ With a set deadline
 
 * If no player reaches the goal in time: Whoever has the most points or tasks wins
 
-With a static number of tasks
-* Plurality with points
-* Plurality of tasks
+
 #### Voting System
 * Democratic - Measures pass with a simple majority of the players' votes.
-* Authoritarian - The Game Master decides and has final say in all matters.
 #### Player Roles
 * Game Master
     * The Game Master chooses the initial game settings, including the game type
-    * Depending on game type, the Game Master may have additional powers (proposing tasks, confirming task completion)
-    * This user can invite and remove players from the game
-    * The Game Master is not a player
+    *
 * Player
     * Can join the game by logging in with Google
     * Can complete tasks to obtain rewards
@@ -51,44 +54,31 @@ With a static number of tasks
 * Spectator Guest (No Login)
     * The spectator can view the standings of participants within those games. The spectator cannot participate.
 
-#### Adding Players
-The Game Master can add new players to the game by email. Invited players will be sent an email.
+
 ### Task/Challenges
 #### Creation
-* In the democratic voting system, anyone can propose a task. In complete authoritarian mode, only the game master can create tasks.
-* A description of the task must be provided.
-* Deadline - Set a date for the deadline. By default, the game's deadline date is chosen as the task deadline date. 
-* Tasks can be assigned to a specific player or can be for anyone
-* Tasks can be repeatable, single-use, or with limited number of repeats
+* In the democratic voting system, anyone can propose a task.
+* A description of the task is provided.
+* Deadline - Set a date for the deadline, chosen by a date picker.
 #### Voting Period
-* Logistics
-    * A deadline can be set for when tasks can no longer be proposed
-    * An expiration date can be set for proposed tasks (will disappear from voting inbox if not approved/passes its expiration date)
 
-* Democratic
-    * Stage 1: Players vote to approve or reject task. A simple majority passes the task to Stage 2.
-    * Stage 2: Players propose point values for the task, which are put into a poll. The top polling option becomes the task reward.
-* Authoritatian
-    * Model 1: Game master has absolute authority to create tasks, no other players can propose tasks
-    * Model 2: Only game master has authority to create tasks, players will vote (in same fashion as Democratic) on approval
-    * Model 3: Any player can propose tasks, but tasks are approved by just the Game Master
+Players vote to approve or reject task. A simple majority passes the task
 
 ### Task Confirmation
 A player can submit a claim for task completion. There will be multiple means of confirming the completion of tasks. 
 
 #### Evidence
 The player must provide means of proving that the task was completed. Providing compelling evidence can help the user accumulate the necessary votes. Examples of evidence include:
-* Images
+* Image
 * Location Data
 * Text field for comments
 
 #### Vote
 * Democratic - Based on the evidence provided, other players will vote to confirm or deny completion of the task. A simple majority decides.
-* Authoritarian - The Game Master confirms or denies completion of the task
 
 If the task is "confirmed," points are awarded to the player. The status of the task is updated accordingly.
 
-If the task is "denied," no points are awarded and the task continues.
+If the task is "denied," no points are awarded and the task returns to the task board, where it can be claimed again
 
 ## End Game
 * When an end game condition has been met, tasks can no longer be created or proposed, and a noticeable visual indicator will show that the game has been completed (for instance, a "you won" modal with an illustration, covering up the game board)
@@ -105,7 +95,6 @@ If the task is "denied," no points are awarded and the task continues.
 * Google Maps JavaScript API (https://developers.google.com/maps/documentation/javascript/tutorial) 
     * Collaborative Realtime Mapping with Firebase - Used within a game to define task locations. When creating a task players select a location on the map, and the marker is saved in Firebase, and can be viewed elsewhere.
     * Geolocation - Used to Display User/Device Position on Maps. When validating a task, providing the current location can be used as compelling evidence. 
-* Integration with Google Calendar/Reminders for time-sensitive challenges (https://developers.google.com/calendar/overview)
-    * Create Events - Game tasks that are assigned to a player will create a Google Calendar Event with the relevant information
+    *Street View provides precise location based elements to the game as well as a great visual
 * Google OAuth 2.0 - Useful for authenticating user login. Also will use user location data and calendar events.
 * Google Sign-in - Another option for handling registration (https://developers.google.com/identity/choose-auth)

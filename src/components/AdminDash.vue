@@ -24,9 +24,16 @@
                                     <v-spacer></v-spacer>
                                 </v-toolbar>
                                 <v-layout row justify-center>
-                                    <Countdown v-bind:end="deadline()"></Countdown>
+                                    <Countdown v-bind:end="dline"></Countdown>
                                 </v-layout>
                             </v-card>
+                            <br>
+                            <br>
+                            <br>
+                           <v-layout row justify-center>
+     <v-date-picker class="smol" v-model="dline"></v-date-picker>
+    </v-layout>
+                           
                         </v-flex>
                         <v-flex xs7>
                             <v-card color="grey darken-4">
@@ -56,11 +63,9 @@
                                                             <v-card height="100%" flat light>
                                                                 <v-toolbar light dense flat color="transparent">
                                                                     <v-spacer></v-spacer>
-                                                                    1000
+                                                                    <input v-model="threshold" @change="updateThreshold">
                                                                     <v-btn icon>
-                                                                        <v-icon color="amber darken-2">
-                                                                            edit
-                                                                        </v-icon>
+                                                                        
                                                                     </v-btn>
                                                                 </v-toolbar>
                                                             </v-card>
@@ -84,10 +89,23 @@
                                                 </v-btn>
                                             </v-flex>
                                             <v-flex xs6>
-                                                <v-btn @click="getUsers" block large color="deep-orange darken-2">
+                                                <v-menu  :close-on-content-click=false offset-x left top allow-overflow full-width>
+                         <v-btn @click="getUsers" block large slot="activator" color="deep-orange darken-2">
                                                     Ban a User
                                                     <v-icon right dark>gavel</v-icon>
                                                 </v-btn>
+                        
+                       <v-card height="60vh" width="40vw" light flat tile>
+            <v-container grid-list-lg fluid>
+                    <v-flex xs5 v-for="user in userList">
+                        <v-btn color="colorize(user)" @click=""
+                        >{{user.name}}</v-btn>
+                    </v-flex>
+            </v-container>
+        </v-card>
+                    </v-menu>
+                                                
+                                               
                                                 <v-btn @click="getBanned" block large color="green darken-1">
                                                     Reinstate a User
                                                     <v-icon right dark>autorenew</v-icon>
@@ -98,21 +116,13 @@
                                     <v-flex xs12>
                                         <v-layout row>
                                             <v-flex xs12>
-                                                <v-btn block large color="red darken-4">
-                                                    reset current relay
+                                                <v-btn block large color="red darken-4" @click="resetRelay">
+                                                    RESET RELAY
                                                 </v-btn>
                                             </v-flex>
                                         </v-layout>
                                     </v-flex>
-                                    <v-flex xs12>
-                                        <v-layout row>
-                                            <v-flex xs12>
-                                                <v-btn block large color="primary">
-                                                    start new relay
-                                                </v-btn>
-                                            </v-flex>
-                                        </v-layout>
-                                    </v-flex>
+                                    
                                 </v-container>
                             </v-card>
                         </v-flex>
@@ -135,11 +145,37 @@
                 adminDialog: true,
                 userList:[],
                 banList:[],
+                threshold:1000,
+                dline:"May 20,2018"
             }
         },
         methods: {
+            colorize(user){
+                if(user.admin){
+                    return 'black';
+                }
+                if(user.banned){
+                    return 'red';
+                }
+                if(!(user.banned)==true){
+                    return 'green';
+                }
+            },
             deadline: function () {
-                return "August 22, 2022";
+                var ref =this.db.ref('metaData').child('endDate');
+             
+                var date="";
+                var parent = this;
+                return ref.once('value', function(snapshot){
+                    var val = snapshot.val();
+                    console.log(val);
+                    date = val;
+                   
+                }).then(function(){
+                    return date;
+                });
+                
+                //return "August 22, 2022";
             },
             goToFirebase: function (){
                 //database
@@ -151,9 +187,20 @@
                 window.open('https://console.cloud.google.com/apis/dashboard?project=todo-list-7368e');
             },
             getUsers: function(){
-                this.$bindAsArray('this.userList', this.db.ref('users'));
-                console.log(this.userList);
-                return this.userList;
+               
+                var Ref = this.db.ref('users')
+                var us = [];
+                var parent = this;
+                return Ref.once('value', function(snapshot){
+                    var val = snapshot.val();
+                    if (val !=null) {
+                        us = Object.values(val);
+                    }
+                }).then(function(){
+                    parent.userList=us;
+                    console.log(parent.userList);
+                });
+            
             },
             getBanned: function(){
                 this.$bindAsArray('this.userList', this.db.ref('users'));
@@ -166,8 +213,24 @@
             },
             reinstateUser: function(user){
                 db.ref('users').child(user).child('banned').set(false);
+            },
+            resetRelay: function(){
+                console.log("Game Reset");
+                this.db.ref('cards').remove();
+            },
+            updateThreshold:function(){
+                console.log(this.threshold);
+                this.db.ref('metaData').child('threshold').set(this.threshold);
             }
         },
+        mounted:function(){
+        console.log("STTT");
+            var vm = this;
+            this.db.ref('metaData').child('threshold').once('value').then(snapshot=>{
+                vm.threshold=snapshot.val();
+            });
+    
+    },
         components: {
             Countdown
         }
