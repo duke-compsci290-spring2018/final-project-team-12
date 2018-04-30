@@ -71,6 +71,7 @@
       import Map1 from './Map1.vue';
     import MapConfirm from "./MapConfirm.vue";
     import PhotoConfirm from "./PhotoConfirm.vue";
+    import XPhoto from "./XPhoto.vue";
     import TextConfirm from "./TextConfirm.vue";
     import ConfirmationMethods from '../classes/ConfirmationMethods.js';
     export default {
@@ -88,7 +89,8 @@
         components: {
             MapConfirm,
             PhotoConfirm,
-            TextConfirm
+            TextConfirm,
+            XPhoto
         },
         props:[
             'db',
@@ -120,7 +122,7 @@
                 this.open =false;
                 this.location=null;
                 this.image=null;
-                this.text=false;
+                this.text=null;
                 this.description='';
             },
             getConfirmMethods: function(){
