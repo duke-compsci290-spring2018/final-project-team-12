@@ -53,7 +53,7 @@
 
             <v-layout justify-center row>
 
-                <v-menu origin="center center" top top offset-y :close-on-content-click=false>
+                <v-menu v-if="confirm.location!=null" origin="center center" top top offset-y :close-on-content-click=false>
                     <v-btn fab small color="grey lighten-1" slot="activator" @click="">
                         <v-icon color="black">
                             my_location
@@ -63,18 +63,12 @@
                         <v-container grid-list-md fluid>
                             <v-flex xs9>
                                 <gmap-map
-                                        :center="{
-                                   lat: parseFloat(cLocation[2]),
-                                   lng: parseFloat(cLocation[3])
-                                   }"
+                                        :center="confirm.location"
                                         :zoom="11"
                                         style="height:40vh;width:80vw"
                                 >
                                     <gmap-marker
-                                            :position="{
-                                   lat: parseFloat(eLocation[0]),
-                                   lng: parseFloat(eLocation[1])
-                                   }"
+                                            :position="confirm.location"
                                             :clickable="true"
                                             :draggable="false"
                                             @click=""
@@ -85,9 +79,9 @@
                                 ref="circle"
                                 :editable="false"
                                 :center="{
-                                   lat: parseFloat(cLocation[2]),
-                                   lng: parseFloat(cLocation[3])
-                                   }"
+                                         lat:parseFloat(cLocation.location.x),
+                                         lng:parseFloat(cLocation.location.y)
+                                         }"
                                             :draggable="false"
                                             :radius=1000
                                             :options="{strokeColor: '#011AC7',
@@ -100,10 +94,7 @@
 
                                 </gmap-map>
                                 <gmap-street-view-panorama
-                                        :position="{
-                                   lat: parseFloat(cLocation[2]),
-                                   lng: parseFloat(cLocation[3])
-                                   }"
+                                        :position="confirm.location"
                                         ref="pano"
                                         @position_changed=""
                                         style="height:30vh;width:80vw">
@@ -115,7 +106,7 @@
                 </v-menu>
 
 
-                <v-menu origin="center center" top top offset-y :close-on-content-click=false>
+                <v-menu v-if="!(confirm.image==null)" origin="center center" top top offset-y :close-on-content-click=false>
                     <v-btn fab small color="grey lighten-1" slot="activator" @click="img=getImg;">
                         <v-icon color="black">
                             add_a_photo
@@ -123,13 +114,13 @@
                     </v-btn>
                     <v-card max-width="60vh" light>
                         <v-container grid-list-md fluid>
-                            <img :src="img" alt="confirmation image">
+                            <img :src="confirm.image" alt="confirmation image">
                         </v-container>
                     </v-card>
                 </v-menu>
 
 
-                <v-menu origin="center center" top top offset-y :close-on-content-click=false>
+                <v-menu v-if="confirm.text" origin="center center" top top offset-y :close-on-content-click=false>
                     <v-btn fab small color="grey lighten-1" slot="activator" @click="">
                         <v-icon color="black">
                             comment
@@ -138,7 +129,7 @@
                     <v-card max-width="60vh" light>
                         <v-container grid-list-md fluid>
                             <v-card-text class="points">
-                                {{confirmation[2]}}
+                                {{confirm.text}}
                             </v-card-text>
                         </v-container>
                     </v-card>
@@ -157,7 +148,8 @@
         props: [
             "cardJson",
             'user',
-            'cardsRef'
+            'cardsRef',
+            'db'
         ],
         data() {
             return {
@@ -167,9 +159,9 @@
                 showMap: false,
                 showImage: false,
                 showComment: false,
-                cLocation:[],
+                cLocation:{},
                 eLocation:[],
-                confirmation:[],
+                confirm:{},
                 img:'',
                 text:'N/A',
               
@@ -177,6 +169,42 @@
             }
         },
         methods: {
+             getConfirmMethods: function(){
+                 console.log("ZZZ");
+                var cmRef = this.cardsRef.child(this.cardJson['.key']).child('confirmation');
+                var parent = this;
+                console.log(cmRef);
+                return cmRef.once('value', function(snapshot){
+                    var val = snapshot.val();
+                    console.log(val);
+                    if (val !=null) {
+                        parent.confirm = Object.assign({}, val);
+                    }
+                });
+            },
+             getConfirmMethods2: function(){
+                 console.log("222");
+                var cmRef = this.cardsRef.child(this.cardJson['.key']).child('confirmationMethods');
+                var parent = this;
+                console.log(cmRef);
+                return cmRef.once('value', function(snapshot){
+                    var val = snapshot.val();
+                    console.log(val);
+                    if (val !=null) {
+                        parent.cLocation = Object.assign({}, val);
+                    }
+                });
+            },
+            loadText: function(txt){
+                this.text=txt;
+            },
+            loadImage: function(uri){
+                this.image=uri;
+            },
+            loadLocation: function(loc){
+                this.location=loc;
+            },
+       
             getVotes(name) {
                 var votesRef = this.cardsRef.child(this.cardJson['.key']).child(name);
                 var votes = [];
@@ -198,23 +226,18 @@
             },
 
             getEvidence(){
+                var vm = this;
+                var temp =[];
                 console.log("START");
                 var confirmationRef = this.cardsRef.child(this.cardJson['.key']).child('confirmationMethods').child('location');
                 console.log(confirmationRef);
-                var vm = this;
-                var temp =[];
+                
                 return confirmationRef.once('value', function(snapshot){
                     var val = snapshot.val();
                   temp=Object.values(val);
-                     
+                     vm.cLocation=Object.assign({},val);
 
-                }).then(function () {
-                   vm.cLocation = temp;
-                  console.log(vm.cLocation);
-                    console.log(vm.cLocation[3]);
-                  
-
-                });
+                })
             },
             getEvidence2(){
                 console.log("Start2");
@@ -301,12 +324,15 @@
             }
         },
         created() {
-
-            this.getYesVotes();
+ 
+            this.getConfirmMethods();
+            this.getConfirmMethods2();
+            //this.getEvidence();
+           /* this.getYesVotes();
             this.getNoVotes();
-            this.getEvidence();
+            
             this.getEvidence2();
-            this.getEvidence3();
+            this.getEvidence3();*/
             
         }
     }

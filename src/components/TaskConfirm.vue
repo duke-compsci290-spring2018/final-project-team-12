@@ -32,7 +32,9 @@
                         </v-icon>
                     </v-btn>
                     <map-confirm v-if="confirmMethods.location!=null && location==null" :db="this.db"
-                                 v-on:get_location="loadLocation($event)"
+                                 v-on:get_location="loadLocation($event)" :target="{
+                                                                                   lat:parseFloat(confirmMethods.location.x),
+                                                                                   lng:parseFloat(confirmMethods.location.y)}"
                     ></map-confirm>
                     <v-btn fab small depressed color="success" v-if="location!=null">
                         <v-icon color="white">

@@ -22,6 +22,7 @@
                                 :cardJson="card"
                                 :user="user"
                                 :cardsRef="cardsRef"
+                                       :db="db"
                                 v-on:proposal_yes="addYesVote(card)"
                                 v-on:proposal_no="addNoVote(card)"
                         ></approval-card>
@@ -42,7 +43,7 @@
         components: {
             ApprovalCard
         },
-        props: ['user', 'cards', 'cardsRef'],
+        props: ['user', 'cards', 'cardsRef','db'],
         methods: {
             filterCards() {
                 return this.cards.filter(card => (!card.confirmed && card.claimed));

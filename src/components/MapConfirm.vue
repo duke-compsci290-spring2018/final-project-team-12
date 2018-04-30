@@ -26,7 +26,7 @@
                                 :editable="false"
                                 :center="target"
                                 :draggable="false"
-                                :radius=5000
+                                :radius=1000
                                 :options="{strokeColor: '#011AC7',
                                    strokeOpacity: 0.8,
                                    strokeWeight: 1,
