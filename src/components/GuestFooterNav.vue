@@ -13,6 +13,7 @@
         <v-btn dark>
             <span>Stats</span>
             <v-icon>trending_up</v-icon>
+        </v-btn>
     </v-bottom-nav>
 </template>
 

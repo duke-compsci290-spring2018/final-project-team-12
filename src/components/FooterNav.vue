@@ -10,21 +10,17 @@
             <span>Tasks</span>
             <v-icon>list</v-icon>
         </v-btn>
-        <v-btn dark v-if="user!=null">
+        <v-btn dark>
             <span>Proposals</span>
             <v-icon>create</v-icon>
         </v-btn>
-        <v-btn dark v-if="user!=null">
+        <v-btn dark>
             <span>Approve</span>
             <v-icon>thumbs_up_down</v-icon>
         </v-btn>
         <v-btn dark>
             <span>Stats</span>
             <v-icon>trending_up</v-icon>
-        </v-btn>
-        <v-btn dark v-if="user!=null && user.admin">
-            <span>Admin Dashboard</span>
-            <v-icon>build</v-icon>
         </v-btn>
     </v-bottom-nav>
 </template>
@@ -59,13 +55,6 @@
                     case 3:
                         toReturn="stat";
                         break;
-                    case 4:
-                        toReturn="admin";
-                        break;
-                }
-                console.log("before " + toReturn);
-                if(this.user==undefined && toReturn=="proposal"){
-                    toReturn = "stat";
                 }
                 this.$emit("page_change", toReturn);
             }
