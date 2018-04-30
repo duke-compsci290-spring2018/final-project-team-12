@@ -57,7 +57,7 @@
     import AdminDash from './components/AdminDash.vue';
     import FooterNav from './components/FooterNav.vue';
 
-    import User from "./DataStructs.js";
+    import User from "./classes/User.js";
 
     var config = {
         apiKey: "AIzaSyDhlhBm0bC7eCM_p2hO4AbEOHpdu8uTCsk",
@@ -162,6 +162,7 @@
                 });
             },
             userExists: function (profile) {
+                console.log(" 3 0 8 more like fk me mate");
                 var parent = this;
                 return usersRef.once('value').then(function (snapshot) {
                     console.log("167");
