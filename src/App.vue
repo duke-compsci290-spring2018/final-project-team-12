@@ -38,6 +38,7 @@
         <admin-dash :db="db" v-if="routeAdmin"></admin-dash>
         <v-footer>
             <footer-nav
+                    v-if="guestFlag || loggedIn"
                     :user="currentUser"
                     v-on:page_change="showBoard($event)"
             ></footer-nav>

@@ -63,6 +63,7 @@
                         toReturn="admin";
                         break;
                 }
+                console.log("before " + toReturn);
                 if(this.user==undefined && toReturn=="proposal"){
                     toReturn = "stat";
                 }
