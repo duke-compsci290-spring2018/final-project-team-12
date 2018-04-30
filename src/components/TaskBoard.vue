@@ -30,7 +30,7 @@
                         <v-spacer></v-spacer>
                     </v-toolbar>
                     <v-layout row justify-center>
-                        69 / 100
+                        69 / {{threshold}}
                     </v-layout>
                 </v-card>
             </v-flex>
@@ -53,7 +53,8 @@
         data() {
             return {
                 cardsRef: this.db.ref('cards'),
-                usersRef: this.db.ref('users')
+                usersRef: this.db.ref('users'),
+                threshold:1000
             }
         },
         props: [
@@ -67,6 +68,12 @@
             deadline: function () {
                 return "August 22, 2022";
             }
+        },
+        mounted:function(){
+             var vm = this;
+            this.db.ref('metaData').child('threshold').once('value').then(snapshot=>{
+                vm.threshold=snapshot.val();
+            });
         }
     }
 </script>
