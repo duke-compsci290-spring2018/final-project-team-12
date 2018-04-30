@@ -16,7 +16,7 @@
                         <v-spacer></v-spacer>
                     </v-toolbar>
                     <v-layout row justify-center>
-                        <Countdown end="deadline"></Countdown>
+                        <Countdown v-bind:end="deadline"></Countdown>
                     </v-layout>
                 </v-card>
             </v-flex>
@@ -55,7 +55,7 @@
                 cardsRef: this.db.ref('cards'),
                 usersRef: this.db.ref('users'),
                 threshold:1000,
-                deadline:"May 20,2018",
+                deadline:"May 20,2018"
             }
         },
         props: [
