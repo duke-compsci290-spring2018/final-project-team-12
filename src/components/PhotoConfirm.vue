@@ -28,21 +28,6 @@
 </template>
 
 <script>
-    //import db from '../App.vue';
-    /*var config1 = {
-        apiKey: "AIzaSyDhlhBm0bC7eCM_p2hO4AbEOHpdu8uTCsk",
-        authDomain: "todo-list-7368e.firebaseapp.com",
-        databaseURL: "https://todo-list-7368e.firebaseio.com",
-        projectId: "todo-list-7368e",
-        storageBucket: "todo-list-7368e.appspot.com",
-        messagingSenderId: "422071649995"
-    };
-
-
-    // global access to initialized app database
-    var db1 = firebase.initializeApp(config1,"other").database();
-    // global reference to remote storage
-    var storageRef1 = firebase.storage().ref();*/
 
     export default {
         props: [

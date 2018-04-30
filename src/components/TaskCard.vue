@@ -10,11 +10,10 @@
                         <v-card-text class="points">
                             {{cardJson.points}} pts
                         </v-card-text>
-                        <!--<v-btn large block light>
-                            CLAIM
-                        </v-btn>-->
-                        <task-confirm :storageRef="this.storageRef" :db="this.db"></task-confirm>
-
+                        <v-layout justify-center>
+                            <task-confirm :cardJson="cardJson" :storageRef="this.storageRef" :cardsRef="cardsRef"
+                                          :db="this.db"></task-confirm>
+                        </v-layout>
                     </v-card>
                 </v-flex>
                 <v-flex xs5>
@@ -44,14 +43,16 @@
     export default {
         name: "task-card",
         props: ["cardJson",
-                "user",
-                "cardsRef",
-                "usersRef",
-                "storageRef",
-                "db"],
+            "user",
+            "cardsRef",
+            "usersRef",
+            "storageRef",
+            "db"],
         components: {
             TaskConfirm,
-
+        },
+        created(){
+            console.log("ASDFASDFSDAF " + this.cardsRef);
         }
     }
 </script>
