@@ -44,8 +44,8 @@ Banned players cannot participate in tasks and will have a much more limited vie
 ## Features
 
 ## Web Service / JSON Data Served
-    JSON data from the game can be received by accessing the address https://todo-list-7368e.firebaseio.com/GameStats.
-    This will return a JSON data format of a limited section of our database, the portion the project intends to share. Attempting to access other sections of the database will result in a "denied permission."
+    JSON data from the game can be received by accessing the address https://todo-list-7368e.firebaseio.com/cards.json.
+    This will return a JSON data format of a limited section of our database, the portion the project intends to share. The tasks details may be interesting to analyze. Attempting to access other sections of the database will result in a "denied permission."
 ### Login/User Creation
 #### Google OAuth (2.0)
 We will use Google OAuth to let users create accounts and login with their Google accounts. This way Google will handle secure authentication of users.

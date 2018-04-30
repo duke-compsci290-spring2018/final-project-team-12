@@ -1,0 +1,583 @@
+{
+  "cards" : {
+    "-LBKf_CakZvkhDeKUSAJ" : {
+      "approved" : true,
+      "claimed" : true,
+      "claimer" : {
+        "admin" : false,
+        "avatar" : "https://lh5.googleusercontent.com/-oNkt4C5IB60/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWBje0MVvMKUsfLXFUc5BrRWFbt-AA/s96-c/photo.jpg",
+        "banned" : false,
+        "color" : "light",
+        "email" : "ciroc.svedka@gmail.com",
+        "name" : "Ciroc Svedka"
+      },
+      "confirmation" : {
+        "image" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fmountain.png1525077709134?alt=media&token=a38c8869-668a-46b7-9604-84d3e9b52a9d",
+        "location" : {
+          "lat" : 36.0037044,
+          "lng" : -78.9252551
+        },
+        "text" : "asdf"
+      },
+      "confirmationMethods" : {
+        "image" : true,
+        "location" : {
+          "place" : "Edison Johnson Aquatics Center",
+          "radius" : 1000,
+          "x" : 36.02919716842447,
+          "y" : -78.90145615553087
+        },
+        "text" : true
+      },
+      "confirmed" : true,
+      "dateCompleted" : "2018-04-30T08:41:50.721Z",
+      "description" : "11111",
+      "due" : "2018-05-16",
+      "name" : "Task 1",
+      "noVotes" : {
+        "-LBKhHSIs3rqx0e9z6XG" : "asdftwinkie@gmail.com"
+      },
+      "points" : 24,
+      "yesConfirm" : {
+        "-LBKhlQ8ZqGYZwz8C4iA" : "cs290a@gmail.com",
+        "-LBKhntAhwZn_4Wwg-ea" : "cs290b@gmail.com",
+        "-LBKi3dFuLcwWHJCeqPb" : "ciroc.svedka@gmail.com",
+        "-LBKi7bZn55Hyz6rfgeK" : "asdftwinkie@gmail.com"
+      },
+      "yesVotes" : {
+        "-LBKh1ak2hHaaFttN_5l" : "cs290b@gmail.com",
+        "-LBKh6KJ3gih7WzeKOzE" : "asdftwinkie@gmail.com",
+        "-LBKhQ-DOKOpIS9Z_PcE" : "ciroc.svedka@gmail.com",
+        "-LBKhZYlhOwgPCF8hy6M" : "cs290a@gmail.com"
+      }
+    },
+    "-LBKgHRqHzbD4GszSAGS" : {
+      "approved" : true,
+      "claimed" : true,
+      "claimer" : {
+        "admin" : false,
+        "avatar" : "https://lh5.googleusercontent.com/-oNkt4C5IB60/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWBje0MVvMKUsfLXFUc5BrRWFbt-AA/s96-c/photo.jpg",
+        "banned" : false,
+        "color" : "light",
+        "email" : "ciroc.svedka@gmail.com",
+        "name" : "Ciroc Svedka"
+      },
+      "confirmation" : {
+        "image" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2FD3%20vis%20exported%20to%20PNG.png1525077720019?alt=media&token=95591329-bd9c-4432-8f26-24db48ae6c1e",
+        "location" : {
+          "lat" : 36.0037044,
+          "lng" : -78.9252551
+        },
+        "text" : "asdf"
+      },
+      "confirmationMethods" : {
+        "image" : true,
+        "text" : false
+      },
+      "confirmed" : false,
+      "dateCompleted" : "2018-04-30T08:42:01.220Z",
+      "description" : "Something",
+      "due" : "2018-04-27",
+      "name" : "Task2",
+      "points" : 6,
+      "yesConfirm" : {
+        "-LBKhnhQ37sQR_GYoY4H" : "cs290b@gmail.com"
+      },
+      "yesVotes" : {
+        "-LBKh13XbJJdVUR2PlGP" : "cs290b@gmail.com",
+        "-LBKh6V4v3xRjrSSLcfF" : "asdftwinkie@gmail.com",
+        "-LBKhHbHpX9UmZnYXmU8" : "asdftwinkie@gmail.com",
+        "-LBKhPkPTLI1RmSQZvIy" : "ciroc.svedka@gmail.com"
+      }
+    },
+    "-LBKgL0FRVfELN9RSKw-" : {
+      "approved" : true,
+      "claimed" : false,
+      "confirmationMethods" : {
+        "image" : true,
+        "location" : {
+          "place" : "Baldwin Building",
+          "radius" : 1000,
+          "x" : 36.00903419999999,
+          "y" : -78.91465210000001
+        },
+        "text" : true
+      },
+      "confirmed" : false,
+      "dateCompleted" : "",
+      "description" : "Do it or u won't graduate. Pics or it didn't happen!",
+      "due" : "2018-05-03",
+      "name" : "Climb Baldwin Auditorium",
+      "points" : 73,
+      "yesVotes" : {
+        "-LBKh0puTDFtxaPlYGIb" : "cs290b@gmail.com",
+        "-LBKh6eUG29FIZVEWakw" : "asdftwinkie@gmail.com",
+        "-LBKhHjKdGHAkzYk1xrr" : "asdftwinkie@gmail.com",
+        "-LBKhaLEtpWlB5nFI0w-" : "cs290a@gmail.com"
+      }
+    },
+    "-LBKgOmRjXWB5lv7vl4t" : {
+      "approved" : true,
+      "claimed" : true,
+      "claimer" : {
+        "admin" : false,
+        "avatar" : "https://lh3.googleusercontent.com/-q_vlZx-07aM/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWD8iVA_E5L_D3LJhNBEHIRuL6ce6g/s96-c/photo.jpg",
+        "banned" : false,
+        "color" : "light",
+        "email" : "cs290b@gmail.com",
+        "name" : "Caitlyn Seaway"
+      },
+      "confirmation" : {
+        "location" : {
+          "lat" : 35.9991048,
+          "lng" : -78.9362712
+        }
+      },
+      "confirmationMethods" : {
+        "image" : false,
+        "location" : {
+          "place" : "Duke University",
+          "radius" : 1000,
+          "x" : 36.0014258,
+          "y" : -78.9382286
+        },
+        "text" : false
+      },
+      "confirmed" : true,
+      "dateCompleted" : "2018-04-30T08:42:12.134Z",
+      "description" : "a task",
+      "due" : "",
+      "name" : "Task 3",
+      "points" : 46,
+      "yesConfirm" : {
+        "-LBKi-l5elesS8mOwMzu" : "cs290b@gmail.com",
+        "-LBKi3ljeCaz768oaNEB" : "ciroc.svedka@gmail.com",
+        "-LBKi8nCNobH7RJtmFLV" : "asdftwinkie@gmail.com",
+        "-LBKiCrzgXkcBWaVVkq7" : "cs290a@gmail.com"
+      },
+      "yesVotes" : {
+        "-LBKh0fgqu4j2kIxGgDX" : "cs290b@gmail.com",
+        "-LBKh7d5Uu3mZV6YjWzH" : "asdftwinkie@gmail.com",
+        "-LBKhHsdYwMMchUXvOEL" : "asdftwinkie@gmail.com",
+        "-LBKhQBg6skq2qz5iYAs" : "ciroc.svedka@gmail.com"
+      }
+    },
+    "-LBKgccUQxGC_aHNARN8" : {
+      "approved" : true,
+      "claimed" : true,
+      "claimer" : {
+        "admin" : false,
+        "avatar" : "https://lh5.googleusercontent.com/-oNkt4C5IB60/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWBje0MVvMKUsfLXFUc5BrRWFbt-AA/s96-c/photo.jpg",
+        "banned" : false,
+        "color" : "light",
+        "email" : "ciroc.svedka@gmail.com",
+        "name" : "Ciroc Svedka"
+      },
+      "confirmation" : {
+        "image" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fpixel-jeff-rainy.gif1525077786353?alt=media&token=3f3ad7cb-4fc7-4c91-a8a4-80f16be16b0c"
+      },
+      "confirmationMethods" : {
+        "image" : true,
+        "location" : {
+          "place" : "Nello L. Teer Building",
+          "radius" : 1000,
+          "x" : 36.0038401,
+          "y" : -78.94108119999999
+        },
+        "text" : false
+      },
+      "confirmed" : true,
+      "dateCompleted" : "2018-04-30T08:43:08.430Z",
+      "description" : "the basement has good lighting ngl. you have to be there for at least 15 minutes. get a selfie w/ an engineer as proof",
+      "due" : "2018-06-01",
+      "name" : "gawk at unbathed engineers in Teer",
+      "points" : 21,
+      "yesConfirm" : {
+        "-LBKi3v1JlpV2HH3K4Ka" : "ciroc.svedka@gmail.com",
+        "-LBKi7p4NFEjtq5KlYnu" : "asdftwinkie@gmail.com",
+        "-LBKiCdvORsiDMzmUjRi" : "cs290a@gmail.com",
+        "-LBKjt-Ps5Xfzx6hQBDX" : "chen.jeremy.73@gmail.com"
+      },
+      "yesVotes" : {
+        "-LBKh05Hx9VflTGehYfG" : "cs290b@gmail.com",
+        "-LBKh7lc5UEntxIkmc_l" : "asdftwinkie@gmail.com",
+        "-LBKhITDD4ccbbbzUHdm" : "asdftwinkie@gmail.com",
+        "-LBKhXK6NoiOu848odOv" : "ciroc.svedka@gmail.com"
+      }
+    },
+    "-LBKgm7aKHpttMZcF42d" : {
+      "approved" : true,
+      "claimed" : true,
+      "claimer" : {
+        "admin" : false,
+        "avatar" : "https://lh5.googleusercontent.com/-0phoqoGotuk/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWAfEYsUi5vXRxrHmMe1wGEnfw4S3A/s96-c/photo.jpg",
+        "banned" : false,
+        "color" : "light",
+        "email" : "cs290a@gmail.com",
+        "name" : "Carter Smith"
+      },
+      "confirmation" : {
+        "text" : "got it"
+      },
+      "confirmationMethods" : {
+        "image" : false,
+        "text" : true
+      },
+      "confirmed" : true,
+      "dateCompleted" : "2018-04-30T08:41:45.000Z",
+      "description" : "Get Points",
+      "due" : "",
+      "name" : "Get Points",
+      "points" : 100,
+      "yesConfirm" : {
+        "-LBKhlC2I7ELju3PGr2D" : "cs290a@gmail.com",
+        "-LBKho5aib7nUhB4d1gB" : "cs290b@gmail.com",
+        "-LBKi4Jp-YkUXa8zaYDG" : "ciroc.svedka@gmail.com",
+        "-LBKi83b1fAr6yjD8BFV" : "asdftwinkie@gmail.com",
+        "-LBKi94EsVMC5JtqX62P" : "asdftwinkie@gmail.com"
+      },
+      "yesVotes" : {
+        "-LBKgoegS5113fUFFefR" : "cs290b@gmail.com",
+        "-LBKh7yfDRQuaeTjZINX" : "asdftwinkie@gmail.com",
+        "-LBKhFrgE2adse7-9kMC" : "asdftwinkie@gmail.com",
+        "-LBKhQeSO6IJhbXBtZ3j" : "ciroc.svedka@gmail.com"
+      }
+    },
+    "-LBKgvLJPRdO09XdXw_8" : {
+      "approved" : true,
+      "claimed" : true,
+      "claimer" : {
+        "admin" : false,
+        "avatar" : "https://lh5.googleusercontent.com/-oNkt4C5IB60/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWBje0MVvMKUsfLXFUc5BrRWFbt-AA/s96-c/photo.jpg",
+        "banned" : false,
+        "color" : "light",
+        "email" : "ciroc.svedka@gmail.com",
+        "name" : "Ciroc Svedka"
+      },
+      "confirmation" : {
+        "image" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2FD3%20vis%20exported%20to%20PNG%20(2).png1525077753338?alt=media&token=87a6a48b-c975-459d-971b-3cd147ceb3f2",
+        "location" : {
+          "lat" : 36.0037044,
+          "lng" : -78.9252551
+        },
+        "text" : "asdfsa"
+      },
+      "confirmationMethods" : {
+        "image" : true,
+        "text" : true
+      },
+      "confirmed" : true,
+      "dateCompleted" : "2018-04-30T08:42:34.701Z",
+      "description" : "they're like unicorns. get a selfie w/ one of them, and write a 300 character reflection on what it's like to have encountered an imaginary creature",
+      "due" : "2018-10-11",
+      "name" : "find one of the 7 civil engineers in the class of 2020",
+      "points" : 46,
+      "yesConfirm" : {
+        "-LBKi8DSY1Km9AxjKUvv" : "asdftwinkie@gmail.com"
+      },
+      "yesVotes" : {
+        "-LBKh-q1GexTbKGSRxx1" : "cs290b@gmail.com",
+        "-LBKh87JG7NR2fmhZkUh" : "asdftwinkie@gmail.com",
+        "-LBKhFPNtED1bk1kKqmW" : "asdftwinkie@gmail.com",
+        "-LBKhWz1qF7ok_egPO3W" : "ciroc.svedka@gmail.com"
+      }
+    },
+    "-LBKgyLev8XN2Ew6tw9C" : {
+      "approved" : true,
+      "claimed" : true,
+      "claimer" : {
+        "admin" : false,
+        "avatar" : "https://lh5.googleusercontent.com/-oNkt4C5IB60/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWBje0MVvMKUsfLXFUc5BrRWFbt-AA/s96-c/photo.jpg",
+        "banned" : false,
+        "color" : "light",
+        "email" : "ciroc.svedka@gmail.com",
+        "name" : "Ciroc Svedka"
+      },
+      "confirmation" : {
+        "image" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fd3js_export_demo.png1525077771898?alt=media&token=a321f763-0efa-40f1-bdcc-b8b3d572e30e",
+        "location" : {
+          "lat" : 36.0037044,
+          "lng" : -78.9252551
+        },
+        "text" : "asdfas"
+      },
+      "confirmationMethods" : {
+        "image" : false,
+        "location" : {
+          "place" : "West Chapel Hill Street",
+          "radius" : 1000,
+          "x" : 35.99686925965769,
+          "y" : -78.91309956389784
+        },
+        "text" : false
+      },
+      "confirmed" : true,
+      "dateCompleted" : "2018-04-30T08:42:52.919Z",
+      "description" : "222",
+      "due" : "2018-06-28",
+      "name" : "Get Points 2",
+      "points" : 89,
+      "yesConfirm" : {
+        "-LBKi4RdObtO3ej-xnvS" : "ciroc.svedka@gmail.com",
+        "-LBKi68sn467D9hS3Ljv" : "cs290b@gmail.com",
+        "-LBKiAfRJooxjUIinlkF" : "asdftwinkie@gmail.com",
+        "-LBKibrwVtDgJw7S8zd7" : "cs290fanatic@gmail.com"
+      },
+      "yesVotes" : {
+        "-LBKh-LXcyJI1oWuE-R8" : "cs290b@gmail.com",
+        "-LBKh8diq7V8sFhcO7Z8" : "asdftwinkie@gmail.com",
+        "-LBKhGW7N1Hk9kjNTdcF" : "asdftwinkie@gmail.com",
+        "-LBKhQuDqBYUHi1CV6Qq" : "ciroc.svedka@gmail.com"
+      }
+    },
+    "-LBKh6uzFgzr9jaRdNcE" : {
+      "approved" : true,
+      "claimed" : true,
+      "claimer" : {
+        "admin" : false,
+        "avatar" : "https://lh5.googleusercontent.com/-oNkt4C5IB60/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWBje0MVvMKUsfLXFUc5BrRWFbt-AA/s96-c/photo.jpg",
+        "banned" : false,
+        "color" : "light",
+        "email" : "ciroc.svedka@gmail.com",
+        "name" : "Ciroc Svedka"
+      },
+      "confirmation" : {
+        "location" : {
+          "lat" : 36.0037044,
+          "lng" : -78.9252551
+        }
+      },
+      "confirmationMethods" : {
+        "image" : true,
+        "location" : {
+          "place" : "Allen Building",
+          "radius" : 1000,
+          "x" : 36.00095478704592,
+          "y" : -78.93750766435198
+        },
+        "text" : true
+      },
+      "confirmed" : true,
+      "dateCompleted" : "2018-04-30T08:42:40.280Z",
+      "description" : "because tandoor gives less chicken tikka masala now",
+      "due" : "2018-10-09",
+      "name" : "stage a protest in Allen building",
+      "noVotes" : {
+        "-LBKhW_54iVCzEIR88YJ" : "ciroc.svedka@gmail.com"
+      },
+      "points" : 78,
+      "yesConfirm" : {
+        "-LBKi4_yOlDH9G08hiNd" : "ciroc.svedka@gmail.com",
+        "-LBKiB1M7tmsBfCT-4AL" : "asdftwinkie@gmail.com",
+        "-LBKiD7thcfyfGb_UDZM" : "cs290a@gmail.com"
+      },
+      "yesVotes" : {
+        "-LBKh8q-Y-7lo6SYesop" : "asdftwinkie@gmail.com",
+        "-LBKhGKTABdkT5ygzxFB" : "asdftwinkie@gmail.com",
+        "-LBKhZptUGEV24lTIxA9" : "cs290a@gmail.com"
+      }
+    },
+    "-LBKhecW1PXIAXmcUGVf" : {
+      "approved" : true,
+      "claimed" : true,
+      "claimer" : {
+        "admin" : false,
+        "avatar" : "https://lh4.googleusercontent.com/-CNFgL0Ze4z8/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWCn3MmKDN9yc4MilMYlNhsNJNjKmQ/s96-c/photo.jpg",
+        "banned" : false,
+        "color" : "light",
+        "email" : "cs290fanatic@gmail.com",
+        "name" : "Cassius Tuninety"
+      },
+      "confirmation" : {
+        "text" : "dfd"
+      },
+      "confirmationMethods" : {
+        "image" : false,
+        "text" : true
+      },
+      "confirmed" : false,
+      "dateCompleted" : "2018-04-30T08:45:44.976Z",
+      "description" : "adadsads",
+      "due" : "2018-04-30",
+      "name" : "Get Points 3",
+      "points" : 81,
+      "yesConfirm" : {
+        "-LBKijqfIshF9PdHBp8x" : "cs290fanatic@gmail.com",
+        "-LBKimNAANEF2hsk0J8Y" : "asdftwinkie@gmail.com",
+        "-LBKjuoduS1jQhrxqxki" : "chen.jeremy.73@gmail.com"
+      },
+      "yesVotes" : {
+        "-LBKhf8fqKddUrsZdypR" : "cs290a@gmail.com",
+        "-LBKhfrbOg2mGVXeANVM" : "ciroc.svedka@gmail.com",
+        "-LBKhmhHYAmVT7V1lE_Q" : "cs290b@gmail.com",
+        "-LBKi6t9rde-Y81fCWMF" : "asdftwinkie@gmail.com"
+      }
+    },
+    "-LBKhuZxCod31g_xiivr" : {
+      "approved" : true,
+      "claimed" : true,
+      "claimer" : {
+        "admin" : false,
+        "avatar" : "https://lh4.googleusercontent.com/-CNFgL0Ze4z8/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWCn3MmKDN9yc4MilMYlNhsNJNjKmQ/s96-c/photo.jpg",
+        "banned" : false,
+        "color" : "light",
+        "email" : "cs290fanatic@gmail.com",
+        "name" : "Cassius Tuninety"
+      },
+      "confirmation" : {
+        "text" : "sdfsdf"
+      },
+      "confirmationMethods" : {
+        "image" : false,
+        "text" : true
+      },
+      "confirmed" : false,
+      "dateCompleted" : "2018-04-30T08:45:53.174Z",
+      "description" : "sasda",
+      "due" : "",
+      "name" : "Points 4",
+      "points" : 73,
+      "yesConfirm" : {
+        "-LBKik6HDVy6XFCEttC9" : "cs290fanatic@gmail.com",
+        "-LBKimaqV-jC3OpJ3wMd" : "asdftwinkie@gmail.com",
+        "-LBKjv-qbVLI43yJMYzR" : "chen.jeremy.73@gmail.com"
+      },
+      "yesVotes" : {
+        "-LBKi7dvx5SAd8eXyUII" : "asdftwinkie@gmail.com",
+        "-LBKiAylJoc487-pAPIU" : "cs290a@gmail.com",
+        "-LBKiLrnc-dnkfCFd4kr" : "cs290b@gmail.com",
+        "-LBKiacFD8SvwOzpqqvE" : "cs290fanatic@gmail.com"
+      }
+    },
+    "-LBKjSf4Bk3eLBEK1ovq" : {
+      "approved" : false,
+      "claimed" : false,
+      "confirmationMethods" : {
+        "image" : true,
+        "text" : false
+      },
+      "confirmed" : false,
+      "dateCompleted" : "",
+      "description" : "they're a rare breed. take a picture w/ this endangered species b4 they die out",
+      "due" : "2018-06-14",
+      "name" : "find a civil engineer",
+      "points" : 49,
+      "yesVotes" : {
+        "-LBKjiryUJ13GWEdRIPd" : "asdftwinkie@gmail.com",
+        "-LBKjxKtPWB5KnU2jZln" : "chen.jeremy.73@gmail.com"
+      }
+    },
+    "-LBKjgk8-Iyj1VI5emx8" : {
+      "approved" : false,
+      "claimed" : false,
+      "confirmationMethods" : {
+        "image" : false,
+        "location" : {
+          "place" : "Allen Building",
+          "radius" : 1000,
+          "x" : 36.00095478704592,
+          "y" : -78.93750766435198
+        },
+        "text" : false
+      },
+      "confirmed" : false,
+      "dateCompleted" : "",
+      "description" : "camp out in the allen building, bc of all of the world's injustices (like tandoor giving less tikka than they used to)",
+      "due" : "2018-09-14",
+      "name" : "stage a protest",
+      "points" : 13,
+      "yesVotes" : {
+        "-LBKjibscJVMh-da1xm7" : "asdftwinkie@gmail.com",
+        "-LBKjx9rYx3ShwBAZNLb" : "chen.jeremy.73@gmail.com"
+      }
+    }
+  },
+  "images" : {
+    "-LBHV_BClReL4zSvDjrv" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fcircuit_board_by_xxaries1970xx-d9ut9nd.jpg1525023920315?alt=media&token=56f8caf6-6d56-4624-b635-f11b92acb87c",
+    "-LBHVz-tvIbb9FKLfW-4" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fcircuit_board_by_xxaries1970xx-d9ut9nd.jpg1525024026597?alt=media&token=f411aadd-48c2-4655-bce1-1ca74dbec3e0",
+    "-LBHW2gywy7xlwCb9pjj" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fcircuit_board_by_xxaries1970xx-d9ut9nd.jpg1525024046375?alt=media&token=157474f1-8919-49ec-b6d2-7cb87cec42f3",
+    "-LBHW7NuXjVOcVvcQ0MN" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fcircuit_board_by_xxaries1970xx-d9ut9nd.jpg1525024065305?alt=media&token=f0224be1-f3b2-418c-9a85-347acf7624af",
+    "-LBHWKH50tH8zHR50JDA" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fcircuit_board_by_xxaries1970xx-d9ut9nd.jpg1525024117469?alt=media&token=23c815e4-27ca-417d-85c1-58d0237e6035",
+    "-LBJCTc2_twOpf4z3zfy" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fcircuit_board_by_xxaries1970xx-d9ut9nd.jpg1525052467022?alt=media&token=c103c75a-65fb-49dc-a90a-195eb0368694",
+    "-LBJD0DpIKhcx9QzqZ9P" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fcircuit_board_by_xxaries1970xx-d9ut9nd.jpg1525052608366?alt=media&token=f8e58db0-a147-4392-abe2-3ad645f88d21",
+    "-LBJMvXS0q79-SMU_pAW" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fcircuit_board_by_xxaries1970xx-d9ut9nd.jpg1525055206855?alt=media&token=c6ec5978-1a46-4b87-ba8d-22d5f6cb13fd",
+    "-LBJUYjKD3c8ItxqLVTm" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2F0kb40sd.jpg1525057208408?alt=media&token=06749bab-72b9-4fb2-99f1-1611997ff2e1",
+    "-LBJY6qCyWA8nxpaufwc" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fbg2.jpg1525058142788?alt=media&token=c185b1a8-2bc5-430c-9d49-987b0d1b984b",
+    "-LBJfbGDNprfY3WP0LHM" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fc2f.jpg1525060368472?alt=media&token=277013e7-0b8e-48b2-8238-039ce5051749",
+    "-LBJfiHg-a13PoW25uqZ" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2FSLogo_UML.png1525060397398?alt=media&token=afaaf151-2de2-4ea1-8a96-b8a52c224b24",
+    "-LBJfoZUrRXkMALC1nKK" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fcircuit_board_by_xxaries1970xx-d9ut9nd.jpg1525060421194?alt=media&token=d692eb86-289d-4eeb-98f3-03b153abd3fa",
+    "-LBJgDOs7_Bqfy1Abmpz" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fgronk.jpg1525060527992?alt=media&token=d3813508-9047-4a4d-ba27-dab9b5e3444c",
+    "-LBJhQeWpcWiViuIHNjE" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fc2f.jpg1525060845160?alt=media&token=8a797759-e12a-4ac1-a4d2-b638fcaa76b1",
+    "-LBJme8b87CNr7kLm-2f" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fc2f.jpg1525062215308?alt=media&token=b817fa57-fbc7-4018-a7ba-97c1bacb678d",
+    "-LBJnIUEzBxb38zPwg5J" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fc2f.jpg1525062384780?alt=media&token=b58060fe-aaf4-49f4-924b-1c51ca654899",
+    "-LBJnLaGB9N6qmuWZMFz" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fc2f.jpg1525062393688?alt=media&token=9fcebd33-bf64-4727-8041-cefcb762b590",
+    "-LBJnLhIal9pjfli18Cf" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fcircuit_board_by_xxaries1970xx-d9ut9nd.jpg1525062390165?alt=media&token=8122394f-8134-43b3-b958-86e0f59ece04",
+    "-LBK-u64Z4u-ppOfTD9M" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Ffg9.jpg1525065951585?alt=media&token=0d736ef9-f23b-4428-baec-5b0238205e2c",
+    "-LBKUiH57mTeApjrdcdD" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2F0kb40sd.jpg1525074029745?alt=media&token=d6b21529-419e-4fb2-8d81-7ad3390e0dd1",
+    "-LBKhkgoSEpqrLGLHKiv" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fmountain.png1525077709134?alt=media&token=a38c8869-668a-46b7-9604-84d3e9b52a9d",
+    "-LBKhnCVk0pkBfhm9qj8" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2FD3%20vis%20exported%20to%20PNG.png1525077720019?alt=media&token=95591329-bd9c-4432-8f26-24db48ae6c1e",
+    "-LBKhvPSz6vqSyeFp-Bq" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2FD3%20vis%20exported%20to%20PNG%20(2).png1525077753338?alt=media&token=87a6a48b-c975-459d-971b-3cd147ceb3f2",
+    "-LBKhzrZXKq6DBOl_Ywy" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fd3js_export_demo.png1525077771898?alt=media&token=a321f763-0efa-40f1-bdcc-b8b3d572e30e",
+    "-LBKi2ZyqcdecmWhcOFB" : "https://firebasestorage.googleapis.com/v0/b/todo-list-7368e.appspot.com/o/images%2Fpixel-jeff-rainy.gif1525077786353?alt=media&token=3f3ad7cb-4fc7-4c91-a8a4-80f16be16b0c"
+  },
+  "metaData" : {
+    "endDate" : "March 3, 2019",
+    "threshold" : "350"
+  },
+  "users" : {
+    "-LB9kolwM2bWrJRO7Iec" : {
+      "admin" : true,
+      "avatar" : "https://lh4.googleusercontent.com/-k34AKU6wBv8/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWC731veuNYhJsU4E4-3nKLIwelalQ/s96-c/photo.jpg",
+      "email" : "asdftwinkie@gmail.com",
+      "name" : "Jeremy Chen"
+    },
+    "-LBJ_kfWOMUhRSwDvHZi" : {
+      "admin" : false,
+      "avatar" : "https://lh4.googleusercontent.com/-CNFgL0Ze4z8/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWCn3MmKDN9yc4MilMYlNhsNJNjKmQ/s96-c/photo.jpg",
+      "banned" : false,
+      "color" : "light",
+      "email" : "cs290fanatic@gmail.com",
+      "name" : "Cassius Tuninety"
+    },
+    "-LBJ_r2JpnT9iGrFJVb4" : {
+      "admin" : false,
+      "avatar" : "https://lh5.googleusercontent.com/-0phoqoGotuk/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWAfEYsUi5vXRxrHmMe1wGEnfw4S3A/s96-c/photo.jpg",
+      "banned" : false,
+      "color" : "light",
+      "email" : "cs290a@gmail.com",
+      "name" : "Carter Smith"
+    },
+    "-LBJa71Zs1ycFQBGlW6v" : {
+      "admin" : false,
+      "avatar" : "https://lh3.googleusercontent.com/-q_vlZx-07aM/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWD8iVA_E5L_D3LJhNBEHIRuL6ce6g/s96-c/photo.jpg",
+      "banned" : false,
+      "color" : "light",
+      "email" : "cs290b@gmail.com",
+      "name" : "Caitlyn Seaway"
+    },
+    "-LBK-DyZ_VxbHQI8VgfD" : {
+      "admin" : false,
+      "avatar" : "https://lh6.googleusercontent.com/-Cb3QE2LvNsA/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWDOj4Z8hksu5n_BeaiTuK6Z6-1pcQ/s96-c/photo.jpg",
+      "banned" : true,
+      "color" : "light",
+      "email" : "nguyen.andy.le@gmail.com",
+      "name" : "Andy Nguyen"
+    },
+    "-LBKU2SglOPCKve2P2nN" : {
+      "admin" : false,
+      "avatar" : "https://lh6.googleusercontent.com/-VbrWhys-lRo/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWD38XXugh5WpCkAtrYb4yvxw3G-vA/s96-c/photo.jpg",
+      "banned" : false,
+      "color" : "light",
+      "email" : "chen.jeremy.73@gmail.com",
+      "name" : "Jeremy Chen"
+    },
+    "-LBK_vOgLbQT7k_0qabn" : {
+      "admin" : false,
+      "avatar" : "https://lh5.googleusercontent.com/-oNkt4C5IB60/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWBje0MVvMKUsfLXFUc5BrRWFbt-AA/s96-c/photo.jpg",
+      "banned" : false,
+      "color" : "light",
+      "email" : "ciroc.svedka@gmail.com",
+      "name" : "Ciroc Svedka"
+    }
+  }
+}
