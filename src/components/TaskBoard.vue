@@ -1,5 +1,10 @@
 <template>
     <v-container fluid grid-list-lg>
+        <v-layout row>
+            <v-flex xs12>
+                <task-group :cards="cards" :cardsRef="cardsRef" :usersRef="usersRef" :user="user" :storageRef="this.storageRef" :db="this.db"></task-group>
+            </v-flex>
+        </v-layout>
         <v-layout row justify-center>
             <v-flex xs6>
                 <v-card light>
@@ -28,11 +33,6 @@
                         69 / 100
                     </v-layout>
                 </v-card>
-            </v-flex>
-        </v-layout>
-        <v-layout row>
-            <v-flex xs12>
-                <task-group :cards="cards" :cardsRef="cardsRef" :usersRef="usersRef" :user="user" :storageRef="this.storageRef" :db="this.db"></task-group>
             </v-flex>
         </v-layout>
     </v-container>
@@ -72,4 +72,9 @@
 </script>
 
 <style scoped>
+    .subDashTitle{
+        font-family: 'Quicksand', sans-serif;
+        font-size: 25px;
+        color: #d0d0d0;
+    }
 </style>

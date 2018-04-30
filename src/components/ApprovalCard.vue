@@ -157,7 +157,8 @@
         props: [
             "cardJson",
             'user',
-            'cardsRef'
+            'cardsRef',
+            'usersRef'
         ],
         data() {
             return {
@@ -233,14 +234,47 @@
                 return false;
             },
             voteYes() {
-                this.hasVoted = true;
-                this.yes.push(this.user.email);
-                this.$emit('approval_yes', true);
+                this.vote('yesConfirm', this.yes);
             },
             voteNo() {
+                this.vote('noConfirm', this.no);
+            },
+            vote(name, voteList) {
                 this.hasVoted = true;
-                this.no.push(this.user.email);
-                this.$emit('approval_no', true);
+                voteList.push(this.user.email);
+                this.cardsRef.child(this.cardJson['.key']).child(name).push(this.user.email);
+                this.approveOrRemove();
+            },
+            approveOrRemove() {
+                console.log("here");
+                var yesVotes = this.yes.length;
+                var noVotes = this.no.length;
+                var numUsers = 4 * (yesVotes + noVotes);
+                var parent = this;
+
+                console.log("HIHI " + this.usersRef);
+
+                this.usersRef.once('value', function (snapshot) {
+                    var users = snapshot.val();
+                    numUsers = Object.values(users).length;
+                    console.log(numUsers);
+                }).then(function () {
+                    var updates = {};
+                    if (yesVotes > numUsers / 2) {
+                        console.log("attempted to buy a filet 'o fish from micky d's");
+                        updates['/' + parent.cardJson['.key'] + '/confirmed'] = true;
+                    } else if (noVotes > numUsers / 2) {
+                        console.log("attempted to remove");
+                        updates['/' + parent.cardJson['.key'] + '/approved'] = false;
+                        updates['/' + parent.cardJson['.key'] + '/confirmation/location'] = null;
+                        updates['/' + parent.cardJson['.key'] + '/confirmation/text'] = null;
+                        updates['/' + parent.cardJson['.key'] + '/confirmation/image'] = null;
+                        updates['/' + parent.cardJson['.key'] + '/claimer'] = null;
+                        updates['/' + parent.cardJson['.key'] + '/claimed'] = false;
+                        updates['/' + parent.cardJson['.key'] + '/dateCompleted'] = null;
+                    }
+                    parent.cardsRef.update(updates);
+                });
             },
             voted() {
                 return !(this.canYesVote() && this.canNoVote());
