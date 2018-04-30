@@ -314,7 +314,7 @@
                 var noVotes = this.no.length;
                 var numUsers = 4 * (yesVotes + noVotes);
                 var parent = this;
-                
+
                 this.usersRef.once('value', function (snapshot) {
                     var users = snapshot.val();
                     numUsers = Object.values(users).length;
