@@ -38,10 +38,20 @@
         <admin-dash :db="db" v-if="routeAdmin"></admin-dash>
         <v-footer>
             <footer-nav
-                    v-if="guestFlag || loggedIn"
+                    v-if="currentUser!=null && !adminFlag"
                     :user="currentUser"
                     v-on:page_change="showBoard($event)"
             ></footer-nav>
+            <guest-footer-nav
+                    v-if="guestFlag"
+                    :user="currentUser"
+                    v-on:page_change="showBoard($event)"
+            ></guest-footer-nav>
+            <admin-footer-nav
+                    v-if="adminFlag"
+                    :user="currentUser"
+                    v-on:page_change="showBoard($event)"
+            ></admin-footer-nav>
         </v-footer>
     </v-app>
 </template>
@@ -57,6 +67,8 @@
     import TaskCreate from './components/TaskCreate.vue';
     import AdminDash from './components/AdminDash.vue';
     import FooterNav from './components/FooterNav.vue';
+    import AdminFooterNav from './components/AdminFooterNav.vue';
+    import FuestFooterNav from './components/GuestFooterNav.vue';
 
     import User from "./classes/User.js";
 
@@ -204,6 +216,8 @@
             ProposalBoard,
             ApprovalBoard,
             FooterNav,
+            AdminFooterNav,
+            GuestFooterNav
 
         },
         created: {}
