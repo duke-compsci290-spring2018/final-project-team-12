@@ -35,6 +35,13 @@
                 v-if="routeApproval"
         ></approval-board>
 
+        <stat-board
+            :user="currentUser"
+            :db="db"
+            :cards="this.cards"
+            v-if="routeStat"
+        ></stat-board>
+
         <admin-dash :db="db" v-if="routeAdmin"></admin-dash>
         <v-footer>
             <footer-nav
@@ -69,6 +76,7 @@
     import FooterNav from './components/FooterNav.vue';
     import AdminFooterNav from './components/AdminFooterNav.vue';
     import GuestFooterNav from './components/GuestFooterNav.vue';
+    import StatBoard from './components/StatBoard.vue';
 
     import User from "./classes/User.js";
 
@@ -219,7 +227,8 @@
             ApprovalBoard,
             FooterNav,
             AdminFooterNav,
-            GuestFooterNav
+            GuestFooterNav,
+            StatBoard
 
         },
     }
