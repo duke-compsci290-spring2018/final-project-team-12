@@ -20,6 +20,7 @@ One can also proceed as a guest (no login), but in this case they cannot play th
 Google Accounts for testing - cs290a@gmail.com, password: iloveweb      cs290b@gmail.com, password: iloveweb
 
 View different sections by clicking on the dashboard at the bottom of the page.
+
  
 
  

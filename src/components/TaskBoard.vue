@@ -75,7 +75,7 @@
                     if(card.confirmed){
                         var points = card.points;
                         var thisUser = card.claimer;
-                        if(thisUser == user) {
+                        if(thisUser.email == user.email) {
                             accum += points;
                         }
                     }
